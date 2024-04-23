@@ -8,16 +8,17 @@ import java.util.Objects;
  * 219053324
  * StudentDocument.java
  * 23/04/2024
+ *
  */
 public class StudentDocument {
     private Student student;
     private Document document;
-    private LocalDateTime dateTime;
+    private LocalDateTime dateTimeUploaded;
 
     public StudentDocument(Builder builder) {
         this.student = builder.student;
         this.document = builder.document;
-        this.dateTime = builder.dateTime;
+        this.dateTimeUploaded = builder.dateTimeUploaded;
     }
 
     public Student getStudent() {
@@ -29,7 +30,7 @@ public class StudentDocument {
     }
 
     public LocalDateTime getDateTime() {
-        return dateTime;
+        return dateTimeUploaded;
     }
 
     @Override
@@ -37,12 +38,12 @@ public class StudentDocument {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         StudentDocument that = (StudentDocument) o;
-        return Objects.equals(student, that.student) && Objects.equals(document, that.document) && Objects.equals(dateTime, that.dateTime);
+        return Objects.equals(student, that.student) && Objects.equals(document, that.document) && Objects.equals(dateTimeUploaded, that.dateTimeUploaded);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(student, document, dateTime);
+        return Objects.hash(student, document, dateTimeUploaded);
     }
 
     @Override
@@ -50,7 +51,7 @@ public class StudentDocument {
         return "StudentDocument{" +
                 "student=" + student +
                 ", document=" + document +
-                ", dateTime=" + dateTime +
+                ", dateTime=" + dateTimeUploaded +
                 '}';
     }
 
@@ -59,7 +60,7 @@ public class StudentDocument {
         private Student student;
         private Document document;
 
-        private LocalDateTime dateTime;
+        private LocalDateTime dateTimeUploaded;
 
         public Builder (){
 
@@ -67,7 +68,7 @@ public class StudentDocument {
         public Builder copy(StudentDocument studentDocument){
             this.document=studentDocument.document;
             this.student=studentDocument.student;
-            this.dateTime=studentDocument.dateTime;
+            this.dateTimeUploaded=studentDocument.dateTimeUploaded;
             return this;
         }
 
@@ -82,7 +83,7 @@ public class StudentDocument {
         }
 
         public Builder setLocalDateTime(LocalDateTime localDateTime) {
-            this.dateTime = localDateTime;
+            this.dateTimeUploaded = localDateTime;
             return this;
         }
     }
