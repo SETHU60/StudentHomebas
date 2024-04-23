@@ -15,7 +15,7 @@ public class StudentDocument {
     private Document document;
     private LocalDateTime dateTimeUploaded;
 
-    public StudentDocument(Builder builder) {
+    private StudentDocument(Builder builder) {
         this.student = builder.student;
         this.document = builder.document;
         this.dateTimeUploaded = builder.dateTimeUploaded;
