@@ -1,4 +1,8 @@
 package za.ac.cput.domain;
 
-public class Landlord {
+import org.springframework.cglib.beans.BulkBean;
+
+public class Landlord{
+
+
 }
