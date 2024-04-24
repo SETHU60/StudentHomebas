@@ -71,6 +71,19 @@ public class Student extends User {
         return Objects.hash(super.hashCode(), academicDetails);
     }
 
+    @Override
+    public String toString() {
+        return "Student{" +
+                "academicDetails=" + academicDetails +
+                ", lastName='" + lastName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", gender='" + gender + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", password='" + password + '\'' +
+                ", contact=" + contact +
+                '}';
+    }
+
     public class Builder {
         private String firstName;
         private String lastName;
