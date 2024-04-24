@@ -13,14 +13,6 @@ public class User {
 
    protected User(){}
 
-    public User(String lastName, String firstName, String gender, LocalDate dateOfBirth, String password, Contact contact) {
-        this.lastName = lastName;
-        this.firstName = firstName;
-        this.gender = gender;
-        this.dateOfBirth = dateOfBirth;
-        this.password = password;
-        this.contact = contact;
-    }
 
     public String getLastName() {
         return lastName;
