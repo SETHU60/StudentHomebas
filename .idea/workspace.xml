@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="75f47be8-c775-4251-ba62-75d446c4bada" name="Changes" comment="Address domain added">
-      <change afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/StudentFavouriteProperty.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/Admin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/Landlord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/Landlord.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,6 +84,7 @@
       <workItem from="1713427655536" duration="414000" />
       <workItem from="1713816457382" duration="4747000" />
       <workItem from="1713953297894" duration="3994000" />
+      <workItem from="1713996545288" duration="608000" />
     </task>
     <servers />
   </component>
