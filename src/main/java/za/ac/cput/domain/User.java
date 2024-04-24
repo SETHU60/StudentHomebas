@@ -4,14 +4,14 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class User {
-    private String lastName;
-    private String firstName;
-   private String gender;
-   private LocalDate dateOfBirth;
-    private String password;
-   private Contact contact;
+    protected String lastName;
+    protected String firstName;
+   protected String gender;
+   protected LocalDate dateOfBirth;
+    protected String password;
+   protected Contact contact;
 
-   protected User(UserBuilder userBuilder){}
+   protected User(){}
 
     public User(String lastName, String firstName, String gender, LocalDate dateOfBirth, String password, Contact contact) {
         this.lastName = lastName;
@@ -67,45 +67,7 @@ public class User {
         return Objects.hash(lastName, firstName, gender, dateOfBirth,password,contact);
     }
 
-    public static class UserBuilder{
-        private String lastName;
-        private String firstName;
-        private String gender;
-        private LocalDate dateOfBirth;
-        private String password;
-        private Contact contact;
 
-        public UserBuilder setLastName(String lastName) {
-            this.lastName = lastName;
-            return this;
-        }
-
-        public UserBuilder setFirstName(String firstName) {
-            this.firstName = firstName;
-            return this;
-        }
-
-        public UserBuilder setGender(String gender) {
-            this.gender = gender;
-            return this;
-        }
-
-        public UserBuilder setDateOfBirth(LocalDate dateOfBirth) {
-            this.dateOfBirth = dateOfBirth;
-            return this;
-        }
-
-        public UserBuilder setPassword(String password) {
-            this.password = password;
-            return this;
-        }
-
-        public UserBuilder setContact(Contact contact) {
-            this.contact = contact;
-            return this;
-        }
-        public User buildUser(){return new User(this);}
-    }
 
 
 }
