@@ -4,15 +4,19 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class User {
-    protected String lastName;
-    protected String firstName;
-   protected String gender;
-   protected LocalDate dateOfBirth;
-    protected String password;
-   protected Contact contact;
+    private String lastName;
+    private String firstName;
+    private String gender;
+private LocalDate dateOfBirth;
+private String password;
 
-   protected User(){}
-
+    public User(String lastName, String firstName, String gender, LocalDate dateOfBirth, String password) {
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.gender = gender;
+        this.dateOfBirth = dateOfBirth;
+        this.password = password;
+    }
 
     public String getLastName() {
         return lastName;
@@ -34,10 +38,6 @@ public class User {
         return password;
     }
 
-    public Contact getContact() {
-        return contact;
-    }
-
     @Override
     public String toString() {
         return "User{" +
@@ -46,20 +46,43 @@ public class User {
                 ", gender='" + gender + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
                 ", password='" + password + '\'' +
-                ", contact=" + contact +
                 '}';
     }
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return lastName == user.lastName && Objects.equals(lastName, user.lastName) && Objects.equals(firstName, user.firstName) && Objects.equals(gender, user.gender) && Objects.equals(dateOfBirth, user.dateOfBirth)&& Objects.equals(password, user.password)&& Objects.equals(contact, user.contact);
-    }
+
+    @Override
     public int hashCode() {
-        return Objects.hash(lastName, firstName, gender, dateOfBirth,password,contact);
+        return Objects.hash(lastName,firstName,gender,dateOfBirth,password);
     }
+    public static class UserBuilder{
+        private String lastName;
+        private String firstName;
+        private String gender;
+        private LocalDate dateOfBirth;
+        private String password;
 
+        public UserBuilder setLastName(String lastName) {
+            this.lastName = lastName;
+            return this;
+        }
 
+        public UserBuilder setFirstName(String firstName) {
+            this.firstName = firstName;
+            return this;
+        }
 
+        public UserBuilder setGender(String gender) {
+            this.gender = gender;
+            return this;
+        }
 
+        public UserBuilder setDateOfBirth(LocalDate dateOfBirth) {
+            this.dateOfBirth = dateOfBirth;
+            return this;
+        }
+
+        public UserBuilder setPassword(String password) {
+            this.password = password;
+            return this;
+        }
+    }
 }

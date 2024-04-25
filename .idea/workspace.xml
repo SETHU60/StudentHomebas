@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75f47be8-c775-4251-ba62-75d446c4bada" name="Changes" comment="Landlord and StudentFavouriteProperty domain classes">
-      <change afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/factory/AddressFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/util/AddressHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/AddressFactoryTest.java" afterDir="false" />
+    <list default="true" id="75f47be8-c775-4251-ba62-75d446c4bada" name="Changes" comment="Account domain classes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +48,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;221272976&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -136,6 +134,8 @@
       <workItem from="1713427655536" duration="414000" />
       <workItem from="1713816457382" duration="4747000" />
       <workItem from="1713953297894" duration="9489000" />
+      <workItem from="1714045994993" duration="2639000" />
+      <workItem from="1714050565018" duration="1631000" />
     </task>
     <task id="LOCAL-00001" summary="Changes on User">
       <option name="closed" value="true" />
@@ -171,6 +171,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Changes on User" />
     <MESSAGE value="Landlord and StudentFavouriteProperty domain classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Landlord and StudentFavouriteProperty domain classes" />
+    <MESSAGE value="Account domain classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Account domain classes" />
   </component>
 </project>
