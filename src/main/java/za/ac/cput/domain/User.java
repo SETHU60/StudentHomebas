@@ -10,12 +10,12 @@ public class User {
 private LocalDate dateOfBirth;
 private String password;
 
-    public User(String lastName, String firstName, String gender, LocalDate dateOfBirth, String password) {
-        this.lastName = lastName;
-        this.firstName = firstName;
-        this.gender = gender;
-        this.dateOfBirth = dateOfBirth;
-        this.password = password;
+    public User(UserBuilder builder) {
+        this.lastName = builder.lastName;
+        this.firstName = builder.firstName;
+        this.gender = builder.gender;
+        this.dateOfBirth = builder.dateOfBirth;
+        this.password = builder.password;
     }
 
     public String getLastName() {
