@@ -10,6 +10,8 @@ public class AcademicDetails {
    protected AcademicDetails() {
    }
 
+
+
    private AcademicDetails(Builder builder){
      this.academicDetailsID = builder.academicDetailsID;
       this.studentNo = builder.studentNo;
