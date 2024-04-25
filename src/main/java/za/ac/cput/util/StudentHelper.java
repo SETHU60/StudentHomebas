@@ -33,7 +33,6 @@ public class StudentHelper {
          String dateFormat = "yyyy/MM/dd";
          DateTimeFormatter formatter = DateTimeFormatter.ofPattern(dateFormat);
          String formattedDate = localDate.format(formatter);
-         System.out.println(formattedDate);
          return formattedDate.matches(dateFormat);
      }
 }
