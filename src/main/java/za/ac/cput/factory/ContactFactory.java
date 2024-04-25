@@ -7,7 +7,7 @@ import za.ac.cput.util.ContactHelper;
 public class ContactFactory {
 
     public static Contact createContact(String phoneNumber, String email, Address address) {
-        if (ContactHelper.isNullOrEmpty(phoneNumber) || !ContactHelper.isValidEmail(email) || address == null)
+        if (ContactHelper.isNullOrEmpty(phoneNumber) || !ContactHelper.isValidEmail(email) || ContactHelper.isAddressNullOrEmpty(address))
             return null;
 
         return new Contact.Builder()
@@ -17,4 +17,5 @@ public class ContactFactory {
                 .build();
     }
 }
+
 
