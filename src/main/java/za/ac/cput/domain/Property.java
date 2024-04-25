@@ -23,6 +23,8 @@ public class Property {
         this.address = builder.address;
     }
 
+
+
     public String getPropertyID() {
         return propertyID;
     }
