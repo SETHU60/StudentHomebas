@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="75f47be8-c775-4251-ba62-75d446c4bada" name="Changes" comment="Account domain classes">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/Account.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,6 +135,7 @@
       <workItem from="1713953297894" duration="9489000" />
       <workItem from="1714045994993" duration="2639000" />
       <workItem from="1714050565018" duration="1631000" />
+      <workItem from="1714066311772" duration="300000" />
     </task>
     <task id="LOCAL-00001" summary="Changes on User">
       <option name="closed" value="true" />
