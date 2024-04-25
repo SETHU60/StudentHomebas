@@ -6,9 +6,9 @@ import za.ac.cput.util.DocumentHelper;
 import java.io.File;
 
 public class DocumentFactory {
-    public Document buildDocument( String documentName, File file){
+    public static Document buildDocument( String documentName, File file){
         if(DocumentHelper.isNullOrEmpty(documentName)||
-                DocumentHelper.isFileNull(file)){
+                DocumentHelper.isFileNullOrFilePathEmpty(file)){
             return null;
         }
         return new Document.Builder().setDocumentId(DocumentHelper.generateId()).

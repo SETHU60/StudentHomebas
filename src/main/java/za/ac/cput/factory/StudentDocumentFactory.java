@@ -9,7 +9,7 @@ import za.ac.cput.util.StudentHelper;
 import java.time.LocalDateTime;
 
 public class StudentDocumentFactory {
-    public StudentDocument buildStudentDocument(Student student, Document document, LocalDateTime dateTimeUploaded){
+    public static StudentDocument buildStudentDocument(Student student, Document document, LocalDateTime dateTimeUploaded){
         if(StudentDocumentHelper.isStudentNull(student)||StudentDocumentHelper.isDocumentNull(document)||StudentDocumentHelper.isValidDate(dateTimeUploaded)){
         return null;
         }

@@ -11,8 +11,8 @@ public class DocumentHelper {
         }
         return false;
     }
-    public static boolean isFileNull(File file){
-        if (file==null){
+    public static boolean isFileNullOrFilePathEmpty(File file){
+        if (file==null||file.getPath().isEmpty()){
             return true;
         }
         return false;
