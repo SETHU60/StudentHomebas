@@ -5,7 +5,7 @@ package za.ac.cput.domain;
  * Date : 22 April 2024
  * */
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class PropertyListingApplication extends Application {
@@ -14,7 +14,7 @@ public class PropertyListingApplication extends Application {
     private String landlordID;
     private double rentalPrice;
     private String location;
-    private String address;
+    private Address address;
 
     public PropertyListingApplication(){}
 
@@ -45,7 +45,7 @@ public class PropertyListingApplication extends Application {
         return location;
     }
 
-    public String getAddress() {
+    public Address getAddress() {
         return address;
     }
 
@@ -79,20 +79,20 @@ public class PropertyListingApplication extends Application {
 
     public static class Builder{
         private String appNo;
-        private Date date;
+        private LocalDate date;
         private Status status;
         private String propertyID;
         private String landlordID;
         private double rentalPrice;
         private String location;
-        private String address;
+        private Address address;
 
         public Builder setAppNo(String appNo) {
             this.appNo = appNo;
             return this;
         }
 
-        public Builder setDate(Date date) {
+        public Builder setDate(LocalDate date) {
             this.date = date;
             return this;
         }
@@ -122,7 +122,7 @@ public class PropertyListingApplication extends Application {
             return this;
         }
 
-        public Builder setAddress(String address) {
+        public Builder setAddress(Address address) {
             this.address = address;
             return this;
         }

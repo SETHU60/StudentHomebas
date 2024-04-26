@@ -5,6 +5,7 @@ package za.ac.cput.domain;
  * Date : 22 April 2024
  * */
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
@@ -43,12 +44,15 @@ public class StudentApplication extends Application {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         StudentApplication that = (StudentApplication) o;
-        return Double.compare(price, that.price) == 0 && Objects.equals(studentID, that.studentID) && Objects.equals(propertyID, that.propertyID);
+        return Double.compare(price, that.price) == 0 &&
+                Objects.equals(studentID, that.studentID) &&
+                Objects.equals(propertyID, that.propertyID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), studentID, propertyID, price);
+        return
+                Objects.hash(super.hashCode(), studentID, propertyID, price);
     }
 
     @Override
@@ -65,7 +69,7 @@ public class StudentApplication extends Application {
 
     public static class Builder{
         private String appNo;
-        private Date date;
+        private LocalDate date;
         private Status status;
 
         private String studentID;
@@ -77,7 +81,7 @@ public class StudentApplication extends Application {
             return this;
         }
 
-        public Builder setDate(Date date) {
+        public Builder setDate(LocalDate date) {
             this.date = date;
             return this;
         }
