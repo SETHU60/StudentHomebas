@@ -1,6 +1,6 @@
 package za.ac.cput.domain;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
 /*
@@ -10,11 +10,11 @@ import java.util.Objects;
 
 
 public class Application {
-    enum Status{
+    public enum Status{
          Pending, Accepted, Rejected;
     }
     protected String appNo;
-    protected Date date;
+    protected LocalDate date;
     protected Status status;
 
     public Application(){}
@@ -24,7 +24,7 @@ public class Application {
         return appNo;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
