@@ -55,7 +55,7 @@ public class StudentDocument {
                 '}';
     }
 
-    public class Builder {
+    public static  class Builder {
 
         private Student student;
         private Document document;
@@ -85,6 +85,11 @@ public class StudentDocument {
         public Builder setLocalDateTime(LocalDateTime localDateTime) {
             this.dateTimeUploaded = localDateTime;
             return this;
+        }
+
+        public StudentDocument build(){
+            return new StudentDocument(this);
+
         }
     }
 }
