@@ -6,7 +6,7 @@ import java.util.Objects;
 public class Admin  extends User{
     private String adminId;
 
-    public Admin(Admin.AdminBuilder builder){
+    public Admin(AdminBuilder builder){
 
         this.firstName = builder.firstName;
         this.lastName = builder.lastName;
