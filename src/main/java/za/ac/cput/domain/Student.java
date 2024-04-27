@@ -84,7 +84,7 @@ public class Student extends User {
                 '}';
     }
 
-    public class Builder {
+    public static class Builder {
         private String firstName;
         private String lastName;
 

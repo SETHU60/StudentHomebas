@@ -54,7 +54,7 @@ public class Document {
                 ", fileContents=" + fileContents +
                 '}';
     }
-    public class  Builder{
+    public static class  Builder{
         private String documentId;
         private String documentName;
         private File fileContents;
