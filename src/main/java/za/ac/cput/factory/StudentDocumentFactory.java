@@ -16,7 +16,8 @@ public class StudentDocumentFactory {
         return new StudentDocument.Builder().
                 setDocument(document).
                 setStudent(student).
-                setLocalDateTime(dateTimeUploaded).build();
+                setLocalDateTime(dateTimeUploaded)
+                .build();
 
     }
 }

@@ -9,6 +9,7 @@ public class Address {
     private String suburb;
     private String city;
 
+
     protected Address(){}
 
     private Address(AddressBuilder builder){
