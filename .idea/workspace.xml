@@ -5,11 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="75f47be8-c775-4251-ba62-75d446c4bada" name="Changes" comment="Landlord and StudentFavouriteProperty domain classes">
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/factory/AcademicDetailsFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/factory/PropertyFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/util/AcademicDetailsHelper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/util/PropertyHelper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/AcademicDetailsFactoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/PropertyFactoryTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/Document.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/Document.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/Student.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/StudentDocument.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/StudentDocument.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/factory/StudentDocumentFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/factory/StudentDocumentFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/AcademicDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/AcademicDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/Address.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/Property.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/Property.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/util/Helper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/util/Helper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +47,6 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
-    "JUnit.AcademicDetailsFactoryTest.buildAcademicDetails.executor": "Run",
     "JUnit.AcademicDetailsFactoryTest.buildAcademicDetailsWithNullValues.executor": "Run",
     "JUnit.PropertyFactoryTest.buildAcademicDetailsWithNullValues.executor": "Run",
     "JUnit.PropertyFactoryTest.executor": "Run",
@@ -57,7 +63,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.AcademicDetailsFactoryTest.buildAcademicDetails">
+  <component name="RunManager">
     <configuration name="AcademicDetailsFactoryTest.buildAcademicDetails" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="StudentHomebase" />
       <extension name="coverage">
@@ -140,9 +146,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.AcademicDetailsFactoryTest.buildAcademicDetails" />
         <item itemvalue="JUnit.PropertyFactoryTest.buildAcademicDetailsWithNullValues" />
         <item itemvalue="JUnit.AcademicDetailsFactoryTest.buildAcademicDetailsWithNullValues" />
+        <item itemvalue="JUnit.AcademicDetailsFactoryTest.buildAcademicDetails" />
         <item itemvalue="JUnit.AddressFactoryTest.checkIfNotNull" />
         <item itemvalue="JUnit.AddressFactoryTest.equalityTest" />
       </list>
