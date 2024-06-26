@@ -4,6 +4,7 @@ import za.ac.cput.domain.Contact;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.UUID;
 
 public class AdminHelper {
     public static boolean isNullOrEmpty(String s) {
@@ -19,8 +20,11 @@ public class AdminHelper {
         }
         return false;
     }
+    public static long generateUniqueID() {
+        return UUID.randomUUID().getMostSignificantBits() & Long.MAX_VALUE;
+
+    }
     public static boolean isValidDate(LocalDate dateOfBirth) {
-        // Assuming the date format is yyyy/MM/dd
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
         String formattedDate = dateOfBirth.format(formatter);
         return formattedDate.equals(dateOfBirth.toString());

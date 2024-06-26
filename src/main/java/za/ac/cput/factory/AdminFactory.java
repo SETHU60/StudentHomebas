@@ -7,21 +7,27 @@ import za.ac.cput.util.AdminHelper;
 import java.time.LocalDate;
 
 public class AdminFactory {
+        public static Admin buildAdmin(long adminId, String firstName, String lastName, String gender,
+                                       LocalDate dateOfBirth, String password, Contact contact) {
+            if (adminId <= 0 || AdminHelper.isNullOrEmpty(firstName)
+                    || AdminHelper.isNullOrEmpty(lastName)
+                    || AdminHelper.isNullOrEmpty(gender)
+                    || AdminHelper.isValidDate(dateOfBirth)
+                    || AdminHelper.isNullOrEmpty(password)
+                    || AdminHelper.isContactNull(contact)) {
+                return null;
+            }
 
-    public static Admin buildAdmin(String adminId, String firstName, String lastName, String gender, LocalDate dateOfBirth, String password, Contact contact) {
-        if (AdminHelper.isNullOrEmpty(lastName) ||
-                AdminHelper.isNullOrEmpty(firstName) ||
-                AdminHelper.isNullOrEmpty(gender) ||
-                AdminHelper.isNullOrEmpty(password) ||
-                !AdminHelper.isValidDate(dateOfBirth)|| AdminHelper.isContactNull(contact));
-
-
-        return new Admin.AdminBuilder()
-                .setAdminId(adminId)
-                .setFirstName(firstName)
-                .setLastName(lastName)
-                .setGender(gender)
-                .setDateOfBirth(dateOfBirth)
-                .setPassword(password).setContact(contact).buildAdmin();
+            return new Admin.Builder()
+                    .setAdminId(adminId)
+                    .setFirstName(firstName)
+                    .setLastName(lastName)
+                    .setGender(gender)
+                    .setDateOfBirth(dateOfBirth)
+                    .setPassword(password)
+                    .setContact(contact)
+                    .build();
+        }
     }
-}
+
+

@@ -1,18 +1,25 @@
 package za.ac.cput.domain;
 
+import jakarta.persistence.*;
 import java.util.Objects;
 
+@Entity
 public class Contact {
-
-    private String phoneNumber;
+    @Id
     private String email;
+    private String phoneNumber;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id")
     private Address address;
 
-    private Contact(Builder builder){
-        this.phoneNumber=builder.phoneNumber;
-        this.email=builder.email;
-        this.address=builder.address;
-    };
+    public Contact() {
+    }
+
+    private Contact(Builder builder) {
+        this.phoneNumber = builder.phoneNumber;
+        this.email = builder.email;
+        this.address = builder.address;
+    }
 
     public String getPhoneNumber() {
         return phoneNumber;
@@ -29,8 +36,11 @@ public class Contact {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Contact contact)) return false;
-        return Objects.equals(getPhoneNumber(), contact.getPhoneNumber()) && Objects.equals(getEmail(), contact.getEmail()) && Objects.equals(getAddress(), contact.getAddress());
+        if (!(o instanceof Contact)) return false;
+        Contact contact = (Contact) o;
+        return Objects.equals(getPhoneNumber(), contact.getPhoneNumber()) &&
+                Objects.equals(getEmail(), contact.getEmail()) &&
+                Objects.equals(getAddress(), contact.getAddress());
     }
 
     @Override
@@ -43,11 +53,11 @@ public class Contact {
         return "Contact{" +
                 "phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
-                ", address=" + address +
+                ", address= " + address +
                 '}';
     }
 
-    public static class Builder{
+    public static class Builder {
         private String phoneNumber;
         private String email;
         private Address address;
@@ -67,17 +77,15 @@ public class Contact {
             return this;
         }
 
-        public Builder copy(Contact contact){
-            this.phoneNumber=contact.phoneNumber;
-            this.email=contact.email;
-            this.address=contact.address;
+        public Builder copy(Contact contact) {
+            this.phoneNumber = contact.phoneNumber;
+            this.email = contact.email;
+            this.address = contact.address;
             return this;
         }
 
-        public  Contact build(){
+        public Contact build() {
             return new Contact(this);
         }
     }
-
-
 }
