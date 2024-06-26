@@ -9,7 +9,7 @@ public class Contact {
     private String email;
     private String phoneNumber;
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id")
+    @JoinColumn(name = "streetNumber")
     private Address address;
 
     public Contact() {

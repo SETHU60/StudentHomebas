@@ -21,7 +21,7 @@ class ContactFactoryTest {
     }
 
     @Test
-    void checkIfTestFails() {
+    void checkIfNull() {
         assertNull(contact2);
         System.out.println(contact2);
     }
