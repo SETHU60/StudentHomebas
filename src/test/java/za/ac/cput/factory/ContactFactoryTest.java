@@ -14,7 +14,7 @@ class ContactFactoryTest {
 
     @BeforeEach
     void setup() {
-        Address address = new Address();
+        Address address = AddressFactory.buildAddress("9 Lower Street", "Mowbray", "Cape Town", "5100");
         contact1 = ContactFactory.createContact("123456789", "leago@example.com", address);
         contact2 = ContactFactory.createContact("", "invalid_email", address);
         contact3 = contact1;
