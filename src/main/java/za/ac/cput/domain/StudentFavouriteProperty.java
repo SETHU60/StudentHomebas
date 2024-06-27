@@ -1,10 +1,14 @@
 package za.ac.cput.domain;
 
-import java.util.Objects;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
+import java.util.Objects;
+@Entity
 public class StudentFavouriteProperty {
-    private String studentId;
-    private String propertyId;
+    @Id
+    private Long studentId;
+    private Long propertyId;
 
     protected StudentFavouriteProperty(){}
 
@@ -13,11 +17,11 @@ public class StudentFavouriteProperty {
         this.studentId = builder.studentId;
     }
 
-    public String getStudentId() {
+    public Long getStudentId() {
         return studentId;
     }
 
-    public String getPropertyId() {
+    public Long getPropertyId() {
         return propertyId;
     }
 
@@ -42,15 +46,15 @@ public class StudentFavouriteProperty {
         return Objects.hash(studentId, propertyId);
     }
     public static class  StudentFavouritePropertyBuilder{
-        private String studentId;
-        private String propertyId;
+        private Long studentId;
+        private Long propertyId;
 
-        public StudentFavouritePropertyBuilder setStudentId(String studentId) {
+        public StudentFavouritePropertyBuilder setStudentId(Long studentId) {
             this.studentId = studentId;
             return this;
         }
 
-        public StudentFavouritePropertyBuilder setPropertyId(String propertyId) {
+        public StudentFavouritePropertyBuilder setPropertyId(Long propertyId) {
             this.propertyId = propertyId;
             return this;
         }
