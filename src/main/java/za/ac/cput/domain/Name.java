@@ -5,8 +5,7 @@ import java.util.Objects;
 
 
 public class Name {
-
-
+    
     private String firstName;
     private String middleName;
     private String lastName;
@@ -41,7 +40,7 @@ public class Name {
     public String toString() {
         return "Name{" +
 
-                "firstName='" + firstName + '\'' +
+                ", firstName='" + firstName + '\'' +
                 ", middleName='" + middleName + '\'' +
                 ", lastName='" + lastName + '\'' +
 
