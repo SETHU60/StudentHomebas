@@ -1,13 +1,14 @@
 package za.ac.cput.domain;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class LandlordDocument {
 
     private String landlordDocumentId;
     private Landlord landlord;
-    private LocalDate dateUploaded;
+    private LocalDateTime dateUploaded;
 
     public LandlordDocument(Builder builder) {
         this.landlordDocumentId=builder.landlordDocumentId;
@@ -23,7 +24,7 @@ public class LandlordDocument {
         this.landlord = landlord;
     }
 
-    public void setDateUploaded(LocalDate dateUploaded) {
+    public void setDateUploaded(LocalDateTime dateUploaded) {
         this.dateUploaded = dateUploaded;
     }
 
@@ -51,7 +52,7 @@ public class LandlordDocument {
     public static class Builder{
         private String landlordDocumentId;
         private Landlord landlord;
-        private LocalDate dateUploaded;
+        private LocalDateTime dateUploaded;
 
         public Builder setLandlordDocumentId(String landlordDocumentId) {
             this.landlordDocumentId = landlordDocumentId;
@@ -63,7 +64,7 @@ public class LandlordDocument {
             return this;
         }
 
-        public Builder setDateUploaded(LocalDate dateUploaded) {
+        public Builder setDateUploaded(LocalDateTime dateUploaded) {
             this.dateUploaded = dateUploaded;
             return this;
         }
