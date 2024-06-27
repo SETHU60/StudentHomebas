@@ -2,7 +2,10 @@ package za.ac.cput.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+
+import java.util.List;
 
 @Entity
 public class Property {
@@ -10,8 +13,16 @@ public class Property {
     private String propertyID;
     private  String propertyName;
     private  int numberOfRooms;
-    @OneToOne
+
+   @OneToOne
     private Address address;
+
+   @OneToOne
+    private Landlord landlord;
+
+   @OneToMany
+    private List<Document> pictures;
+
 
     protected Property() {
     }
@@ -21,9 +32,9 @@ public class Property {
         this.propertyName = builder.propertyName;
         this.numberOfRooms = builder.numberOfRooms;
         this.address = builder.address;
+        this.landlord = builder.landlord;
+        this.pictures = builder.pictures;
     }
-
-
 
     public String getPropertyID() {
         return propertyID;
@@ -40,6 +51,12 @@ public class Property {
     public Address getAddress() {
         return address;
     }
+    public Landlord getLandlord() {
+        return landlord;
+    }
+    public List<Document> getPictures() {
+        return pictures;
+    }
 
     @Override
     public String toString() {
@@ -48,6 +65,8 @@ public class Property {
                 ", propertyName='" + propertyName + '\'' +
                 ", numberOfRooms=" + numberOfRooms +
                 ", address=" + address +
+                ", landlord=" + landlord +
+                ", pictures=" + pictures +
                 '}';
     }
 
@@ -57,9 +76,20 @@ public class Property {
         private  String propertyName;
         private  int numberOfRooms;
         private Address address;
+        private Landlord landlord;
+        private List<Document> pictures;
 
         public Builder(){
+        }
 
+        public Builder setLandlord(Landlord landlord) {
+            this.landlord = landlord;
+            return this;
+        }
+
+        public Builder setPictures(List<Document> pictures) {
+            this.pictures = pictures;
+            return this;
         }
 
         public Builder setPropertyID(String propertyID){
@@ -86,6 +116,7 @@ public class Property {
             this.numberOfRooms = property.numberOfRooms;
             this.address = property.address;
 
+
             return this;
         }
 
@@ -93,8 +124,6 @@ public class Property {
          return new Property(this);
 
         }
-
-
 
     }
 }
