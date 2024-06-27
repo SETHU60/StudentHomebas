@@ -7,16 +7,18 @@ public class Landlord extends User{
     private String landlordId;
     private int numOfPropertiesOwned;
 
+    public Landlord(UserBuilder builder) {
+        super(builder);
+    }
 
-
-    public Landlord(LandlordBuilder builder){
+    public Landlord (LandlordBuilder builder){
 
         this.firstName = builder.firstName;
         this.lastName = builder.lastName;
         this.gender = builder.gender;
         this.dateOfBirth = builder.dateOfBirth;
         this.password = builder.password;
-        this.contact = builder.contact;
+       // this.contact = builder.contact;
     this.landlordId = builder.landlordId;
     this.numOfPropertiesOwned = builder.numOfPropertiesOwned;
     }
