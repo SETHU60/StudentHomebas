@@ -18,8 +18,8 @@ class AdminFactoryTest {
 
     @BeforeEach
     void setUp() {
-        Address address = new Address();
-        Contact contact = new Contact();
+        Address address = AddressFactory.buildAddress("9 Lower Street", "Mowbray", "Cape Town", "5100");
+        Contact contact = ContactFactory.createContact("123456789", "leago@example.com", address);
 
         admin1 = AdminFactory.buildAdmin(567, "Boitumelo", "Modise",
                 "Female", LocalDate.of(1990, 5, 15), "password123", contact);
