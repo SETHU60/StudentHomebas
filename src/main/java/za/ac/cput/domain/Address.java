@@ -1,12 +1,17 @@
 package za.ac.cput.domain;
 
 
-import java.util.Objects;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
+import java.util.Objects;
+@Entity
 public class Address {
+    @Id
     private String street;
     private String suburb;
     private String city;
+    @Id
     private String postalCode;
 
 
