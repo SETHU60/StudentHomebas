@@ -8,8 +8,11 @@ public class Contact {
     @Id
     private String email;
     private String phoneNumber;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "streetNumber")
+    @ManyToOne
+    @JoinColumns({
+            @JoinColumn(name = "street", referencedColumnName = "street"),
+            @JoinColumn(name = "postalCode", referencedColumnName = "postalCode")
+    })
     private Address address;
 
     public Contact() {
