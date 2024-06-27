@@ -1,11 +1,19 @@
 package za.ac.cput.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
+
+@Entity
 public class AcademicDetails {
+   @Id
    private String academicDetailsID;
-   private String studentNo;
    private String instituteName;
    private  String programOfStudy;
    private  int yearOfStudy;
+   
+   @OneToOne
+   private Student student;
 
    protected AcademicDetails() {
    }
@@ -14,7 +22,7 @@ public class AcademicDetails {
 
    private AcademicDetails(Builder builder){
      this.academicDetailsID = builder.academicDetailsID;
-      this.studentNo = builder.studentNo;
+      this.student = builder.student;
       this.instituteName = builder.instituteName;
       this.programOfStudy = builder.programOfStudy;
       this.yearOfStudy = builder.yearOfStudy;
@@ -24,8 +32,8 @@ public class AcademicDetails {
       return academicDetailsID;
    }
 
-   public String getStudentNo() {
-      return studentNo;
+   public Student getstudent() {
+      return student;
    }
 
    public String getInstituteName() {
@@ -44,7 +52,7 @@ public class AcademicDetails {
    public String toString() {
       return "AcademicDetails{" +
               "academicDetailsID='" + academicDetailsID + '\'' +
-              ", studentNo='" + studentNo + '\'' +
+              ", student='" + student + '\'' +
               ", instituteName='" + instituteName + '\'' +
               ", programOfStudy='" + programOfStudy + '\'' +
               ", yearOfStudy=" + yearOfStudy +
@@ -53,7 +61,7 @@ public class AcademicDetails {
 
    public static class Builder{
       private String academicDetailsID;
-      private String studentNo;
+      private Student student;
       private String instituteName;
       private  String programOfStudy;
       private  int yearOfStudy;
@@ -62,8 +70,8 @@ public class AcademicDetails {
          this.academicDetailsID = academicDetailsID;
          return this;
       }
-      public Builder setStudentNo(String studentNo){
-            this.studentNo = studentNo;
+      public Builder setStudent(Student student){
+            this.student = student;
             return this;
       }
       public Builder setInstituteName(String instituteName){
@@ -80,7 +88,7 @@ public class AcademicDetails {
       }
       private Builder copy(AcademicDetails academicDetails){
          this.academicDetailsID = academicDetails.academicDetailsID;
-         this.studentNo = academicDetails.studentNo;
+         this.student = academicDetails.student;
          this.instituteName = academicDetails.instituteName;
          this.programOfStudy = academicDetails.programOfStudy;
          this.yearOfStudy = academicDetails.yearOfStudy;
