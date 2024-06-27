@@ -1,29 +1,35 @@
 package za.ac.cput.domain;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
-import java.util.Objects;
 
-public class User {
-    private String lastName;
-    private String firstName;
-    private String gender;
-private LocalDate dateOfBirth;
-private String password;
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "user_type")
 
-    public User(UserBuilder builder) {
-        this.lastName = builder.lastName;
-        this.firstName = builder.firstName;
-        this.gender = builder.gender;
-        this.dateOfBirth = builder.dateOfBirth;
-        this.password = builder.password;
+public abstract class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected Long userId;
+    @Embedded
+    protected Name name;
+    protected String gender;
+    protected LocalDate dateOfBirth;
+    protected String password;
+    @OneToOne
+    protected Contact contact;
+
+    public Long getUserId() {
+        return userId;
     }
 
-    public String getLastName() {
-        return lastName;
+    public Contact getContact() {
+        return contact;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public Name getName() {
+        return name;
     }
 
     public String getGender() {
@@ -36,53 +42,5 @@ private String password;
 
     public String getPassword() {
         return password;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "lastName='" + lastName + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", gender='" + gender + '\'' +
-                ", dateOfBirth=" + dateOfBirth +
-                ", password='" + password + '\'' +
-                '}';
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(lastName,firstName,gender,dateOfBirth,password);
-    }
-    public static class UserBuilder{
-        private String lastName;
-        private String firstName;
-        private String gender;
-        private LocalDate dateOfBirth;
-        private String password;
-
-        public UserBuilder setLastName(String lastName) {
-            this.lastName = lastName;
-            return this;
-        }
-
-        public UserBuilder setFirstName(String firstName) {
-            this.firstName = firstName;
-            return this;
-        }
-
-        public UserBuilder setGender(String gender) {
-            this.gender = gender;
-            return this;
-        }
-
-        public UserBuilder setDateOfBirth(LocalDate dateOfBirth) {
-            this.dateOfBirth = dateOfBirth;
-            return this;
-        }
-
-        public UserBuilder setPassword(String password) {
-            this.password = password;
-            return this;
-        }
     }
 }
