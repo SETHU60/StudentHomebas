@@ -13,8 +13,8 @@ Address address3;
 
 @BeforeEach
     void setUp(){
-    address1= AddressFactory.buildAddress(9, "Lower Street", "Mowbray", "Cape Town");
-    address2 = AddressFactory.buildAddress(13, "Willow Street", "","Cape Town");
+    address1= AddressFactory.buildAddress("9 Lower Street", "Mowbray", "Cape Town", "5100");
+    address2 = AddressFactory.buildAddress("30 Willow Street", "","Cape Town", "5099");
     address3 = address1;
 }
 @Test
