@@ -1,26 +1,31 @@
 package za.ac.cput.domain;
 
 
-import java.util.Objects;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
+import java.util.Objects;
+@Entity
 public class Address {
-    private int streetNumber;
-    private String streetName;
+    @Id
+    private String street;
     private String suburb;
     private String city;
+    @Id
+    private String postalCode;
 
 
     protected Address(){}
 
     private Address(AddressBuilder builder){
-        this.streetNumber = builder.streetNumber;
-        this.streetName = builder.streetName;
+        this.street = builder.street;
         this.suburb = builder.suburb;
         this.city = builder.city;
+        this.postalCode = builder.postalCode;
     }
 
-    public int getStreetNumber() {
-        return streetNumber;
+    public String getStreet() {
+        return street;
     }
 
     public String getSuburb() {
@@ -31,43 +36,42 @@ public class Address {
         return city;
     }
 
+    public String getPostalCode() {
+        return postalCode;
+    }
+
     @Override
     public String toString() {
         return "Address{" +
-                "streetNumber=" + streetNumber +
-                ", streetName='" + streetName + '\'' +
+                "street='" + street + '\'' +
                 ", suburb='" + suburb + '\'' +
                 ", city='" + city + '\'' +
+                ", postalCode='" + postalCode + '\'' +
                 '}';
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Address address = (Address) o;
-        return streetNumber == address.streetNumber && Objects.equals(streetName, address.streetName) && Objects.equals(suburb, address.suburb) && Objects.equals(city, address.city);
+        if (!(o instanceof Address address)) return false;
+        return Objects.equals(getStreet(), address.getStreet()) && Objects.equals(getSuburb(), address.getSuburb()) && Objects.equals(getCity(), address.getCity()) && Objects.equals(getPostalCode(), address.getPostalCode());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(streetNumber, streetName, suburb, city);
+        return Objects.hash(getStreet(), getSuburb(), getCity(), getPostalCode());
     }
 
     public static class AddressBuilder{
 
-        private int streetNumber;
-        private String streetName;
+        private String street;
         private String suburb;
         private String city;
+        private String postalCode;
 
-        public AddressBuilder setStreetNumber(int streetNumber) {
-            this.streetNumber = streetNumber;
-            return this;
-        }
 
-        public AddressBuilder setStreetName(String streetName) {
-            this.streetName = streetName;
+        public AddressBuilder setStreet(String street) {
+            this.street = street;
             return this;
         }
 
@@ -80,6 +84,12 @@ public class Address {
             this.city = city;
             return this;
         }
+
+        public AddressBuilder setPostalCode(String postalCode) {
+            this.postalCode = postalCode;
+            return this;
+        }
+
         public Address buildAddress(){return new Address(this);}
     }
 }
