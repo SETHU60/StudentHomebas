@@ -1,27 +1,44 @@
 package za.ac.cput.domain;
 
-import java.io.File;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
+
+import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.Objects;
 
 /**
  * Mpumzi Mbula
  * 219053324
  * Document.java
- * 23/04/2024
  *
  */
+@Entity
 public class Document {
-    private String documentId;
+
+    @Id
+    private Long documentId;
     private String documentName;
-    private File fileContents;
+    @Lob
+    @Column(length=10000)
+    private byte[] fileContents;
+    private LocalDateTime dateTimeUploaded;
+    public Document() {
+
+    }
+
 
     private Document(Builder builder){
         this.documentId=builder.documentId;
         this.documentName=builder.documentName;
         this.fileContents=builder.fileContents;
+        this.dateTimeUploaded=builder.dateTimeUploaded;
     }
 
-    public String getDocumentId() {
+
+    public Long getDocumentId() {
         return documentId;
     }
 
@@ -29,47 +46,58 @@ public class Document {
         return documentName;
     }
 
-    public File getFileContents() {
+    public byte[] getFileContents() {
         return fileContents;
+    }
+
+    public LocalDateTime getDateTimeUploaded() {
+        return dateTimeUploaded;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Document document = (Document) o;
-        return Objects.equals(documentId, document.documentId) && Objects.equals(documentName, document.documentName) && Objects.equals(fileContents, document.fileContents);
+        if (!(o instanceof Document document)) return false;
+        return Objects.equals(documentId, document.documentId) && Objects.equals(documentName, document.documentName) && Arrays.equals(fileContents, document.fileContents) && Objects.equals(dateTimeUploaded, document.dateTimeUploaded);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(documentId, documentName, fileContents);
+        int result = Objects.hash(documentId, documentName, dateTimeUploaded);
+        result = 31 * result + Arrays.hashCode(fileContents);
+        return result;
     }
 
     @Override
     public String toString() {
         return "Document{" +
-                "documentId='" + documentId + '\'' +
+                "documentId=" + documentId +
                 ", documentName='" + documentName + '\'' +
-                ", fileContents=" + fileContents +
+                ", fileContents=" + Arrays.toString(fileContents) +
+                ", dateTimeUploaded=" + dateTimeUploaded +
                 '}';
     }
-    public static class  Builder{
-        private String documentId;
-        private String documentName;
-        private File fileContents;
 
+    public static class  Builder{
+        private Long documentId;
+        private String documentName;
+        private byte[] fileContents;
+
+        private LocalDateTime dateTimeUploaded;
         public Builder(){
 
         }
         public Builder copy(Document document){
+
             this.documentId=document.documentId;
             this.documentName=document.documentName;
             this.fileContents=document.fileContents;
+            this.dateTimeUploaded=document.dateTimeUploaded;
+
             return this;
         }
 
-        public Builder setDocumentId(String documentId) {
+        public Builder setDocumentId(Long documentId) {
             this.documentId = documentId;
             return this;
         }
@@ -79,10 +107,16 @@ public class Document {
             return this;
         }
 
-        public Builder setFileContents(File fileContents) {
+        public Builder setFileContents(byte[] fileContents) {
             this.fileContents = fileContents;
             return this;
         }
+
+        public Builder setDateTimeUploaded(LocalDateTime dateTimeUploaded) {
+            this.dateTimeUploaded = dateTimeUploaded;
+            return this;
+        }
+
         public Document build(){
             return new Document(this);
         }

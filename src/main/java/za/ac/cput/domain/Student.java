@@ -1,6 +1,12 @@
 package za.ac.cput.domain;
 
+import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -8,75 +14,59 @@ import java.util.Objects;
  * 219053324
  * 24/04/2024
  * Student.java
- *
  */
+@Entity
 public class Student extends User {
-    private AcademicDetails academicDetails;
 
-    private Student(Builder builder) {
-        this.firstName = builder.firstName;
-        this.lastName = builder.lastName;
+    @OneToMany
+    private List<Document> documents;
+    @OneToOne
+    private AcademicDetails academicDetails;
+    public Student() {
+    }
+
+    private Student(StudentBuilder builder) {
+
+        this.userId = builder.userId;
+        this.name = builder.name;
+        this.documents = builder.documents;
         this.gender = builder.gender;
         this.dateOfBirth = builder.dateOfBirth;
         this.password = builder.password;
         this.academicDetails = builder.academicDetails;
         this.contact = builder.contact;
 
+
     }
 
-    @Override
-    public String getFirstName() {
-        return super.getFirstName();
-    }
-
-    @Override
-    public String getLastName() {
-        return super.getLastName();
-    }
-
-    @Override
-    public String getGender() {
-        return super.getGender();
-    }
-
-    @Override
-    public Contact getContact() {
-        return super.getContact();
-    }
-
-    @Override
-    public String getPassword() {
-        return super.getPassword();
-    }
-
-    @Override
-    public LocalDate getDateOfBirth() {
-        return super.getDateOfBirth();
-    }
 
     public AcademicDetails getAcademicDetails() {
         return academicDetails;
+    }
+
+    public List<Document> getDocuments() {
+        return documents;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Student student)) return false;
-        if (!super.equals(o)) return false;
-        return Objects.equals(academicDetails, student.academicDetails);
+        return Objects.equals(academicDetails, student.academicDetails) && Objects.equals(documents, student.documents);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), academicDetails);
+        return Objects.hash(academicDetails, documents);
     }
 
     @Override
     public String toString() {
         return "Student{" +
+                ", userId=" + userId +
                 "academicDetails=" + academicDetails +
-                ", lastName='" + lastName + '\'' +
-                ", firstName='" + firstName + '\'' +
+                ", documents=" + documents +
+                ", name=" + name +
                 ", gender='" + gender + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
                 ", password='" + password + '\'' +
@@ -84,64 +74,72 @@ public class Student extends User {
                 '}';
     }
 
-    public static class Builder {
-        private String firstName;
-        private String lastName;
+    public static class StudentBuilder {
+        private Long userId;
+        private AcademicDetails academicDetails;
 
+        private List<Document> documents;
+
+        private Name name;
         private String gender;
         private LocalDate dateOfBirth;
-        private AcademicDetails academicDetails;
         private String password;
+
         private Contact contact;
 
-
-        public Builder() {
-
+        public StudentBuilder() {
         }
 
-        public Builder setFirstName(String firstName) {
-            this.firstName = firstName;
+        public StudentBuilder setUserId(Long userId) {
+            this.userId = userId;
             return this;
         }
 
-        public Builder setLastName(String lastName) {
-            this.lastName = lastName;
-            return this;
-        }
-
-        public Builder setGender(String gender) {
-            this.gender = gender;
-            return this;
-        }
-
-        public Builder setDateOfBirth(LocalDate dateOfBirth) {
-            this.dateOfBirth = dateOfBirth;
-            return this;
-        }
-
-        public Builder setAcademicDetails(AcademicDetails academicDetails) {
+        public StudentBuilder setAcademicDetails(AcademicDetails academicDetails) {
             this.academicDetails = academicDetails;
             return this;
         }
 
-        public Builder setPassword(String password) {
+        public StudentBuilder setDocuments(List<Document> documents) {
+            this.documents = documents;
+            return this;
+        }
+
+        public StudentBuilder setName(Name name) {
+            this.name = name;
+            return this;
+        }
+
+        public StudentBuilder setGender(String gender) {
+            this.gender = gender;
+            return this;
+        }
+
+        public StudentBuilder setDateOfBirth(LocalDate dateOfBirth) {
+            this.dateOfBirth = dateOfBirth;
+            return this;
+        }
+
+        public StudentBuilder setPassword(String password) {
             this.password = password;
             return this;
         }
 
-        public Builder setContact(Contact contact) {
+        public StudentBuilder setContact(Contact contact) {
             this.contact = contact;
             return this;
         }
 
-        public Builder copy(Student student) {
-            this.firstName = student.firstName;
-            this.lastName = student.lastName;
+        public StudentBuilder copy(Student student) {
+            this.userId = student.userId;
+            this.name = student.name;
+            this.documents = student.documents;
             this.gender = student.gender;
             this.dateOfBirth = student.dateOfBirth;
-            this.contact = student.contact;
-            this.academicDetails = student.academicDetails;
             this.password = student.password;
+            this.academicDetails = student.academicDetails;
+            this.contact = student.contact;
+
             return this;
         }
 
@@ -149,9 +147,6 @@ public class Student extends User {
             return new Student(this);
         }
     }
+
+
 }
-
-
-
-
-
