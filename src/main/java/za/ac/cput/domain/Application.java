@@ -1,5 +1,7 @@
 package za.ac.cput.domain;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -8,19 +10,24 @@ import java.util.Objects;
  * Date : 22 April 2024
  * */
 
-
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Application {
+
     public enum Status{
-         Pending, Accepted, Rejected;
+        Pending, Accepted, Rejected;
     }
-    protected String appNo;
+
+    @Id
+    @GeneratedValue
+    protected long appNo;
     protected LocalDate date;
     protected Status status;
 
     public Application(){}
 
 
-    public String getAppNo() {
+    public long getAppNo() {
         return appNo;
     }
 
@@ -53,4 +60,5 @@ public class Application {
     public int hashCode() {
         return Objects.hash(appNo, date, status);
     }
+
 }
