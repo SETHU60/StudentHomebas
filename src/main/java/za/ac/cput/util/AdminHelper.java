@@ -1,6 +1,7 @@
 package za.ac.cput.util;
 
 import za.ac.cput.domain.Contact;
+import za.ac.cput.domain.Name;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
