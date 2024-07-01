@@ -1,71 +1,89 @@
 package za.ac.cput.domain;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
-
+@Entity
 public class Landlord extends User{
-    private String landlordId;
-    private int numOfPropertiesOwned;
 
-    public Landlord(UserBuilder builder) {
-        super(builder);
+    private int numOfPropertiesOwned;
+    @OneToMany(mappedBy = "landlord", cascade = CascadeType.ALL)
+    private List<Document> documents;
+
+    protected Landlord() {
+
     }
 
-    public Landlord (LandlordBuilder builder){
+    public Landlord(LandlordBuilder builder){
 
-        this.firstName = builder.firstName;
-        this.lastName = builder.lastName;
+        userId = builder.userId;
+        name = builder.name;
         this.gender = builder.gender;
         this.dateOfBirth = builder.dateOfBirth;
         this.password = builder.password;
-       // this.contact = builder.contact;
-    this.landlordId = builder.landlordId;
+        documents = builder.documents;
+        this.contact = builder.contact;
     this.numOfPropertiesOwned = builder.numOfPropertiesOwned;
-    }
-
-    public String getLandlordId() {
-        return landlordId;
     }
 
     public int getNumOfPropertiesOwned() {
         return numOfPropertiesOwned;
     }
 
+    public List<Document> getDocuments() {
+        return documents;
+    }
+
     @Override
     public String toString() {
         return "Landlord{" +
-                "landlordId='" + landlordId + '\'' +
-                ", numOfPropertiesOwned=" + numOfPropertiesOwned +
+                "numOfPropertiesOwned=" + numOfPropertiesOwned +
+                ", documents=" + documents +
+                ", userId=" + userId +
+                ", name=" + name +
+                ", gender='" + gender + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", password='" + password + '\'' +
+                ", contact=" + contact +
                 '}';
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Landlord landlord = (Landlord) o;
-        return numOfPropertiesOwned == landlord.numOfPropertiesOwned && Objects.equals(landlordId, landlord.landlordId);
+        if (!(o instanceof Landlord landlord)) return false;
+        return getNumOfPropertiesOwned() == landlord.getNumOfPropertiesOwned() && Objects.equals(documents, landlord.documents);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(landlordId, numOfPropertiesOwned);
+        return Objects.hash(getNumOfPropertiesOwned(), documents);
     }
 
     public static class LandlordBuilder{
-    private String firstName;
-    private String lastName;
+    private Long userId;
+    private Name name;
     private String gender;
     private LocalDate dateOfBirth;
     private String password;
     private Contact contact;
-    
-    
-    private String landlordId;
+    private List<Document> documents;
     private int numOfPropertiesOwned;
 
-    public LandlordBuilder setFirstName(String firstName){
-        this.firstName = firstName;
+        public LandlordBuilder setUserId(Long userId) {
+            this.userId = userId;
+            return this;
+        }
+
+        public LandlordBuilder setDocuments(List<Document> documents) {
+            this.documents = documents;
+            return this;
+        }
+
+        public LandlordBuilder setName(Name name){
+        this.name = name;
         return this;
     }
 
@@ -78,11 +96,6 @@ public class Landlord extends User{
             return this;
         }
 
-        public LandlordBuilder setLastName(String lastName) {
-            this.lastName = lastName;
-            return this;
-        }
-
         public LandlordBuilder setPassword(String password) {
             this.password = password;
             return this;
@@ -90,10 +103,6 @@ public class Landlord extends User{
 
         public LandlordBuilder setContact(Contact contact){
         this.contact = contact;
-            return this;
-        }
-        public LandlordBuilder setLandlordId(String landlordId) {
-            this.landlordId = landlordId;
             return this;
         }
 
