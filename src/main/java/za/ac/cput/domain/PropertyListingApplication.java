@@ -13,15 +13,11 @@ import java.util.Objects;
 @Entity
 public class PropertyListingApplication extends Application {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    protected long appNo;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Property property;
 
     @OneToOne(cascade = CascadeType.ALL)
-    private Property propertyID;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    private Landlord landlordID;
+    private Landlord landlord;
 
     private double rentalPrice;
     private String location;
@@ -35,19 +31,19 @@ public class PropertyListingApplication extends Application {
         this.appNo = builder.appNo;
         this.date = builder.date;
         this.status = builder.status;
-        this.propertyID = builder.propertyID;
-        this.landlordID = builder.landlordID;
+        this.property = builder.property;
+        this.landlord = builder.landlord;
         this.rentalPrice = builder.rentalPrice;
         this.location = builder.location;
         this.address = builder.address;
     }
 
-    public Property getPropertyID() {
-        return propertyID;
+    public Property getProperty() {
+        return property;
     }
 
-    public Landlord getLandlordID() {
-        return landlordID;
+    public Landlord getLandlord() {
+        return landlord;
     }
 
     public double getRentalPrice() {
@@ -68,19 +64,19 @@ public class PropertyListingApplication extends Application {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         PropertyListingApplication that = (PropertyListingApplication) o;
-        return Double.compare(rentalPrice, that.rentalPrice) == 0 && Objects.equals(propertyID, that.propertyID) && Objects.equals(landlordID, that.landlordID) && Objects.equals(location, that.location) && Objects.equals(address, that.address);
+        return Double.compare(rentalPrice, that.rentalPrice) == 0 && Objects.equals(property, that.property) && Objects.equals(landlord, that.landlord) && Objects.equals(location, that.location) && Objects.equals(address, that.address);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), propertyID, landlordID, rentalPrice, location, address);
+        return Objects.hash(super.hashCode(), property, landlord, rentalPrice, location, address);
     }
 
     @Override
     public String toString() {
         return "PropertyListingApplication{" +
-                "propertyID='" + propertyID + '\'' +
-                ", landlordID='" + landlordID + '\'' +
+                "property='" + property + '\'' +
+                ", landlord='" + landlord + '\'' +
                 ", rentalPrice=" + rentalPrice +
                 ", location='" + location + '\'' +
                 ", address='" + address + '\'' +
@@ -94,8 +90,8 @@ public class PropertyListingApplication extends Application {
         private long appNo;
         private LocalDate date;
         private Status status;
-        private Property propertyID;
-        private Landlord landlordID;
+        private Property property;
+        private Landlord landlord;
         private double rentalPrice;
         private String location;
         private Address address;
@@ -115,13 +111,13 @@ public class PropertyListingApplication extends Application {
             return this;
         }
 
-        public Builder setPropertyID(Property propertyID) {
-            this.propertyID = propertyID;
+        public Builder setProperty(Property property) {
+            this.property = property;
             return this;
         }
 
-        public Builder setLandlordID(Landlord landlordID) {
-            this.landlordID = landlordID;
+        public Builder setLandlord(Landlord landlord) {
+            this.landlord = landlord;
             return this;
         }
 
@@ -144,8 +140,8 @@ public class PropertyListingApplication extends Application {
             this.appNo = propertyApp.appNo;
             this.date = propertyApp.date;
             this.status = propertyApp.status;
-            this.propertyID = propertyApp.propertyID;
-            this.landlordID = propertyApp.landlordID;
+            this.property = propertyApp.property;
+            this.landlord = propertyApp.landlord;
             this.rentalPrice = propertyApp.rentalPrice;
             this.location = propertyApp.location;
             this.address = propertyApp.address;

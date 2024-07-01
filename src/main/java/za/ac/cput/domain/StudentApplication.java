@@ -14,17 +14,13 @@ import java.util.Objects;
 @Entity
 public class StudentApplication extends Application {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    protected long appNo;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "student_id")
+    private Student student;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "student_id", referencedColumnName = "id")
-    private Student studentID;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "property_id", referencedColumnName = "id")
-    private Property propertyID;
+    @JoinColumn(name = "property_id")
+    private Property property;
 
     private double price;
 
@@ -34,17 +30,17 @@ public class StudentApplication extends Application {
         this.appNo = builder.appNo;
         this.date = builder.date;
         this.status = builder.status;
-        this.studentID = builder.studentID;
-        this.propertyID = builder.propertyID;
+        this.student = builder.student;
+        this.property = builder.property;
         this.price = builder.price;
     }
 
-    public Student getStudentID() {
-        return studentID;
+    public Student getStudent() {
+        return student;
     }
 
-    public Property getPropertyID() {
-        return propertyID;
+    public Property getProperty() {
+        return property;
     }
 
     public double getPrice() {
@@ -58,21 +54,21 @@ public class StudentApplication extends Application {
         if (!super.equals(o)) return false;
         StudentApplication that = (StudentApplication) o;
         return Double.compare(price, that.price) == 0 &&
-                Objects.equals(studentID, that.studentID) &&
-                Objects.equals(propertyID, that.propertyID);
+                Objects.equals(student, that.student) &&
+                Objects.equals(property, that.property);
     }
 
     @Override
     public int hashCode() {
         return
-                Objects.hash(super.hashCode(), studentID, propertyID, price);
+                Objects.hash(super.hashCode(), student, property, price);
     }
 
     @Override
     public String toString() {
         return "StudentApplication{" +
-                "studentID='" + studentID + '\'' +
-                ", propertyID='" + propertyID + '\'' +
+                "student='" + student + '\'' +
+                ", property='" + property + '\'' +
                 ", price=" + price +
                 ", appNo='" + appNo + '\'' +
                 ", date=" + date +
@@ -85,8 +81,8 @@ public class StudentApplication extends Application {
         private LocalDate date;
         private Status status;
 
-        private Student studentID;
-        private Property propertyID;
+        private Student student;
+        private Property property;
         private double price;
 
         public Builder setAppNo(long appNo) {
@@ -104,13 +100,13 @@ public class StudentApplication extends Application {
             return this;
         }
 
-        public Builder setStudentID(Student studentID) {
-            this.studentID = studentID;
+        public Builder setStudent(Student student) {
+            this.student = student;
             return this;
         }
 
-        public Builder setPropertyID(Property propertyID) {
-            this.propertyID = propertyID;
+        public Builder setProperty(Property property) {
+            this.property = property;
             return this;
         }
 
@@ -123,8 +119,8 @@ public class StudentApplication extends Application {
             this.appNo = studentApp.appNo;
             this.date = studentApp.date;
             this.status = studentApp.status;
-            this.studentID = studentApp.studentID;
-            this.propertyID = studentApp.propertyID;
+            this.student = studentApp.student;
+            this.property = studentApp.property;
             this.price = studentApp.price;
             return this;
         }

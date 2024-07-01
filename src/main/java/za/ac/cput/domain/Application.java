@@ -1,9 +1,6 @@
 package za.ac.cput.domain;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -13,16 +10,26 @@ import java.util.Objects;
  * Date : 22 April 2024
  * */
 
+@Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Application {
+
     public enum Status{
         Pending, Accepted, Rejected;
     }
 
+    @Id
+    @GeneratedValue
+    protected long appNo;
     protected LocalDate date;
     protected Status status;
 
     public Application(){}
+
+
+    public long getAppNo() {
+        return appNo;
+    }
 
     public LocalDate getDate() {
         return date;
@@ -35,6 +42,7 @@ public class Application {
     @Override
     public String toString() {
         return "Application{" +
+                "appNo='" + appNo + '\'' +
                 ", date=" + date +
                 ", status=" + status +
                 '}';
@@ -45,11 +53,12 @@ public class Application {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Application that = (Application) o;
-        return Objects.equals(date, that.date) && status == that.status;
+        return Objects.equals(appNo, that.appNo) && Objects.equals(date, that.date) && status == that.status;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(date, status);
+        return Objects.hash(appNo, date, status);
     }
+
 }
