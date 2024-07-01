@@ -5,15 +5,28 @@ package za.ac.cput.domain;
  * Date : 22 April 2024
  * */
 
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 import java.util.Objects;
 
+@Entity
 public class PropertyListingApplication extends Application {
 
-    private String propertyID;
-    private String landlordID;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    protected long appNo;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Property propertyID;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Landlord landlordID;
+
     private double rentalPrice;
     private String location;
+
+    @OneToOne(cascade = CascadeType.ALL)
     private Address address;
 
     public PropertyListingApplication(){}
@@ -29,11 +42,11 @@ public class PropertyListingApplication extends Application {
         this.address = builder.address;
     }
 
-    public String getPropertyID() {
+    public Property getPropertyID() {
         return propertyID;
     }
 
-    public String getLandlordID() {
+    public Landlord getLandlordID() {
         return landlordID;
     }
 
@@ -78,16 +91,16 @@ public class PropertyListingApplication extends Application {
     }
 
     public static class Builder{
-        private String appNo;
+        private long appNo;
         private LocalDate date;
         private Status status;
-        private String propertyID;
-        private String landlordID;
+        private Property propertyID;
+        private Landlord landlordID;
         private double rentalPrice;
         private String location;
         private Address address;
 
-        public Builder setAppNo(String appNo) {
+        public Builder setAppNo(long appNo) {
             this.appNo = appNo;
             return this;
         }
@@ -102,12 +115,12 @@ public class PropertyListingApplication extends Application {
             return this;
         }
 
-        public Builder setPropertyID(String propertyID) {
+        public Builder setPropertyID(Property propertyID) {
             this.propertyID = propertyID;
             return this;
         }
 
-        public Builder setLandlordID(String landlordID) {
+        public Builder setLandlordID(Landlord landlordID) {
             this.landlordID = landlordID;
             return this;
         }
@@ -127,7 +140,7 @@ public class PropertyListingApplication extends Application {
             return this;
         }
 
-        public PropertyListingApplication.Builder copy (PropertyListingApplication propertyApp){
+        public Builder copy (PropertyListingApplication propertyApp){
             this.appNo = propertyApp.appNo;
             this.date = propertyApp.date;
             this.status = propertyApp.status;

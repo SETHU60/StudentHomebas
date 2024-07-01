@@ -5,14 +5,27 @@ package za.ac.cput.domain;
  * Date : 22 April 2024
  * */
 
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
+@Entity
 public class StudentApplication extends Application {
 
-    private String studentID;
-    private String propertyID;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    protected long appNo;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "student_id", referencedColumnName = "id")
+    private Student studentID;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "property_id", referencedColumnName = "id")
+    private Property propertyID;
+
     private double price;
 
     public StudentApplication(){}
@@ -26,11 +39,11 @@ public class StudentApplication extends Application {
         this.price = builder.price;
     }
 
-    public String getStudentID() {
+    public Student getStudentID() {
         return studentID;
     }
 
-    public String getPropertyID() {
+    public Property getPropertyID() {
         return propertyID;
     }
 
@@ -68,15 +81,15 @@ public class StudentApplication extends Application {
     }
 
     public static class Builder{
-        private String appNo;
+        private long appNo;
         private LocalDate date;
         private Status status;
 
-        private String studentID;
-        private String propertyID;
+        private Student studentID;
+        private Property propertyID;
         private double price;
 
-        public Builder setAppNo(String appNo) {
+        public Builder setAppNo(long appNo) {
             this.appNo = appNo;
             return this;
         }
@@ -91,12 +104,12 @@ public class StudentApplication extends Application {
             return this;
         }
 
-        public Builder setStudentID(String studentID) {
+        public Builder setStudentID(Student studentID) {
             this.studentID = studentID;
             return this;
         }
 
-        public Builder setPropertyID(String propertyID) {
+        public Builder setPropertyID(Property propertyID) {
             this.propertyID = propertyID;
             return this;
         }
@@ -106,7 +119,7 @@ public class StudentApplication extends Application {
             return this;
         }
 
-        public StudentApplication.Builder copy (StudentApplication studentApp){
+        public Builder copy (StudentApplication studentApp){
             this.appNo = studentApp.appNo;
             this.date = studentApp.date;
             this.status = studentApp.status;
