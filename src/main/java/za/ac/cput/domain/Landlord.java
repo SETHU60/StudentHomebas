@@ -1,24 +1,29 @@
 package za.ac.cput.domain;
 
-import java.time.LocalDate;
-import java.util.Objects;
+import jakarta.persistence.*;
 
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Objects;
+@Entity
 public class Landlord extends User{
+    @Id
     private String landlordId;
     private int numOfPropertiesOwned;
+    @OneToMany(mappedBy = "landlord", cascade = CascadeType.ALL)
+    private List<Document> documents;
 
-    public Landlord(UserBuilder builder) {
-        super(builder);
-    }
+    @OneToOne
+    private Contact contact;
 
-    public Landlord (LandlordBuilder builder){
 
-        this.firstName = builder.firstName;
-        this.lastName = builder.lastName;
+    public Landlord(LandlordBuilder builder){
+
+        name = builder.name;
         this.gender = builder.gender;
         this.dateOfBirth = builder.dateOfBirth;
         this.password = builder.password;
-       // this.contact = builder.contact;
+        this.contact = builder.contact;
     this.landlordId = builder.landlordId;
     this.numOfPropertiesOwned = builder.numOfPropertiesOwned;
     }
@@ -53,8 +58,7 @@ public class Landlord extends User{
     }
 
     public static class LandlordBuilder{
-    private String firstName;
-    private String lastName;
+    private Name name;
     private String gender;
     private LocalDate dateOfBirth;
     private String password;
@@ -64,8 +68,8 @@ public class Landlord extends User{
     private String landlordId;
     private int numOfPropertiesOwned;
 
-    public LandlordBuilder setFirstName(String firstName){
-        this.firstName = firstName;
+    public LandlordBuilder Name(Name name){
+        this.name = name;
         return this;
     }
 
@@ -75,11 +79,6 @@ public class Landlord extends User{
         }
         public LandlordBuilder setDateOfBirth(LocalDate dateOfBirth){
         this.dateOfBirth = dateOfBirth;
-            return this;
-        }
-
-        public LandlordBuilder setLastName(String lastName) {
-            this.lastName = lastName;
             return this;
         }
 
