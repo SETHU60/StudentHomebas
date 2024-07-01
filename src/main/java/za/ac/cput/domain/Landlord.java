@@ -12,7 +12,9 @@ public class Landlord extends User{
     @OneToMany(mappedBy = "landlord", cascade = CascadeType.ALL)
     private List<Document> documents;
 
+    protected Landlord() {
 
+    }
 
     public Landlord(LandlordBuilder builder){
 
@@ -25,7 +27,6 @@ public class Landlord extends User{
         this.contact = builder.contact;
     this.numOfPropertiesOwned = builder.numOfPropertiesOwned;
     }
-
 
     public int getNumOfPropertiesOwned() {
         return numOfPropertiesOwned;
