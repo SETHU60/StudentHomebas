@@ -15,6 +15,7 @@ class AdminFactoryTest {
     private Admin admin1;
     private Admin admin2;
     private Admin admin3;
+    private Admin admin4;
 
     @BeforeEach
     void setUp() {
@@ -26,14 +27,19 @@ class AdminFactoryTest {
 
         admin2 = AdminFactory.buildAdmin(6578, "", "", "Moloi", "Female",
                 LocalDate.of(1995, 12, 5), "password456", contact);
+        admin3 = AdminFactory.buildAdmin1(567, "Boitumelo",  "Modise",
+                "Female", LocalDate.of(1990, 5, 15), "password123", contact);
 
-        admin3 = admin1;
+
+        admin4 = admin1;
     }
 
     @Test
     void checkIfNotNull() {
         assertNotNull(admin1);
+        assertNotNull(admin3);
         System.out.println(admin1);
+        System.out.println(admin3);
     }
 
     @Test
@@ -44,7 +50,7 @@ class AdminFactoryTest {
 
     @Test
     void identityTest() {
-        assertSame(admin1, admin3);
+        assertSame(admin1, admin4);
         System.out.println("IDENTICAL");
     }
 

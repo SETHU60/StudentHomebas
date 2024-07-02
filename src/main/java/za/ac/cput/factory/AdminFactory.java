@@ -11,6 +11,7 @@ public class AdminFactory {
     public static Admin buildAdmin(long adminId, String firstName, String middleName, String lastName, String gender,
                                    LocalDate dateOfBirth, String password, Contact contact) {
         if (adminId <= 0 || AdminHelper.isNullOrEmpty(firstName)
+                || AdminHelper.isNullOrEmpty(middleName)
                 || AdminHelper.isNullOrEmpty(lastName)
                 || AdminHelper.isNullOrEmpty(gender)
                 || AdminHelper.isValidDate(dateOfBirth)
@@ -34,4 +35,30 @@ public class AdminFactory {
                 .setContact(contact)
                 .build();
     }
+    public static Admin buildAdmin1(long adminId, String firstName, String lastName, String gender,
+                                   LocalDate dateOfBirth, String password, Contact contact) {
+        if (adminId <= 0 || AdminHelper.isNullOrEmpty(firstName)
+                || AdminHelper.isNullOrEmpty(lastName)
+                || AdminHelper.isNullOrEmpty(gender)
+                || AdminHelper.isValidDate(dateOfBirth)
+                || AdminHelper.isNullOrEmpty(password)
+                || AdminHelper.isContactNull(contact)) {
+            return null;
+        }
+
+        Name name = new Name.NameBuilder()
+                .setFirstName(firstName)
+                .setLastName(lastName)
+                .build();
+
+        return new Admin.Builder()
+                .setUserId(adminId)
+                .setName(name)
+                .setGender(gender)
+                .setDateOfBirth(dateOfBirth)
+                .setPassword(password)
+                .setContact(contact)
+                .build();
+    }
+
 }
