@@ -1,13 +1,12 @@
 package za.ac.cput.domain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
+import jakarta.persistence.*;
 
+import javax.annotation.processing.Generated;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Objects;
+
 
 /**
  * Mpumzi Mbula
@@ -19,6 +18,7 @@ import java.util.Objects;
 public class Document {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long documentId;
     private String documentName;
     @Lob
