@@ -7,7 +7,7 @@ import java.time.LocalDate;
 
 public class AccountFactory {
 
-    public static Account createAccount(int accountId, String accountType, String paymentInfo, double balance,
+    public static Account buildAccount(int accountId, String accountType, String paymentInfo, double balance,
                                         LocalDate paymentDueDate, String paymentStatus, String accountStatus, User user) {
         return new Account.AccountBuilder()
                 .setAccountId(accountId)
