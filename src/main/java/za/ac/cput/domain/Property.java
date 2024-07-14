@@ -23,7 +23,6 @@ public class Property {
    @OneToMany
     private List<Document> pictures;
 
-
     protected Property() {
     }
 
