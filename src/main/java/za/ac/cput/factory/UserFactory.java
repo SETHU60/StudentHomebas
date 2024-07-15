@@ -7,9 +7,8 @@ public class UserFactory {
 
 
 
-        public static User.UserBuilder buildUser(String lastName, String firstName, String gender, String password, LocalDate dateOfBirth){
-            if(UserHelper.isNullOrEmpty(lastName) ||
-                    UserHelper.isNullOrEmpty(firstName) ||
+        public static User.UserBuilder buildUser(Name name, String gender, String password, LocalDate dateOfBirth){
+            if(UserHelper.isObjectEmpty(name) ||
                     UserHelper.isNullOrEmpty(gender) ||
                     UserHelper.isNullOrEmpty(password) ||
                     dateOfBirth == null
@@ -18,8 +17,8 @@ public class UserFactory {
             }
 
             return new User.UserBuilder()
-                    .setLastName(lastName)
-                    .setFirstName(firstName)
+                    .setName(Name)
+
                     .setGender(gender)
                     .setPassword(password)
                     .setDateOfBirth(dateOfBirth)
