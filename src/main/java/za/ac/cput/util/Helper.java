@@ -33,7 +33,6 @@ public class Helper {
         return  false;
     }
     public static boolean isObjectNull(Object o){
-
         if (o.equals(null) || o == null){
 
             return true;
@@ -42,7 +41,6 @@ public class Helper {
 
     }
     public static boolean isInvalidDate(LocalDate date) {
-
         if (date == null) {
             return true;
         }
