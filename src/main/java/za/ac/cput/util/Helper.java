@@ -14,6 +14,18 @@ public class Helper {
         }
         return false;
     }
+    public static boolean invalidLong(Long l){
+        if (l == null || l == 0){
+            return true;
+        }
+        return false;
+    }
+    public static boolean invalidDouble(Double d){
+        if (d == null || d == 0){
+            return true;
+        }
+        return false;
+    }
     public static boolean isListNullorEmpty(List list){
         if(list.isEmpty() || list == null){
             return true;
