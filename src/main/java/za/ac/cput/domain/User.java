@@ -9,31 +9,22 @@ import java.util.Objects;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "user_type")
-public abstract class User {
+public  class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
+    protected Long userId;
 
     @Embedded
-    private Name name;
-    private String gender;
-    private LocalDate dateOfBirth;
-    private String password;
+    protected Name name;
+    protected String gender;
+    protected LocalDate dateOfBirth;
+    protected String password;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "contact_id")
-    private Contact contact;
+    protected Contact contact;
 
     protected User() {
-    }
-
-    protected User(UserBuilder builder) {
-        this.userId = builder.userId;
-        this.name = builder.name;
-        this.gender = builder.gender;
-        this.dateOfBirth = builder.dateOfBirth;
-        this.password = builder.password;
-        this.contact = builder.contact;
     }
 
     public Long getUserId() {
@@ -90,46 +81,5 @@ public abstract class User {
                 '}';
     }
 
-    public static class UserBuilder {
-        private Long userId;
-        private Name name;
-        private String gender;
-        private LocalDate dateOfBirth;
-        private String password;
-        private Contact contact;
 
-        public UserBuilder setUserId(Long userId) {
-            this.userId = userId;
-            return this;
-        }
-
-        public UserBuilder setName(Name name) {
-            this.name = name;
-            return this;
-        }
-
-        public UserBuilder setGender(String gender) {
-            this.gender = gender;
-            return this;
-        }
-
-        public UserBuilder setDateOfBirth(LocalDate dateOfBirth) {
-            this.dateOfBirth = dateOfBirth;
-            return this;
-        }
-
-        public UserBuilder setPassword(String password) {
-            this.password = password;
-            return this;
-        }
-
-        public UserBuilder setContact(Contact contact) {
-            this.contact = contact;
-            return this;
-        }
-
-        public User build() {
-            return new User(this);
-        }
-    }
 }

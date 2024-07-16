@@ -1,9 +1,6 @@
 package za.ac.cput.domain;
 
-import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -18,9 +15,9 @@ import java.util.Objects;
 @Entity
 public class Student extends User {
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Document> documents;
-    @OneToOne
+    @OneToOne(cascade= CascadeType.ALL)
     private AcademicDetails academicDetails;
     public Student() {
     }
@@ -39,20 +36,20 @@ public class Student extends User {
 
     }
 
+    public List<Document> getDocuments() {
+        return documents;
+    }
 
     public AcademicDetails getAcademicDetails() {
         return academicDetails;
-    }
-
-    public List<Document> getDocuments() {
-        return documents;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Student student)) return false;
-        return Objects.equals(academicDetails, student.academicDetails) && Objects.equals(documents, student.documents);
+        if (!super.equals(o)) return false;
+        return Objects.equals(documents, student.documents) && Objects.equals(academicDetails, student.academicDetails);
     }
 
     @Override
@@ -63,9 +60,9 @@ public class Student extends User {
     @Override
     public String toString() {
         return "Student{" +
+                "documents=" + documents +
+                ", academicDetails=" + academicDetails +
                 ", userId=" + userId +
-                "academicDetails=" + academicDetails +
-                ", documents=" + documents +
                 ", name=" + name +
                 ", gender='" + gender + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
@@ -76,32 +73,18 @@ public class Student extends User {
 
     public static class StudentBuilder {
         private Long userId;
-        private AcademicDetails academicDetails;
-
-        private List<Document> documents;
-
         private Name name;
         private String gender;
         private LocalDate dateOfBirth;
         private String password;
-
         private Contact contact;
 
-        public StudentBuilder() {
-        }
+        private AcademicDetails academicDetails;
+
+        private List<Document> documents;
 
         public StudentBuilder setUserId(Long userId) {
             this.userId = userId;
-            return this;
-        }
-
-        public StudentBuilder setAcademicDetails(AcademicDetails academicDetails) {
-            this.academicDetails = academicDetails;
-            return this;
-        }
-
-        public StudentBuilder setDocuments(List<Document> documents) {
-            this.documents = documents;
             return this;
         }
 
@@ -130,18 +113,32 @@ public class Student extends User {
             return this;
         }
 
-        public StudentBuilder copy(Student student) {
-            this.userId = student.userId;
-            this.name = student.name;
-            this.documents = student.documents;
-            this.gender = student.gender;
-            this.dateOfBirth = student.dateOfBirth;
-            this.password = student.password;
-            this.academicDetails = student.academicDetails;
-            this.contact = student.contact;
 
+
+        public StudentBuilder setAcademicDetails(AcademicDetails academicDetails) {
+            this.academicDetails = academicDetails;
             return this;
         }
+
+        public StudentBuilder setDocuments(List<Document> documents) {
+            this.documents = documents;
+            return this;
+        }
+
+
+        public StudentBuilder copy(Student student) {
+            this.userId=student.userId;
+            this.name=student.name;
+            this.gender=student.gender;
+            this.dateOfBirth=student.dateOfBirth;
+            this.password= student.password;
+            this.contact=student.contact;
+            this.documents = student.documents;
+            this.academicDetails = student.academicDetails;
+            return this;
+        }
+
+
 
         public Student build() {
             return new Student(this);
