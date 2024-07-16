@@ -12,7 +12,7 @@ public class AcademicDetails {
    private  String programOfStudy;
    private  int yearOfStudy;
    
-   @OneToOne
+   @OneToOne(mappedBy = "academicDetails")
    private Student student;
 
    protected AcademicDetails() {
