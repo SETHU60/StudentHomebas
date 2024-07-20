@@ -18,12 +18,12 @@ public class Landlord extends User{
 
     public Landlord(LandlordBuilder builder){
 
-        userId = builder.userId;
-        name = builder.name;
+        this.userId = builder.userId;
+        this.name = builder.name;
         this.gender = builder.gender;
         this.dateOfBirth = builder.dateOfBirth;
         this.password = builder.password;
-        documents = builder.documents;
+        this.documents = builder.documents;
         this.contact = builder.contact;
     this.numOfPropertiesOwned = builder.numOfPropertiesOwned;
     }
