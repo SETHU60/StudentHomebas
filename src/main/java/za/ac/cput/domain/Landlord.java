@@ -9,7 +9,7 @@ import java.util.Objects;
 public class Landlord extends User{
 
     private int numOfPropertiesOwned;
-    @OneToMany(mappedBy = "landlord", cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Document> documents;
 
     protected Landlord() {

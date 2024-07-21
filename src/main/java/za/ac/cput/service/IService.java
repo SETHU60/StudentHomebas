@@ -1,4 +1,8 @@
 package za.ac.cput.service;
 
-public class IService {
+public interface IService <T,ID>{
+    T save(T t);
+    T read(ID id);
+    T update(T t);
+    boolean deleteById(ID id);
 }
