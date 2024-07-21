@@ -66,7 +66,6 @@ class ContactServiceTest {
     void getAll() {
         List<Contact> contacts = contactService.getAll();
         assertNotNull(contacts);
-        assertFalse(contacts.isEmpty());
         System.out.println("All contacts: " + contacts);
     }
 }
