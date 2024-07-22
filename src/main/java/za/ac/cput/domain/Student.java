@@ -15,7 +15,7 @@ import java.util.Objects;
 @Entity
 public class Student extends User {
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private List<Document> documents;
     @OneToOne(cascade= CascadeType.ALL)
     private AcademicDetails academicDetails;
