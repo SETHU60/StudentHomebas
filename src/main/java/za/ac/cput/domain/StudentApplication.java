@@ -15,11 +15,9 @@ import java.util.Objects;
 public class StudentApplication extends Application {
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "student_id")
     private Student student;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "property_id")
     private Property property;
 
     private double price;
@@ -27,7 +25,6 @@ public class StudentApplication extends Application {
     public StudentApplication(){}
 
     public StudentApplication(Builder builder){
-        this.appNo = builder.appNo;
         this.date = builder.date;
         this.status = builder.status;
         this.student = builder.student;
@@ -77,7 +74,6 @@ public class StudentApplication extends Application {
     }
 
     public static class Builder{
-        private long appNo;
         private LocalDate date;
         private Status status;
 
@@ -85,12 +81,7 @@ public class StudentApplication extends Application {
         private Property property;
         private double price;
 
-        public Builder setAppNo(long appNo) {
-            this.appNo = appNo;
-            return this;
-        }
-
-        public Builder setDate(LocalDate date) {
+         public Builder setDate(LocalDate date) {
             this.date = date;
             return this;
         }
@@ -116,7 +107,6 @@ public class StudentApplication extends Application {
         }
 
         public Builder copy (StudentApplication studentApp){
-            this.appNo = studentApp.appNo;
             this.date = studentApp.date;
             this.status = studentApp.status;
             this.student = studentApp.student;

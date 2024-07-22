@@ -12,7 +12,7 @@ import java.util.Objects;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Application {
+public abstract class Application {
 
     public enum Status{
         Pending, Accepted, Rejected;
