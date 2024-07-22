@@ -29,10 +29,10 @@ class PropertyFactoryTest {
 
     @BeforeEach
     void setUp() {
-        String url = "C:\\Users\\ASUS\\OneDrive - Cape Peninsula University of Technology\\Documents\\3rd-Year\\ADP3\\StudentHomebas\\download.jpeg";
+        String url = "download.jpeg";
         //String certificate  = "C:\\Users\\ASUS\\Documents\\3rd-Year\\ADP3\\StudentHomebas\\LinkedIn Learning Certificate.pdf";
         try {
-            // image = ImageIO.read(new File("C:\\Users\\ASUS\\Downloads\\download.jpeg"));
+
             image = ImageIO.read(new File(url));
             out = new ByteArrayOutputStream();
             ImageIO.write(image, "jpeg", out);
@@ -55,11 +55,9 @@ class PropertyFactoryTest {
                 "September", "Male", LocalDate.of(1986,8,13), 3,
                 "Mike130886",contact,documentList);
 
-         property1 = PropertyFactory.buildProperty("PR01", "South Point", 10,
+         property1 = PropertyFactory.buildProperty("PR01", "South Point", 10,5000,
                 "143", "Dorset St", "Woodstock", "Cape Town", landlord1, documentList);
 
-        property2 = PropertyFactory.buildProperty("PR01", "South Point", 10,
-                "143", "Dorset St", "Woodstock", "Cape Town", landlord1, documentList);
 
 
 
@@ -74,6 +72,9 @@ class PropertyFactoryTest {
 
     @Test
     void buildAcademicDetailsWithNullValues() {
+        property2 = PropertyFactory.buildProperty("", "South Point", 10,3500,
+                "143", "Dorset St", "Woodstock", "Cape Town", landlord1, documentList);
+
         //Test should pass because object with any null value will return null
         assertNull(property2);
 
