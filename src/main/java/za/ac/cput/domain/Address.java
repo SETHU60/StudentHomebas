@@ -3,9 +3,11 @@ package za.ac.cput.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.IdClass;
 
 import java.util.Objects;
 @Entity
+@IdClass(AddressId.class)
 public class Address {
     @Id
     private String street;
@@ -87,6 +89,13 @@ public class Address {
 
         public AddressBuilder setPostalCode(String postalCode) {
             this.postalCode = postalCode;
+            return this;
+        }
+        public AddressBuilder copy(Address address){
+            this.street = address.street;
+            this.suburb = address.suburb;
+            this.city = address.city;
+            this.postalCode = address.postalCode;
             return this;
         }
 
