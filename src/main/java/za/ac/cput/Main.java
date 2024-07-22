@@ -7,5 +7,6 @@ import za.ac.cput.domain.Landlord;
 @SpringBootApplication
 public class Main {
     public static void main(String[] args) {
+        SpringApplication.run(Main.class, args);
     }
 }
