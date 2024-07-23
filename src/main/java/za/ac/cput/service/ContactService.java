@@ -8,9 +8,9 @@ import za.ac.cput.repository.ContactRepository;
 import java.util.List;
 @Service
 public class ContactService implements IContactService{
-    @Autowired
-    private final ContactRepository contactRepository;
 
+    private final ContactRepository contactRepository;
+    @Autowired
     public ContactService(ContactRepository contactRepository) {
         this.contactRepository = contactRepository;
     }

@@ -18,15 +18,15 @@ import static org.junit.jupiter.api.Assertions.*;
 class AddressServiceTest {
     @Autowired
     private AddressService service;
-    Address address1;
-    Address address2;
-    Address address3;
+    static Address address1;
+    static Address address2;
+    static Address address3;
 
-    @BeforeEach
-    void setUp() {
+    @BeforeAll
+    static void setUp() {
         address1 = AddressFactory.buildAddress("9 Lower Street", "Mowbray", "Cape Town", "5100");
-        address2 = AddressFactory.buildAddress("30 Willow Street", "", "Cape Town", "5099");
-        address3 = address1;
+        address2 = AddressFactory.buildAddress("30 Willow Street", "Hazeldone", "Cape Town", "5099");
+        address3 =AddressFactory.buildAddress("Ny 6 No 106", "Guguletu", "Cape Town", "7750");
     }
 
     @Test
@@ -36,6 +36,16 @@ class AddressServiceTest {
         Address savedAddress = service.save(address1);
         assertNotNull(savedAddress);
         System.out.println(savedAddress);
+
+        Address savedAddress2 = service.save(address2);
+        assertNotNull(savedAddress2);
+        System.out.println(savedAddress2);
+
+        Address savedAddress3 = service.save(address3);
+        assertNotNull(savedAddress3);
+        System.out.println(savedAddress3);
+
+
     }
 
     @Test
@@ -51,7 +61,7 @@ class AddressServiceTest {
     @Order(3)
     void update() {
         System.out.println("========================================SAVE================================================");
-        Address updatedAddress = new Address.AddressBuilder().copy(address1)
+        Address updatedAddress = new Address.AddressBuilder().copy(address2)
                 .setSuburb("Observatory")
                 .buildAddress();
         Address savedAddress = service.save(updatedAddress);
