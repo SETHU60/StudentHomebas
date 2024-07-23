@@ -17,7 +17,7 @@ public class AcademicDetailsController {
 
   @PostMapping("/create")
   public AcademicDetails create( @RequestBody AcademicDetails academicDetails) {
-      return academicDetailsService.create(academicDetails);
+      return academicDetailsService.save(academicDetails);
   }
 
   @GetMapping("/read/{id}")
@@ -40,8 +40,9 @@ public class AcademicDetailsController {
 
   @PostMapping("/delete/{id}")
   public Boolean delete(@PathVariable String id) {
-      return academicDetailsService.delete(id);
+      return academicDetailsService.deleteById(id);
   }
+
 
   @GetMapping("/getAll")
   public List<AcademicDetails> getAll() {

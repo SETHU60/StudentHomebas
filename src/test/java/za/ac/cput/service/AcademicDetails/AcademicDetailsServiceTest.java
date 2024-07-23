@@ -30,11 +30,11 @@ class AcademicDetailsServiceTest {
     @Order(1)
     @Test
     void create() {
-        testAcademicDetails1 = service.create(testAcademicDetails1);
+        testAcademicDetails1 = service.save(testAcademicDetails1);
         assertNotNull(testAcademicDetails1);
         System.out.println("Saved: " + testAcademicDetails1);
 
-        testAcademicDetails2 = service.create(testAcademicDetails2);
+        testAcademicDetails2 = service.save(testAcademicDetails2);
         assertNotNull(testAcademicDetails2);
         System.out.println("Saved: " +testAcademicDetails2);
     }
@@ -66,7 +66,7 @@ class AcademicDetailsServiceTest {
     @Test
     @Order(4)
     void delete() {
-        Boolean deleted = service.delete(testAcademicDetails1.getAcademicDetailsID());
+        Boolean deleted = service.deleteById(testAcademicDetails1.getAcademicDetailsID());
         assertEquals(true, deleted);
     }
 

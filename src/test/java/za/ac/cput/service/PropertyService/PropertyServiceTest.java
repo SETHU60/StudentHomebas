@@ -86,11 +86,11 @@ class PropertyServiceTest {
         documentRepository.save(document1);
         landlordRepository.save(landlord1);
 
-        Property saved1 = service.create(property1);
+        Property saved1 = service.save(property1);
         assertNotNull(saved1);
         System.out.println("Saved Property: " + saved1);
 
-        Property saved2 = service.create(property2);
+        Property saved2 = service.save(property2);
         assertNotNull(saved2);
         System.out.println("Saved Property: " + saved2);
 
@@ -117,7 +117,7 @@ class PropertyServiceTest {
 
     @Test
     void delete() {
-        Boolean deleted = service.delete(property1.getPropertyID());
+        Boolean deleted = service.deleteById(property1.getPropertyID());
         assertEquals(true, deleted);
     }
 

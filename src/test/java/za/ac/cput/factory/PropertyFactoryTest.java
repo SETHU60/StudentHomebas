@@ -67,6 +67,7 @@ class PropertyFactoryTest {
     @Test
     void buildAcademicDetails() {
         assertNotNull(property1);
+        System.out.println(property1);
 
     }
 
@@ -77,6 +78,7 @@ class PropertyFactoryTest {
 
         //Test should pass because object with any null value will return null
         assertNull(property2);
+        System.out.println(property2);
 
     }
 

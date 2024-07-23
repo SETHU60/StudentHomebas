@@ -22,8 +22,8 @@ public class AddressService implements IAddressService {
     }
 
     @Override
-    public Address read(AddressId addressId) {
-        return addressRepository.findById(addressId).orElse(null);
+    public Address read(AddressId o) {
+        return addressRepository.findById(o).orElse(null);
     }
 
     @Override
@@ -32,9 +32,9 @@ public class AddressService implements IAddressService {
     }
 
     @Override
-    public boolean deleteById(AddressId addressId) {
-        addressRepository.deleteById(addressId);
-        return !addressRepository.existsById(addressId);
+    public boolean deleteById(AddressId o) {
+        addressRepository.deleteById(o);
+        return !addressRepository.existsById(o);
     }
     @Override
     public List<Address> getall() {
