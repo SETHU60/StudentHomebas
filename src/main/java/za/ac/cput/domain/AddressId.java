@@ -9,6 +9,11 @@ public class AddressId implements Serializable {
 
     public AddressId(){}
 
+    public AddressId(String street, String postalCode) {
+        this.street = street;
+        this.postalCode = postalCode;
+    }
+
     public String getStreet() {
         return street;
     }
