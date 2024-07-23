@@ -12,7 +12,7 @@ public class AcademicDetailsService implements IAcademicDetailsService{
     private AcademicDetailsRepository repo;
 
     @Override
-    public AcademicDetails create(AcademicDetails academicDetails) {
+    public AcademicDetails save(AcademicDetails academicDetails) {
         return repo.save(academicDetails);
     }
 
@@ -27,7 +27,7 @@ public class AcademicDetailsService implements IAcademicDetailsService{
     }
 
     @Override
-    public boolean delete(String s) {
+    public boolean deleteById(String s) {
         repo.deleteById(s);
         return !repo.existsById(s);
     }

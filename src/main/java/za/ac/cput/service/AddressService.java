@@ -3,6 +3,7 @@ package za.ac.cput.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.domain.Address;
+import za.ac.cput.domain.AddressId;
 import za.ac.cput.repository.AddressRepository;
 
 import java.util.List;
@@ -21,7 +22,7 @@ public class AddressService implements IAddressService {
     }
 
     @Override
-    public Address read(Object o) {
+    public Address read(AddressId o) {
         return addressRepository.findById(o).orElse(null);
     }
 
@@ -31,7 +32,7 @@ public class AddressService implements IAddressService {
     }
 
     @Override
-    public boolean deleteById(Object o) {
+    public boolean deleteById(AddressId o) {
         addressRepository.deleteById(o);
         return !addressRepository.existsById(o);
     }

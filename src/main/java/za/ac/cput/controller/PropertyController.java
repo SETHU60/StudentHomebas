@@ -16,7 +16,7 @@ public class PropertyController {
 
     @PostMapping("/create")
     public Property create(@RequestBody Property property) {
-        return propertyService.create(property);
+        return propertyService.save(property);
     }
 
     @GetMapping("/read/{id}")
@@ -39,7 +39,7 @@ public class PropertyController {
 
     @PostMapping("/delete/{id}")
     public Boolean delete(@PathVariable String id) {
-        return propertyService.delete(id);
+        return propertyService.deleteById(id);
     }
 
     @GetMapping("/getAll")

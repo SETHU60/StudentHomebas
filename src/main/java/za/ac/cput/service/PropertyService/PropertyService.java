@@ -14,7 +14,7 @@ public class PropertyService implements IPropertyService {
     private PropertyRepository repo;
 
     @Override
-    public Property create(Property property) {
+    public Property save(Property property) {
         return repo.save(property);
     }
 
@@ -29,7 +29,7 @@ public class PropertyService implements IPropertyService {
     }
 
     @Override
-    public boolean delete(String s) {
+    public boolean deleteById(String s) {
         repo.deleteById(s);
         return !repo.existsById(s);
     }
