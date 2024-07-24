@@ -77,7 +77,7 @@ public class AcademicDetails {
          this.yearOfStudy = yearOfStudy;
          return this;
       }
-      private Builder copy(AcademicDetails academicDetails){
+      public Builder copy(AcademicDetails academicDetails){
          this.academicDetailsID = academicDetails.academicDetailsID;
          this.instituteName = academicDetails.instituteName;
          this.programOfStudy = academicDetails.programOfStudy;

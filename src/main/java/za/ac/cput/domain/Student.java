@@ -13,6 +13,7 @@ import java.util.Objects;
  * Student.java
  */
 @Entity
+@DiscriminatorValue("Student")
 public class Student extends User {
 
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)

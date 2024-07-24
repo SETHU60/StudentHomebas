@@ -15,7 +15,7 @@ class AcademicDetailsFactoryTest {
     @BeforeEach
     void setUp() {
         testAcademicDetails1 = AcademicDetailsFactory.buildAcademicDetails("ACD01", "Cape Peninsula University of Technology", "Diploma in ICT", 3);
-        testAcademicDetails2 = AcademicDetailsFactory.buildAcademicDetails("ACD01", "Cape Peninsula University of Technology", "Diploma in ICT", 0);
+        testAcademicDetails2 = AcademicDetailsFactory.buildAcademicDetails("ACD02", "Cape Peninsula University of Technology", "Diploma in ICT", 0);
 
     }
 

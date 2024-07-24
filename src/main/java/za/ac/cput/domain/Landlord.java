@@ -9,7 +9,7 @@ import java.util.Objects;
 public class Landlord extends User{
 
     private int numOfPropertiesOwned;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private List<Document> documents;
 
     protected Landlord() {
@@ -108,6 +108,18 @@ public class Landlord extends User{
 
         public LandlordBuilder setNumOfPropertiesOwned(int numOfPropertiesOwned) {
             this.numOfPropertiesOwned = numOfPropertiesOwned;
+            return this;
+        }
+
+        public LandlordBuilder copy(Landlord landlord){
+            this.userId = landlord.userId;
+            this.name = landlord.name;
+            this.gender = landlord.gender;
+            this.dateOfBirth = landlord.dateOfBirth;
+            this.password = landlord.password;
+            this.contact = landlord.contact;
+            this.documents = landlord.documents;
+            this.numOfPropertiesOwned = landlord.numOfPropertiesOwned;
             return this;
         }
         public Landlord buildLandlord(){return new Landlord(this);}
