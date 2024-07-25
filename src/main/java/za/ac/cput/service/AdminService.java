@@ -9,8 +9,9 @@ import java.util.List;
 
 @Service
 public class AdminService implements IAdminService{
-    @Autowired
+
     private final AdminRepository adminRepository;
+    @Autowired
     public AdminService(AdminRepository adminRepository) {
         this.adminRepository = adminRepository;
     }

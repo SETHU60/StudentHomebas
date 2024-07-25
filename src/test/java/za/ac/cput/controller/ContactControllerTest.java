@@ -46,21 +46,22 @@ class ContactControllerTest {
 
         ResponseEntity<Contact> postResponse1 = restTemplate.postForEntity(url, contact1, Contact.class);
         assertNotNull(postResponse1);
-        assertNotNull(postResponse1.getBody());
-        System.out.println("Saved Contact:");
-        System.out.println(postResponse1.getBody());
+        Contact contact = postResponse1.getBody();
+        assertNotNull(contact);
+        System.out.println("Saved Contact:" + contact);
+
 
         ResponseEntity<Contact> postResponse2 = restTemplate.postForEntity(url, contact2, Contact.class);
         assertNotNull(postResponse2);
-        assertNotNull(postResponse2.getBody());
-        System.out.println("Saved Contact:");
-        System.out.println(postResponse2.getBody());
+        Contact contact2 = postResponse2.getBody();
+        assertNotNull(contact2);
+        System.out.println("Saved Contact:" + contact2);
 
         ResponseEntity<Contact> postResponse3 = restTemplate.postForEntity(url, contact3, Contact.class);
         assertNotNull(postResponse3);
-        assertNotNull(postResponse3.getBody());
-        System.out.println("Saved Contact:");
-        System.out.println(postResponse3.getBody());
+        Contact contact3 = postResponse3.getBody();
+        assertNotNull(contact3);
+        System.out.println("Saved Contact:" + contact3);
 
     }
 
@@ -111,7 +112,7 @@ class ContactControllerTest {
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> httpEntity = new HttpEntity<>(null, headers);
         ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, httpEntity, String.class);
-        System.out.println("All Contacts: ");
-        System.out.println(response.getBody());
+        System.out.println("All Contacts: " +response.getBody());
+
     }
 }

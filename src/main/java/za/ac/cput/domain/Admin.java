@@ -1,9 +1,12 @@
 package za.ac.cput.domain;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
 import java.time.LocalDate;
 
 @Entity
+@Table(name = "admins")  // Explicit table name for clarity
 public class Admin extends User {
 
     public Admin() {

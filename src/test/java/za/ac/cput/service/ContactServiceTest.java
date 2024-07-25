@@ -26,9 +26,9 @@ class ContactServiceTest {
         Address address2 = AddressFactory.buildAddress("15 Upper Road", "Gardens", "Cape Town", "8001");
         Address address3 = AddressFactory.buildAddress("22 Main Street", "Claremont", "Cape Town", "7700");
 
-        contact1 = ContactFactory.createContact("083456789", "leago@gmail.com", address1);
-        contact2 = ContactFactory.createContact("076654321", "rachel@gmail.com", address2);
-        contact3 = ContactFactory.createContact("065666777", "john@gmail.com", address3);
+        contact1 = ContactFactory.createContact("083456789", "leao@gmail.com", address1);
+        contact2 = ContactFactory.createContact("076654321", "rahel@gmail.com", address2);
+        contact3 = ContactFactory.createContact("065666777", "jon@gmail.com", address3);
     }
 
     @Test
