@@ -18,7 +18,6 @@ public class PropertyListingApplication extends Application {
 
     @OneToOne(cascade = CascadeType.ALL)
     private Landlord landlord;
-
     private double rentalPrice;
     private String location;
 

@@ -59,25 +59,22 @@ class PropertyListingApplicationFactoryTest {
 
     property1 =new Property.Builder().setPropertyID("132")
             .setPropertyName("1st Village").setAddress(address1).setLandlord(landlordA)
-            .setPictures(photoList).setNumberOfRooms(3).build();
+            .setPictures(photoList).setNumberOfRooms(3).setPrice(2989.99).build();
 
     property2 = new Property.Builder().setPropertyID("133")
             .setPropertyName("More Takers").setAddress(address1).setLandlord(landlordB)
-            .setPictures(photoList).setNumberOfRooms(2).build();
+            .setPictures(photoList).setNumberOfRooms(2).setPrice(3455.90).build();
 
     appliedDate = LocalDate.of(2019, 6, 4);
     appliedDate2 = LocalDate.of(2022, 1, 29);
 
+    propertyApp1 = PropertyListingApplicationFactory.propertyApp(appliedDate
+            , Application.Status.Accepted.toString(), property1, landlordA, property1.getPrice()
+            , property1.getAddress().getSuburb(), address1);
 
-    propertyApp1 = new PropertyListingApplication.Builder()
-            .setDate(appliedDate).setStatus(Application.Status.Accepted)
-            .setProperty(property1).setLandlord(landlordA).setRentalPrice(2989.99)
-            .setLocation(property1.getAddress().getSuburb()).setAddress(address1).build();
-
-    propertyApp2 = new PropertyListingApplication.Builder()
-            .setDate(appliedDate2).setStatus(Application.Status.Pending)
-            .setProperty(property2).setLandlord(landlordB).setRentalPrice(2989.99)
-            .setLocation(property2.getAddress().getSuburb()).setAddress(address2).build();
+    propertyApp2 = PropertyListingApplicationFactory.propertyApp(appliedDate2
+            , Application.Status.Pending.toString(), property2, landlordB, property2.getPrice()
+            , property2.getAddress().getSuburb(), address2);
 
     propertyApp3 = propertyApp1;
     }

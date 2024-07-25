@@ -19,7 +19,6 @@ public class StudentApplication extends Application {
 
     @OneToOne(cascade = CascadeType.ALL)
     private Property property;
-
     private double price;
 
     public StudentApplication(){}

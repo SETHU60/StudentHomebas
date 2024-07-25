@@ -1,4 +1,4 @@
-package za.ac.cput.service;
+package za.ac.cput.service.studentApplication;
 /*
  * Author : Sabelo Kama (219149364)
  * Date : 24 July 2024

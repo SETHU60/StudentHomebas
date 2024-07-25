@@ -32,5 +32,4 @@ public class StudentApplicationFactory {
                 .setPrice(price)
                 .build();
     }
-
 }

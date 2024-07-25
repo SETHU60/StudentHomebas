@@ -11,8 +11,7 @@ import java.time.LocalDate;
  * Date : 22 April 2024
  * */
 public class PropertyListingApplicationFactory {
-
-    public static PropertyListingApplication propertyApp(String appNo, LocalDate date,
+    public static PropertyListingApplication propertyApp(LocalDate date,
                                                          String status, Property property,
                                                          Landlord landlord, double rentalPrice,
                                                          String location, Address address){

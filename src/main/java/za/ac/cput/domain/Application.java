@@ -17,7 +17,6 @@ public abstract class Application {
     public enum Status{
         Pending, Accepted, Rejected;
     }
-
     @Id
     @GeneratedValue
     protected long appNo;

@@ -74,11 +74,11 @@ class StudentApplicationFactoryTest {
 
     property1 =new Property.Builder().setPropertyID("132")
                 .setPropertyName("1st Village").setAddress(address1).setLandlord(landlordA)
-                .setPictures(photoList).setNumberOfRooms(3).build();
+                .setPictures(photoList).setNumberOfRooms(3).setPrice(3750.50).build();
 
     property2 = new Property.Builder().setPropertyID("133")
                 .setPropertyName("More Takers").setAddress(address1).setLandlord(landlordB)
-                .setPictures(photoList).setNumberOfRooms(2).build();
+                .setPictures(photoList).setNumberOfRooms(2).setPrice(4000.50).build();
 
     student1 = new Student.StudentBuilder().setUserId(377L).setName(studentName1)
                 .setGender("Male").setDateOfBirth(LocalDate.of(2000,11,4))
@@ -89,16 +89,11 @@ class StudentApplicationFactoryTest {
                 .setDocuments(photoList).setPassword("kgtugkjd123!").setContact(contact2)
                 .setAcademicDetails(records2).build();
 
-    studentApplication1 = new StudentApplication
-            .Builder().setDate(LocalDate.now())
-            .setStatus(Application.Status.Pending).setStudent(student1)
-            .setProperty(property1).setPrice(3750.50).build();
+    studentApplication1 = StudentApplicationFactory.studentApplication(LocalDate.now(),
+            Application.Status.Pending.toString(), student1, property1, property1.getPrice());
 
-    studentApplication2 = new StudentApplication
-            .Builder().setDate(dateApplied)
-            .setStatus(Application.Status.Accepted).setStudent(student2)
-            .setProperty(property2).setPrice(4000.50).build();
-
+    studentApplication2 = StudentApplicationFactory.studentApplication(dateApplied,
+            Application.Status.Accepted.toString(), student2, property2, property2.getPrice());
 
     studentApplication3 = studentApplication1;
     }
