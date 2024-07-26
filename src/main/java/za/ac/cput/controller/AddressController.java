@@ -19,9 +19,10 @@ public class AddressController {
         return addressService.save(address);
     }
 
-    @GetMapping("/read/{AddressId}")
-    public Address read(@PathVariable AddressId AddressId) {
-        return addressService.read(AddressId);
+    @GetMapping("/read/{street}/{postalCode}")
+    public Address read(@PathVariable String street, @PathVariable String postalCode) {
+        AddressId addressId = new AddressId(street,postalCode);
+        return addressService.read(addressId);
     }
 
     @PostMapping("/update")
