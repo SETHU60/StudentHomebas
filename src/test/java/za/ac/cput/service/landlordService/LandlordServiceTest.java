@@ -40,11 +40,11 @@ class LandlordServiceTest {
 
         Address address1= AddressFactory.buildAddress("9 Lower Street", "Mowbray", "Cape Town", "5100");
         Contact contact = ContactFactory.createContact("0786549009", "mikeseptember@gmail.com", address1);
-        landlord1 = LandlordFactory.buildLandlordWithMiddleName(88987L, "Mike", "Matic", "September", "Male", LocalDate.of(1986,8,13), 3, "Mike130886",contact,documentList);
+        landlord1 = LandlordFactory.buildLandlordWithMiddleName(1L, "Mike", "Matic", "September", "Male", LocalDate.of(1986,8,13), 3, "Mike130886",contact,documentList);
 
         Address address2 = AddressFactory.buildAddress("19 Lower Street", "Mowbray", "Cape Town", "5100");
         Contact contact2 = ContactFactory.createContact("0786548790", "nickseptember@gmail.com", address2);
-        landlord2 = LandlordFactory.buildLandlordWithMiddleName(88987L, "Nick", "Leon", "September", "Male", LocalDate.of(1986,8,14), 2, "Nick130886",contact2,documentList2);
+        landlord2 = LandlordFactory.buildLandlordWithMiddleName(2L, "Nick", "Leon", "September", "Male", LocalDate.of(1986,8,14), 2, "Nick130886",contact2,documentList2);
 
 
     }
@@ -61,8 +61,6 @@ class LandlordServiceTest {
     @Order(2)
     void read() {
         Landlord readLandlord = landlordService.read(landlord1.getUserId());
-        System.out.println(landlord1.getUserId());
-        System.out.println(readLandlord);
         assertNotNull(readLandlord);
         System.out.println(readLandlord);
     }
