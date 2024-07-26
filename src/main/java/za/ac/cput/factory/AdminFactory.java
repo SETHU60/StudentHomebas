@@ -3,7 +3,6 @@ package za.ac.cput.factory;
 import za.ac.cput.domain.Admin;
 import za.ac.cput.domain.Contact;
 import za.ac.cput.domain.Name;
-import za.ac.cput.util.AdminHelper;
 import za.ac.cput.util.Helper;
 
 import java.time.LocalDate;
@@ -17,7 +16,7 @@ public class AdminFactory {
                 || Helper.isNullOrEmpty(gender)
                 || Helper.isInvalidDate(dateOfBirth)
                 || Helper.isNullOrEmpty(password)
-                || Helper.isObjectNull((contact))) {
+                || Helper.isObjectNull(contact)) {
             return null;
         }
 
@@ -36,14 +35,15 @@ public class AdminFactory {
                 .setContact(contact)
                 .build();
     }
-    public static Admin buildAdmin1(long adminId, String firstName, String lastName, String gender,
+
+    public static Admin buildAdmin(long adminId, String firstName, String lastName, String gender,
                                    LocalDate dateOfBirth, String password, Contact contact) {
-        if (adminId <= 0 || AdminHelper.isNullOrEmpty(firstName)
-                || AdminHelper.isNullOrEmpty(lastName)
-                || AdminHelper.isNullOrEmpty(gender)
-                || AdminHelper.isValidDate(dateOfBirth)
-                || AdminHelper.isNullOrEmpty(password)
-                || AdminHelper.isContactNull(contact)) {
+        if (adminId <= 0 || Helper.isNullOrEmpty(firstName)
+                || Helper.isNullOrEmpty(lastName)
+                || Helper.isNullOrEmpty(gender)
+                || Helper.isInvalidDate(dateOfBirth)
+                || Helper.isNullOrEmpty(password)
+                || Helper.isObjectNull(contact)) {
             return null;
         }
 
@@ -61,5 +61,4 @@ public class AdminFactory {
                 .setContact(contact)
                 .build();
     }
-
 }
