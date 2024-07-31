@@ -75,7 +75,7 @@ public class Account {
                 Double.compare(account.balance, balance) == 0 &&
                 Objects.equals(accountType, account.accountType) &&
                 Objects.equals(paymentInfo, account.paymentInfo) &&
-                Objects.equals(paymentDueDate, account.paymentDueDate) &&
+                Objects.equals(paymentDueDate, account.paymentDueDate)&&
                 Objects.equals(paymentStatus, account.paymentStatus) &&
                 Objects.equals(accountStatus, account.accountStatus) &&
                 Objects.equals(user, account.user);
