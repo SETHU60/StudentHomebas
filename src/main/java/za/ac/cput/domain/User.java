@@ -97,7 +97,16 @@ public  class User {
         private String password;
         private  Contact contact;
 
-        public UserBuilder(){}
+        public UserBuilder copy(User user){
+          this.userId = user.getUserId();
+          this.name = user.getName();
+          this.gender = user.getGender();
+          this.dateOfBirth = user.getDateOfBirth();
+          this.password = user.getPassword();
+          this.contact = user.getContact();
+          return this;
+
+        }
 
 
         public UserBuilder setUserId(Long userId) {

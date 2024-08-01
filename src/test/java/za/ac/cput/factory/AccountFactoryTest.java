@@ -35,13 +35,13 @@ public class AccountFactoryTest {
                 .setContact(contact)
                 .build();
 
-        account1 = AccountFactory.buildAccount(1, "Checking", "VISA", 1000.00,
+        account1 = AccountFactory.buildAccount(12345L, "Checking", "VISA", 1000.00,
                 LocalDate.of(2024, 7, 1), "Pending", "Active", user);
 
-        account2 = AccountFactory.buildAccount(2, "Savings", "MASTERCARD", 2000.00,
+        account2 = AccountFactory.buildAccount(26789L, "Savings", "MASTERCARD", 2000.00,
                 LocalDate.of(2023, 7, 1), "Paid", "Inactive", user);
 
-        account3 = AccountFactory.buildAccount(3, "Checking", "VISA", -500.00,
+        account3 = AccountFactory.buildAccount(30987L, "Checking", "VISA", -500.00,
                 LocalDate.of(2024, 7, 1), "Pending", "Active", user);
     }
 

@@ -8,7 +8,7 @@ import java.util.Objects;
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int accountId;
+    private Long accountId;
     private String accountType;
     private String paymentInfo;
     private double balance;
@@ -34,7 +34,7 @@ public class Account {
         this.user = builder.user;
     }
 
-    public int getAccountId() {
+    public Long getAccountId() {
         return accountId;
     }
 
@@ -101,7 +101,7 @@ public class Account {
     }
 
     public static class AccountBuilder {
-        private int accountId;
+        private Long accountId;
         private String accountType;
         private String paymentInfo;
         private double balance;
@@ -110,7 +110,19 @@ public class Account {
         private String accountStatus;
         private User user;
 
-        public AccountBuilder setAccountId(int accountId) {
+        public AccountBuilder copy(Account account) {
+            this.accountId = account.getAccountId();
+            this.accountType = account.getAccountType();
+            this.paymentInfo = account.getPaymentInfo();
+            this.balance = account.getBalance();
+            this.paymentDueDate = account.getPaymentDueDate();
+            this.paymentStatus = account.getPaymentStatus();
+            this.accountStatus = account.getAccountStatus();
+            this.user = account.getUser();
+            return this;
+        }
+
+        public AccountBuilder setAccountId(Long accountId) {
             this.accountId = accountId;
             return this;
         }
