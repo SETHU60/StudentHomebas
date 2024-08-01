@@ -18,7 +18,6 @@ public class PropertyListingApplication extends Application {
 
     @OneToOne(cascade = CascadeType.ALL)
     private Landlord landlord;
-
     private double rentalPrice;
     private String location;
 
@@ -28,7 +27,6 @@ public class PropertyListingApplication extends Application {
     public PropertyListingApplication(){}
 
     public PropertyListingApplication(Builder builder){
-        this.appNo = builder.appNo;
         this.date = builder.date;
         this.status = builder.status;
         this.property = builder.property;
@@ -87,7 +85,6 @@ public class PropertyListingApplication extends Application {
     }
 
     public static class Builder{
-        private long appNo;
         private LocalDate date;
         private Status status;
         private Property property;
@@ -95,11 +92,6 @@ public class PropertyListingApplication extends Application {
         private double rentalPrice;
         private String location;
         private Address address;
-
-        public Builder setAppNo(long appNo) {
-            this.appNo = appNo;
-            return this;
-        }
 
         public Builder setDate(LocalDate date) {
             this.date = date;
@@ -137,7 +129,6 @@ public class PropertyListingApplication extends Application {
         }
 
         public Builder copy (PropertyListingApplication propertyApp){
-            this.appNo = propertyApp.appNo;
             this.date = propertyApp.date;
             this.status = propertyApp.status;
             this.property = propertyApp.property;

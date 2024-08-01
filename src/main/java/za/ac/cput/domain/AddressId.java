@@ -37,10 +37,7 @@ public class AddressId implements Serializable {
 
     @Override
     public String toString() {
-        return "AddressId{" +
-                "street='" + street + '\'' +
-                ", postalCode='" + postalCode + '\'' +
-                '}';
+        return street + postalCode;
     }
 
 }

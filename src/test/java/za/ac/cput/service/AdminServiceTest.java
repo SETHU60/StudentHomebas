@@ -19,24 +19,32 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@Transactional
-@Rollback
 class AdminServiceTest {
+
     @Autowired
     private AdminService adminService;
     private Admin admin1;
     private Admin admin2;
+    private Admin admin3;
 
     @BeforeEach
     void setUp() {
-        Address address = AddressFactory.buildAddress("9 Lower Street", "Mowbray", "Cape Town", "5100");
-        Contact contact1 = ContactFactory.createContact("123456789", "keitudimpe@gmail.com", address);
-        Contact contact2 = ContactFactory.createContact("0879873342", "racheldimpe@example.com", address);
+        Address address1 = AddressFactory.buildAddress("9 Lower Street", "Mowbray", "Cape Town", "5100");
+        Address address2 = AddressFactory.buildAddress("15 Upper Road", "Gardens", "Cape Town", "8001");
+        Address address3 = AddressFactory.buildAddress("22 Main Street", "Claremont", "Cape Town", "7700");
 
-        admin1 = AdminFactory.buildAdmin(567, "Boitumelo", "Michael", "Masemola",
-                "Female", LocalDate.of(1990, 5, 15), "password123", contact1);
-        admin2 = AdminFactory.buildAdmin(56867, "Leago", "Tidi", "Modise",
-                "Female", LocalDate.of(1990, 5, 15), "password123", contact2);
+        Contact contact1 = ContactFactory.createContact("083456789", "leagoM@gmail.com", address1);
+        Contact contact2 = ContactFactory.createContact("076654321", "rachelD@gmail.com", address2);
+        Contact contact3 = ContactFactory.createContact("065666777", "johnJ@gmail.com", address3);
+
+        admin1 = AdminFactory.buildAdmin(1, "Leago", "Michael", "Modise",
+                "Female", LocalDate.of(1990, 5, 15), "leagod123", contact1);
+
+        admin2 = AdminFactory.buildAdmin(2, "Rachel", "Tidi", "Moloi", "Female",
+                LocalDate.of(1995, 12, 5), "femeo156", contact2);
+
+        admin3 = AdminFactory.buildAdmin(3, "John", "Bonele", "Mona", "Male",
+                LocalDate.of(1982, 2, 13), "Mona@1982", contact3);
     }
 
     @Test
@@ -44,20 +52,22 @@ class AdminServiceTest {
     void save() {
         Admin saved1 = adminService.save(admin1);
         Admin saved2 = adminService.save(admin2);
+        Admin saved3 = adminService.save(admin2);
         assertNotNull(saved1);
         assertNotNull(saved2);
+        assertNotNull(saved3);
         System.out.println("Saved admin: " + saved1);
         System.out.println("Saved admin: " + saved2);
+        System.out.println("Saved admin: " + saved3);
     }
 
     @Test
     @Order(2)
     void read() {
-        Admin saved1 = adminService.save(admin1);
-        Admin saved2 = adminService.save(admin2);
 
-        Admin read1 = adminService.read(saved1.getUserId());
-        Admin read2 = adminService.read(saved2.getUserId());
+        Admin read1 = adminService.read(admin1.getUserId());
+        Admin read2 = adminService.read(admin2.getUserId());
+        System.out.println(read1);
         assertNotNull(read1);
         assertNotNull(read2);
         System.out.println("Read admin: " + read1);

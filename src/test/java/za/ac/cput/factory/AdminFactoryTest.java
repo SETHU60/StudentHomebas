@@ -19,16 +19,22 @@ class AdminFactoryTest {
 
     @BeforeEach
     void setUp() {
-        Address address = AddressFactory.buildAddress("9 Lower Street", "Mowbray", "Cape Town", "5100");
-        Contact contact = ContactFactory.createContact("123456789", "leago@example.com", address);
+        Address address1 = AddressFactory.buildAddress("9 Lower Street", "Mowbray", "Cape Town", "5100");
+        Address address2 = AddressFactory.buildAddress("15 Upper Road", "Gardens", "Cape Town", "8001");
+        Address address3 = AddressFactory.buildAddress("22 Main Street", "Claremont", "Cape Town", "7700");
 
-        admin1 = AdminFactory.buildAdmin(567, "Boitumelo", "Michael", "Modise",
-                "Female", LocalDate.of(1990, 5, 15), "password123", contact);
+        Contact contact1 = ContactFactory.createContact("083456789", "leago@gmail.com", address1);
+        Contact contact2 = ContactFactory.createContact("076654321", "rachel@gmail.com", address2);
+        Contact contact3 = ContactFactory.createContact("065666777", "john@gmail.com", address3);
+
+        admin1 = AdminFactory.buildAdmin(567, "Leago", "Michael", "Modise",
+                "Female", LocalDate.of(1990, 5, 15), "leagod123", contact1);
 
         admin2 = AdminFactory.buildAdmin(6578, "", "", "Moloi", "Female",
-                LocalDate.of(1995, 12, 5), "password456", contact);
-        admin3 = AdminFactory.buildAdmin1(567, "Boitumelo",  "Modise",
-                "Female", LocalDate.of(1990, 5, 15), "password123", contact);
+                LocalDate.of(1995, 12, 5), "femeo156", contact2);
+
+        admin3 = AdminFactory.buildAdmin(3664, "John", "Bonele", "Mona", "Male",
+                LocalDate.of(1982, 2, 13), "Mona@1982", contact3);
 
 
         admin4 = admin1;
