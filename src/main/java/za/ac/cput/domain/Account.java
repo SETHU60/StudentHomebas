@@ -110,6 +110,8 @@ public class Account {
         private String accountStatus;
         private User user;
 
+
+
         public AccountBuilder copy(Account account) {
             this.accountId = account.getAccountId();
             this.accountType = account.getAccountType();

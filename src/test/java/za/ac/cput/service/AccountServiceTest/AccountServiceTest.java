@@ -25,6 +25,7 @@ public class AccountServiceTest {
     private Account account1;
     private Account account2;
     private Account account3;
+    //
 
     @BeforeEach
     void setUp() {
