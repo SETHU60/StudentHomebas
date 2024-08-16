@@ -82,7 +82,7 @@
 </template>
 
 <script>
-import PropertyService from '@/service/PropertyService';
+import PropertyService from '@/services/PropertyService';
 
 export default {
   name: 'RegisterProperty',
