@@ -23,31 +23,36 @@
     </header>
 
     <div class="d-flex">
-      <aside class="text-white p-4 sidebar" style="width: 250px;">
+      <aside class="text-white p-4 sidebar">
         <ul class="nav flex-column">
           <li class="nav-item mb-3">
             <router-link class="nav-link text-white" to="/admin-dashboard" exact-active-class="active">
-              <i class="bi bi-grid"></i> Dashboard
+              <i class="fas fa-tachometer-alt"></i> Dashboard
             </router-link>
           </li>
           <li class="nav-item mb-3">
-            <router-link class="nav-link text-white" to="/my-properties" exact-active-class="active">
-              <i class="bi bi-house"></i> My Properties
+            <router-link class="nav-link text-white" to="/students" exact-active-class="active">
+              <i class="fas fa-user-graduate"></i> Student details
             </router-link>
           </li>
           <li class="nav-item mb-3">
-            <router-link class="nav-link text-white" to="/register-property" exact-active-class="active">
-              <i class="bi bi-plus-circle"></i> Register Property
+            <router-link class="nav-link text-white" to="/properties" exact-active-class="active">
+              <i class="fas fa-building"></i> Property details
             </router-link>
           </li>
           <li class="nav-item mb-3">
-            <router-link class="nav-link text-white" to="/student-details" exact-active-class="active">
-              <i class="bi bi-people"></i> Student Details
+            <router-link class="nav-link text-white" to="/landlords" exact-active-class="active">
+              <i class="fas fa-user-tie"></i> Landlord Details
+            </router-link>
+          </li>
+          <li class="nav-item mb-3">
+            <router-link class="nav-link text-white" to="/communication" exact-active-class="active">
+              <i class="fas fa-comments"></i> Communication
             </router-link>
           </li>
         </ul>
       </aside>
-      <main class="content p-4" style="flex: 1;" >
+      <main class="content p-4" style="flex: 1;">
         <router-view></router-view>
       </main>
     </div>
@@ -61,12 +66,20 @@ export default {
 </script>
 
 <style scoped>
+.app-background {
+  background-color: #F0F0F0; /* Light grey background for the whole app */
+  background-image: url('@/assets/bedroom.png');
+  min-height: 100vh;
+}
 
+.header {
+  background-color: #f8f9fa;
+}
 
 .sidebar {
-  width: 250px;
+  background-color: #343a40; /* Dark background for sidebar */
   background-image: url('@/assets/bedroom.png');
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   min-height: 100vh;
@@ -80,30 +93,32 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.3); /* Adjust the opacity here */
+  background-color: rgba(0, 0, 0, 0.3); /* Overlay color */
   z-index: 1;
 }
 
-/* Ensure that the content within the sidebar is above the overlay */
 .sidebar > * {
   position: relative;
   z-index: 2;
 }
 
-
 .nav-link {
-  background-color: #127670; /* Default background color */
+  background-color: #127670;
   padding: 12px 15px;
   border-radius: 4px;
   transition: background-color 0.3s ease;
 }
 
 .nav-link:hover {
-  background-color: #1F2323; /* Hover background color */
+  background-color: #1F2323;
 }
 
 .nav-link.active {
-  background-color: #1F2323 !important; /* Active background color */
+  background-color: #1F2323 !important;
+}
+
+.nav-link i {
+  margin-right: 8px;
 }
 
 .content {
@@ -131,5 +146,4 @@ export default {
     align-items: flex-start;
   }
 }
-
 </style>
