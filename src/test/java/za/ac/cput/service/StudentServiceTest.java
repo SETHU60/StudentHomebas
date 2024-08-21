@@ -108,7 +108,7 @@ class StudentServiceTest {
     @Order(2)
     void read() {
 
-        Student studentRead=studentService.read(2L);
+        Student studentRead=studentService.read(student2.getUserId());
         assertNotNull(studentRead);
         System.out.println( studentRead);
     }
@@ -122,9 +122,22 @@ class StudentServiceTest {
         assertNotNull(studentUpdated);
         System.out.println(studentUpdated);
     }
-
     @Test
     @Order(4)
+    void authentication() {
+        Student authenticatedStudent1 = studentService.authenticationByEmail("mphumzimbula@gmail.com", "20Mphmbu16!");
+        assertNotNull(authenticatedStudent1);
+        assertEquals(student1.getUserId(), authenticatedStudent1.getUserId());
+        System.out.println("Authenticated: " + authenticatedStudent1);
+
+        Student authenticatedStudent2 = studentService.authenticationByEmail("kaileymansoon@gmail.com", "Mpu@2022!!");
+        assertNotNull(authenticatedStudent1);
+        assertEquals(student1.getUserId(), authenticatedStudent1.getUserId());
+        System.out.println("Authenticated: " + authenticatedStudent1);
+    }
+
+    @Test
+    @Order(5)
     void deleteById() {
         boolean isDeleted=studentService.deleteById(3L);
         assertTrue(isDeleted);
@@ -132,10 +145,11 @@ class StudentServiceTest {
     }
 
     @Test
-    @Order(5)
+    @Order(6)
     void getall() {
         List<Student>studentList=studentService.getall();
         assertNotNull(studentList);
         System.out.println(studentList);
     }
+
 }
