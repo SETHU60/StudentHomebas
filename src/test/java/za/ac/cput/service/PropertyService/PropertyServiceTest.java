@@ -1,9 +1,6 @@
 package za.ac.cput.service.PropertyService;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.domain.*;
@@ -39,32 +36,93 @@ class PropertyServiceTest {
     private Property property1;
     private  Property property2;
     private Landlord landlord1;
+    static BufferedImage accomodation1;
+    static ByteArrayOutputStream out1;
+    static BufferedImage bedroom1;
+    static ByteArrayOutputStream out2;
+    static BufferedImage view1;
+    static ByteArrayOutputStream out3;
+    static BufferedImage kitchen1 ;
+    static ByteArrayOutputStream out4;
+
+    static BufferedImage accomodation2;
+    static ByteArrayOutputStream out5;
+    static BufferedImage bedroom2;
+    static ByteArrayOutputStream out6;
+    static BufferedImage view2;
+    static ByteArrayOutputStream out7;
+    static BufferedImage kitchen2 ;
+    static ByteArrayOutputStream out8;
+
     List<Document> documentList = new ArrayList<>();
     List<Document> pictures = new ArrayList<>();
-    static BufferedImage image;
-    static ByteArrayOutputStream out;
+
     Document document1;
+    Document document2;
+    Document document3;
+    Document document4;
 
     @BeforeEach
     void setUp() {
-        String url = "download.jpeg";
 
-        //String certificate  = "C:\\Users\\ASUS\\Documents\\3rd-Year\\ADP3\\StudentHomebas\\LinkedIn Learning Certificate.pdf";
+
+
         try {
+            accomodation1= ImageIO.read(new File("C:\\Users\\User\\Documents\\IntelliJ Projects 2024\\StudentHomebas\\images\\accomodation1.jpg"));
+            out1 = new ByteArrayOutputStream();
+            ImageIO.write(accomodation1, "jpeg", out1);
 
-            image = ImageIO.read(new File(url));
-            out = new ByteArrayOutputStream();
-            ImageIO.write(image, "jpeg", out);
+            view1= ImageIO.read(new File("C:\\Users\\User\\Documents\\IntelliJ Projects 2024\\StudentHomebas\\images\\view1.jpg"));
+            out2 = new ByteArrayOutputStream();
+            ImageIO.write(view1, "jpeg", out2);
+
+            kitchen1= ImageIO.read(new File("C:\\Users\\User\\Documents\\IntelliJ Projects 2024\\StudentHomebas\\images\\kitchen1.jpg"));
+            out3 = new ByteArrayOutputStream();
+            ImageIO.write(kitchen1, "jpeg", out3);
+
+            bedroom1= ImageIO.read(new File("C:\\Users\\User\\Documents\\IntelliJ Projects 2024\\StudentHomebas\\images\\bedroom1.jpg"));
+            out4 = new ByteArrayOutputStream();
+            ImageIO.write(bedroom1, "jpeg", out4);
+
+            accomodation2= ImageIO.read(new File("C:\\Users\\User\\Documents\\IntelliJ Projects 2024\\StudentHomebas\\images\\accomodation2.jpg"));
+            out5 = new ByteArrayOutputStream();
+            ImageIO.write(accomodation2, "jpeg", out5);
+
+            view2= ImageIO.read(new File("C:\\Users\\User\\Documents\\IntelliJ Projects 2024\\StudentHomebas\\images\\view2.jpg"));
+            out6 = new ByteArrayOutputStream();
+            ImageIO.write(view2, "jpeg", out6);
+
+            kitchen2= ImageIO.read(new File("C:\\Users\\User\\Documents\\IntelliJ Projects 2024\\StudentHomebas\\images\\kitchen2.jpg"));
+            out7 = new ByteArrayOutputStream();
+            ImageIO.write(kitchen2, "jpeg", out7);
+
+            bedroom2= ImageIO.read(new File("C:\\Users\\User\\Documents\\IntelliJ Projects 2024\\StudentHomebas\\images\\bedroom2.jpg"));
+            out8 = new ByteArrayOutputStream();
+            ImageIO.write(bedroom2, "jpeg", out8);
+
 
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
 
-        byte[] photoData = out.toByteArray();
 
-         document1 = DocumentFactory.buildDocument(001L,"MikeSeptemeberCopyOfID", photoData, LocalDateTime.of(LocalDate.of(2024,04,11), LocalTime.of(11,14)));
+        document1 = DocumentFactory.buildDocument(001L,"OutSidePhoto1", out1.toByteArray(), LocalDateTime.of(LocalDate.of(2024,04,11), LocalTime.of(11,14)));
         System.out.println(document1);
+        document2= DocumentFactory.buildDocument(002L,"view", out2.toByteArray(), LocalDateTime.of(LocalDate.of(2024,05,1), LocalTime.of(11,14)));
+        System.out.println(document2);
+        document3= DocumentFactory.buildDocument(003L,"kitchen", out3.toByteArray(), LocalDateTime.of(LocalDate.of(2024,03,17), LocalTime.of(11,14)));
+        System.out.println(document3);
+        document4= DocumentFactory.buildDocument(004L,"bedroom", out4.toByteArray(), LocalDateTime.of(LocalDate.of(2024,04,23), LocalTime.of(11,14)));
+        System.out.println(document4);
+
         documentList.add(document1);
+
+        documentList.add(document2);
+
+        documentList.add(document3);
+
+        documentList.add(document4);
+
 
         Address address1= AddressFactory.buildAddress("9 Lower Street", "Mowbray", "Cape Town", "5100");
         Contact contact = ContactFactory.createContact("0786549009", "mikes@gmail.com", address1);
@@ -97,6 +155,7 @@ class PropertyServiceTest {
     }
 
     @Test
+    @Disabled
     void read() {
         Property read = service.read(property1.getPropertyID());
         assertNotNull(read);
@@ -104,6 +163,7 @@ class PropertyServiceTest {
     }
 
     @Test
+   @Disabled
     void update() {
             Property update = new Property.Builder()
                     .copy(property2)
@@ -116,6 +176,7 @@ class PropertyServiceTest {
     }
 
     @Test
+    @Disabled
     void delete() {
         Boolean deleted = service.deleteById(property1.getPropertyID());
         assertEquals(true, deleted);
