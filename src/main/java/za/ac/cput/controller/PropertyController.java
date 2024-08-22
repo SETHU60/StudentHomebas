@@ -20,7 +20,7 @@ public class PropertyController {
     }
 
     @GetMapping("/read/{id}")
-    public ResponseEntity read(@PathVariable String id) {
+    public ResponseEntity read(@PathVariable Long id) {
         if (id == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -37,8 +37,8 @@ public class PropertyController {
         return propertyService.update(property);
     }
 
-    @PostMapping("/delete/{id}")
-    public Boolean delete(@PathVariable String id) {
+    @DeleteMapping("/delete/{id}")
+    public Boolean delete(@PathVariable Long id) {
         return propertyService.deleteById(id);
     }
 

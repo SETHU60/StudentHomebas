@@ -1,27 +1,13 @@
 <template>
   <div id="app">
-    <HeaderComponent />
-    <router-view />
-    <FooterComponent />
+      <router-view></router-view>
   </div>
 </template>
 
-<script>
-import HeaderComponent from './components/HeaderComponent.vue';
-import FooterComponent from './components/FooterComponent.vue';
+<script >
 
 export default {
-  components: {
-    HeaderComponent,
-    FooterComponent,
-  },
-};
-</script>
+  name: 'App',
 
-<style>
-/* Add global styles here */
-body {
-  font-family: 'Arial', sans-serif;
 }
-
-</style>
+</script>

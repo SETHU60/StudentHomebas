@@ -43,4 +43,15 @@ public class StudentService implements IStudentService {
     public List<Student> getall() {
         return studentRepository.findAll();
     }
+    public Student authenticationByEmail(String email, String password) {
+        return studentRepository.findByContactEmailAndPassword(email, password);
+    }
+    public Student authenticate(Long id, String password) {
+        Student std = studentRepository.findById(id).orElse(null);
+        if(std != null && password.equals(std.getPassword())) {
+            return std;
+        }
+        return null;
+    }
+
 }
