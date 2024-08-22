@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import RegisterProperty from '../components/RegisterProperty.vue';
-// Import other components here
+import SignupPage from "@/components/LandlordLogin.vue"; // Ensure this path is correct
+import LoginPage from "@/components/LoginPage.vue";
 
 const routes = [
     {
@@ -8,8 +9,16 @@ const routes = [
         name: 'RegisterProperty',
         component: RegisterProperty
     },
-
-    // Define other routes here
+    {
+        path:'/signupPage',
+        name: 'SignupPage',
+        component: SignupPage
+    },
+    {
+        path:'/loginPage',
+        name: 'LoginPage',
+        component: LoginPage
+    }
 ];
 
 const router = createRouter({
