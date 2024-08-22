@@ -43,4 +43,8 @@ public class StudentService implements IStudentService {
     public List<Student> getall() {
         return studentRepository.findAll();
     }
+    public Student authenticationByEmail(String email, String password) {
+        return studentRepository.findByContactEmailAndPassword(email, password);
+    }
+
 }

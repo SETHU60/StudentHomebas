@@ -7,7 +7,7 @@
 </template>
 
 <script >
-import Layout from "@/components/MainLayout.vue";
+import Layout from "@/components/LoginPage.vue";
 
 export default {
   name: 'App',

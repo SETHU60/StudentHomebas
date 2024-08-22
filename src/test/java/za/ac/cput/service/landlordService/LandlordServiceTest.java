@@ -55,6 +55,10 @@ class LandlordServiceTest {
         Landlord savedLandlord = landlordService.save(landlord1);
         assertNotNull(savedLandlord);
         System.out.println(savedLandlord);
+
+        Landlord savedLandlord2 = landlordService.save(landlord2);
+        assertNotNull(savedLandlord2);
+        System.out.println(savedLandlord2);
     }
 
     @Test
