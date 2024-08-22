@@ -55,7 +55,7 @@ class PropertyFactoryTest {
                 "September", "Male", LocalDate.of(1986,8,13), 3,
                 "Mike130886",contact,documentList);
 
-         property1 = PropertyFactory.buildProperty("PR01", "South Point", 10,5000,
+         property1 = PropertyFactory.buildProperty("South Point", 10,5000,
                 "143", "Dorset St", "Woodstock", "Cape Town", landlord1, documentList);
 
 
@@ -73,8 +73,8 @@ class PropertyFactoryTest {
 
     @Test
     void buildAcademicDetailsWithNullValues() {
-        property2 = PropertyFactory.buildProperty("", "South Point", 10,3500,
-                "143", "Dorset St", "Woodstock", "Cape Town", landlord1, documentList);
+        property2 = PropertyFactory.buildProperty( "South Point", 10,3500,
+                 "10 Dorset St", "Woodstock", "Cape Town", "5001", landlord1, documentList);
 
         //Test should pass because object with any null value will return null
         assertNull(property2);
