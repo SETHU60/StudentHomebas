@@ -5,8 +5,8 @@
       <ImageGalleryComponent />
       <div class="details-section">
         <ApartmentDetailsComponent />
+        <InquiryInfoComponent />
       </div>
-      <LandlordInfoComponent />
     </div>
   </div>
 </template>
@@ -15,17 +15,19 @@
 import HeaderComponent2 from '@/components/HeaderComponent2.vue';
 import ImageGalleryComponent from '@/components/ImageGalleryComponent.vue';
 import ApartmentDetailsComponent from '@/components/ApartmentDetailsComponent.vue';
-import LandlordInfoComponent from '@/components/LandLordInfoComponent.vue';
+import InquiryInfoComponent from "@/components/InquiryInfoComponent.vue";
+
 
 
 export default {
   name: "PropertyInfoPage",
   components: {
+
     HeaderComponent2,
     ImageGalleryComponent,
     ApartmentDetailsComponent,
+    InquiryInfoComponent,
 
-    LandlordInfoComponent,
   },
 };
 </script>

@@ -5,10 +5,15 @@ import StudentList from "@/components/StudentList.vue";
 import LandlordList from "@/components/LandlordList.vue";
 import Communication from "@/components/Communication.vue";
 import AdminLayout from "@/components/AdminLayout.vue";
-import LoginPage from "@/components/LoginPage.vue";
+
+import HomePage from "@/views/HomePage.vue";
+import PropertyInfoPage from "@/views/PropertyInfoPage.vue";
 
 const routes = [
-    { path: '/', name: 'LoginPage', component: LoginPage },
+    // { path: '/', name: 'LoginPage', component: LoginPage },
+    { path: '/', name: 'HomePage', component: HomePage },
+    { path: '/propertyInfo', name: 'PropertyInfoPage', component: PropertyInfoPage },
+
     {
         path: '/register-property',
         name: 'RegisterProperty',

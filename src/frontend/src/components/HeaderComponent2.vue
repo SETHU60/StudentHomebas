@@ -1,6 +1,8 @@
 <template>
   <header class="header">
-    <div class="logo">digs.</div>
+    <div class="logo">
+      <router-link to="/"><img src="@/assets/logo.jpg" alt="StudentSpaceSolutions"/></router-link>
+    </div>
     <input type="text" class="search-bar" placeholder="Search by city, suburb or university..." />
     <nav class="nav-links">
       <a href="#">Becoming a landlord</a>

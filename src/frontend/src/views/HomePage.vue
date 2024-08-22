@@ -1,11 +1,11 @@
 <template>
   <div class="home">
-
+<HeaderComponent/>
     <div class="search-section">
       <SearchBar />
     </div>
     <PropertyList />
-
+    <FooterComponent />
   </div>
 </template>
 
@@ -13,13 +13,17 @@
 
 import SearchBar from "@/components/SearchBar.vue";
 import PropertyList from "@/components/PropertyList.vue";
+import HeaderComponent from "@/components/HeaderComponent.vue";
+import FooterComponent from "@/components/FooterComponent.vue";
 
 
 export default {
   name: "HomePage",
   components: {
+    HeaderComponent,
     SearchBar,
     PropertyList,
+    FooterComponent
 
   }
 };

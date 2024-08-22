@@ -16,7 +16,7 @@
         <li><a href="#">FAQ</a></li>
       </ul>
     </nav>
-    <div class="user-profile" ref="userProfile" @click="toggleDropdown">
+    <div class="user-profile" ref="userProfile" @click.stop="toggleDropdown">
       <img src="@/assets/me.jpg" alt="User"/>
       <span>Me</span>
       <div v-if="isDropdownVisible" class="dropdown-menu">
@@ -30,8 +30,6 @@
     </div>
   </header>
 </template>
-
-
 
 <script>
 export default {
@@ -128,8 +126,9 @@ export default {
   border: 1px solid #ddd;
   border-radius: 4px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  width: 300px;
+  width: 400px; /* Adjust width as needed */
   z-index: 1000;
+  display: block; /* For debugging, ensure the dropdown is visible */
 }
 
 .dropdown-menu ul {

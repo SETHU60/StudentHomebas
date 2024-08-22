@@ -5,12 +5,14 @@
     <p class="sub-description">Stylish, Great community & Unique</p>
     <p class="location">Newlands</p>
     <div class="details-icons">
-      <span>🛏️ Room by room leases</span>
-      <span>🛋️ Furnished</span>
-      <span>👥 Max occupants: 244</span>
+
+      <span> <font-awesome-icon icon="wifi"/> Room by room leases</span>
+      <span> <font-awesome-icon icon="couch"/> Furnished</span>
+      <span> <font-awesome-icon icon="restroom"/> Max occupants: 244</span>
     </div>
     <p class="description">
-      Fully furnished, all inclusive co-living suites in Newlands, at upcoming Neighbourgood Newlands! Whether you are seeking a fully furnished accommodation or an all inclusive workspace...
+      Fully furnished, all inclusive co-living suites in Newlands, at upcoming Neighbourgood Newlands! Whether you are
+      seeking a fully furnished accommodation or an all inclusive workspace...
     </p>
     <button class="read-more-btn">Read full description</button>
   </div>
@@ -61,6 +63,7 @@ h2 {
   align-items: center;
   font-size: 14px;
   color: #333;
+  margin-right: 20px;
 }
 
 .description {
