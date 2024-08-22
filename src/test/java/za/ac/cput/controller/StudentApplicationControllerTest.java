@@ -99,11 +99,11 @@ class StudentApplicationControllerTest {
                 .setGender("Female").setPassword("Emily145Tho!!").setDocuments(photoList2)
                 .setContact(contact2).buildLandlord();
 
-        property1 =new Property.Builder().setPropertyID("132")
+        property1 =new Property.Builder()
                 .setPropertyName("1st Village").setAddress(address1).setLandlord(landlordA)
                 .setPictures(photoList1).setNumberOfRooms(3).setPrice(3750.50).build();
 
-        property2 = new Property.Builder().setPropertyID("133")
+        property2 = new Property.Builder()
                 .setPropertyName("More Takers").setAddress(address1).setLandlord(landlordB)
                 .setPictures(photoList2).setNumberOfRooms(2).setPrice(4000.50).build();
 

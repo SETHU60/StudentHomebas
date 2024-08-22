@@ -28,7 +28,7 @@ class PropertyListingApplicationControllerTest {
     @Autowired
     private TestRestTemplate restTemplate;
 
-    String BASE_URL = "http://localhost:8080/StudentHomeBas/PropertylistingApplication";
+    String BASE_URL = "http://localhost:8080/StudentHomeBas/PropertyListingApplication";
 
     PropertyListingApplication propertyApp1, propertyApp2;
     Address address1, address2;
@@ -83,11 +83,11 @@ class PropertyListingApplicationControllerTest {
                 .setGender("Female").setPassword("Emily145Tho!!").setDocuments(photoList2)
                 .setContact(contact2).buildLandlord();
 
-        property1 =new Property.Builder().setPropertyID("132")
+        property1 =new Property.Builder()
                 .setPropertyName("1st Village").setAddress(address1).setLandlord(landlordA)
                 .setPictures(photoList1).setNumberOfRooms(3).setPrice(2989.99).build();
 
-        property2 = new Property.Builder().setPropertyID("133")
+        property2 = new Property.Builder()
                 .setPropertyName("More Takers").setAddress(address1).setLandlord(landlordB)
                 .setPictures(photoList2).setNumberOfRooms(2).setPrice(3455.90).build();
 

@@ -1,9 +1,6 @@
 package za.ac.cput.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 
 import java.util.List;
 import java.util.Objects;
@@ -11,7 +8,8 @@ import java.util.Objects;
 @Entity
 public class Property {
     @Id
-    private String propertyID;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long propertyID;
     private  String propertyName;
     private  int numberOfRooms;
     private double price;
@@ -19,10 +17,10 @@ public class Property {
    @OneToOne
     private Address address;
 
-   @OneToOne
+   @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     private Landlord landlord;
 
-   @OneToMany
+   @OneToMany(mappedBy = "property", fetch = FetchType.EAGER)
     private List<Document> pictures;
 
     protected Property() {
@@ -39,7 +37,7 @@ public class Property {
         this.price= builder.price;
     }
 
-    public String getPropertyID() {
+    public long getPropertyID() {
         return propertyID;
     }
 
@@ -91,7 +89,7 @@ public class Property {
 
     public static class Builder{
 
-        private String propertyID;
+        private long propertyID;
         private  String propertyName;
         private  int numberOfRooms;
         private Address address;
@@ -112,7 +110,7 @@ public class Property {
             return this;
         }
 
-        public Builder setPropertyID(String propertyID){
+        public Builder setPropertyID(long propertyID){
             this.propertyID = propertyID;
             return this;
         }

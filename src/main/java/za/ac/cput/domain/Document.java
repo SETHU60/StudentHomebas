@@ -24,11 +24,17 @@ public class Document {
     @Column(length=10000)
     private byte[] fileContents;
     private LocalDateTime dateTimeUploaded;
+
+    @ManyToOne
+    Property property;
+
+    @ManyToOne
+    Landlord landlord;
+
+
     public Document() {
 
     }
-
-
     private Document(Builder builder){
         this.documentId=builder.documentId;
         this.documentName=builder.documentName;
@@ -72,7 +78,6 @@ public class Document {
         return "Document{" +
                 "documentId=" + documentId +
                 ", documentName='" + documentName + '\'' +
-                ", fileContents=" + Arrays.toString(fileContents) +
                 ", dateTimeUploaded=" + dateTimeUploaded +
                 '}';
     }
