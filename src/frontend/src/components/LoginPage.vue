@@ -59,6 +59,8 @@
 </template>
 
 <script>
+import { useRouter } from 'vue-router';
+
 export default {
   name: "LoginPage",
   data() {
@@ -68,42 +70,71 @@ export default {
       rememberMe: false,
     };
   },
+  setup() {
+    const router = useRouter();
+    return { router };
+  },
+
   methods: {
-    login() {
-      alert('login clicked');
-      alert(this.email);
-      alert(this.password);
-      fetch("api/StudentHomeBas/Student/login/" + this.email+ "/" + this.password, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
+    async login() {
+      const url = 'api/StudentHomeBas/student/login/' + this.email + "/" + this.password;
+
+      try {
+        const response = await fetch(url, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+        });
+
+        if (response.ok) {
+          const data = await response.text(); // Assuming the response is a text message
+          alert("Login successful: " + data);
+          console.log('Login successful:', data);
+          await this.$router.push('/admin-layout');
+          // Handle successful login (e.g., store token, redirect user, etc.)
+        } else {
+          const errorMessage = await response.text();
+          alert("Login failed: " + errorMessage);
+          console.error('Login failed:', errorMessage);
+          // Handle login failure (e.g., show error message to user)
         }
-      })
-          .then((response) => {
-            alert(response.status);
-            if (response.status === 200) {
-              alert(response.text())
-              return response.text(); // Parse the response as text
-            } else {
-              alert('Invalid Email or Password.')
-              throw new Error('Invalid Email or Password.');
-            }
-          })
-          .then((data) => {
-            if (data) {
-              this.loginError = data;
-              alert(data); // Shows 'Login successful!'
-              // Redirect or handle successful login
-            } else {
-              alert("Invalid Email or Password.");
-              this.loginError = 'Invalid Email or Password.';
-            }
-          })
-          .catch((error) => {
-            this.loginError = 'Error during login. Please try again later.';
-            console.error('There was a problem with the fetch operation:', error);
-          });
-    }
+      } catch (error) {
+        alert("Error during login: " + error.message);
+        console.error('Error during login:', error);
+        // Handle network or other errors
+      }
+    },
+    // login() {
+    //   fetch("api/StudentHomeBas/student/login", { // Adjust the URL as needed
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({
+    //       email: this.email,   // Assuming the backend expects 'email'
+    //       password: this.password  // Assuming the backend expects 'password'
+    //     })
+    //   })
+    //       .then((response) => {
+    //         if (response.ok) {
+    //           return response.text(); // Parse the response as text
+    //         } else if (response.status === 403) {
+    //           throw new Error('Invalid Email or Password.' + this.email + this.password);
+    //         } else {
+    //           throw new Error('Error during login.');
+    //         }
+    //       })
+    //       .then((data) => {
+    //         alert(data); // This will display the message from the server
+    //         // Redirect or handle successful login
+    //       })
+    //       .catch((error) => {
+    //         this.loginError = error.message;
+    //         alert(this.loginError); // This will show the error message
+    //         console.error('There was a problem with the fetch operation:', error);
+    //       });
+    // }
   },
 };
 </script>

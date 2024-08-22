@@ -7,12 +7,9 @@
 </template>
 
 <script >
-import Layout from "@/components/LoginPage.vue";
 
 export default {
   name: 'App',
-  components: {
-    Layout
-  }
+
 }
 </script>
