@@ -1,15 +1,15 @@
 <template>
   <div class="home">
-    <!-- Existing content -->
-    <NotLoggedHeaderComponent />
+    <!-- Conditionally render the header based on authentication status -->
+    <component :is="currentHeaderComponent" @authenticated="handleAuthentication"/>
     <div class="search-section">
       <SearchBar />
     </div>
     <PropertyList />
     <FooterComponent />
 
-    <!-- Button to trigger the login form display -->
-    <button @click="showLoginForm" class="login-button">Login</button>
+<!--    &lt;!&ndash; Button to trigger the login form display &ndash;&gt;-->
+<!--    <button @click="showLoginForm" class="login-button">Login</button>-->
 
     <!-- Login form overlay -->
     <div v-if="showLogin" class="login-overlay">
@@ -27,7 +27,8 @@ import NotLoggedHeaderComponent from "@/components/NotLoggedHeaderComponent.vue"
 import SearchBar from "@/components/SearchBar.vue";
 import PropertyList from "@/components/PropertyList.vue";
 import FooterComponent from "@/components/FooterComponent.vue";
-import LoginPage from "@/components/LoginPage.vue"; // Import the LoginPage component
+import LoginPage from "@/components/LoginPage.vue";
+import HeaderComponent from "@/components/HeaderComponent.vue"; // Import the LoginPage component
 
 export default {
   name: "HomePage",
@@ -40,15 +41,26 @@ export default {
   },
   data() {
     return {
-      showLogin: false // Control visibility of the login form
+      showLogin: false,
+      isAuthenticated: false
     };
+  },
+  computed: {
+    currentHeaderComponent() {
+      return this.isAuthenticated ? HeaderComponent : NotLoggedHeaderComponent;
+    }
   },
   methods: {
     showLoginForm() {
       this.showLogin = true;
+    },
+    handleAuthentication() {
+      this.isAuthenticated = true;
+      this.showLogin = false; // Close the login form on successful login
     }
   }
 };
+
 </script>
 
 <style scoped>

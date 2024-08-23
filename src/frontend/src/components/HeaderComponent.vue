@@ -16,7 +16,7 @@
         <li><a href="#">FAQ</a></li>
       </ul>
     </nav>
-    <div class="user-profile" ref="userProfile" @click.stop="toggleDropdown">
+    <div class="user-profile"  @click.stop="toggleDropdown">
       <img src="@/assets/me.jpg" alt="User"/>
       <span>Me</span>
       <div v-if="isDropdownVisible" class="dropdown-menu">

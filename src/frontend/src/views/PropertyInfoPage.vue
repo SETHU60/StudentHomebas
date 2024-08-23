@@ -1,6 +1,6 @@
 <template>
   <div id="property-info-page">
-    <HeaderComponent2 />
+    <PropertyInfoNotLoggedHeader />
     <div class="content">
       <ImageGalleryComponent />
       <div class="details-section">
@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import HeaderComponent2 from '@/components/HeaderComponent2.vue';
+import   PropertyInfoNotLoggedHeader from '@/components/PropertyInfoNotLoggedHeader.vue';
 import ImageGalleryComponent from '@/components/ImageGalleryComponent.vue';
 import ApartmentDetailsComponent from '@/components/ApartmentDetailsComponent.vue';
 import InquiryInfoComponent from "@/components/InquiryInfoComponent.vue";
@@ -23,7 +23,7 @@ export default {
   name: "PropertyInfoPage",
   components: {
 
-    HeaderComponent2,
+    PropertyInfoNotLoggedHeader,
     ImageGalleryComponent,
     ApartmentDetailsComponent,
     InquiryInfoComponent,
