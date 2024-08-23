@@ -30,7 +30,7 @@
 import LoginPage from "@/components/LoginPage.vue";
 
 export default {
-  name: "NotLoggedHeaderComponent",
+  name: "PropertyInfoNotLoggedHeader",
   components: {
     LoginPage
   },
@@ -52,10 +52,10 @@ export default {
       this.loginVisible = false;
       document.removeEventListener('click', this.handleOutsideClick);
     },
-  handleAuthentication() {
-    this.$emit('authenticated');
-    this.hideLogin();
-  },
+    handleAuthentication() {
+      this.$emit('authenticated');
+      this.hideLogin();
+    },
     handleOutsideClick(event) {
       const loginPopupElement = this.$el.querySelector('.login-popup');
       if (loginPopupElement && !loginPopupElement.contains(event.target)) {

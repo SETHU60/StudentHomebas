@@ -74,7 +74,7 @@ export default {
           alert("Login successful: " + data);
           console.log('Login successful:', data);
           this.$emit('authenticated');
-          await this.$router.push('/admin-layout');
+         //await this.$router.push('/admin-layout');
         } else {
           const errorMessage = await response.text();
           alert("Login failed: " + errorMessage);
