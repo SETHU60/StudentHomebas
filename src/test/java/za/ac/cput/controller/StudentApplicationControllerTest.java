@@ -1,3 +1,4 @@
+
 package za.ac.cput.controller;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -158,3 +159,4 @@ class StudentApplicationControllerTest {
         System.out.println(response.getBody());
     }
 }
+

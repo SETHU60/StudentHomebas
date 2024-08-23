@@ -1,3 +1,4 @@
+
 package za.ac.cput.service.PropertyListingApplicationService;
 /*
  * Author : Sabelo Kama (219149364)
@@ -155,3 +156,4 @@ class PropertyListingApplicationServiceTest {
         assertNotNull(allRecords);
     }
 }
+
