@@ -5,23 +5,39 @@
     <p class="sub-description">Stylish, Great community & Unique</p>
     <p class="location">Newlands</p>
     <div class="details-icons">
-
-      <span> <font-awesome-icon icon="wifi"/> Room by room leases</span>
-      <span> <font-awesome-icon icon="couch"/> Furnished</span>
-      <span> <font-awesome-icon icon="restroom"/> Max occupants: 244</span>
+      <span> <font-awesome-icon icon="wifi" /> Room by room leases</span>
+      <span> <font-awesome-icon icon="couch" /> Furnished</span>
+      <span> <font-awesome-icon icon="restroom" /> Max occupants: 244</span>
     </div>
-    <p class="description">
+    <p class="description" :class="{ expanded: isExpanded }">
       Fully furnished, all inclusive co-living suites in Newlands, at upcoming Neighbourgood Newlands! Whether you are
       seeking a fully furnished accommodation or an all inclusive workspace...
+      <span v-if="!isExpanded">...<button @click="toggleDescription" class="read-more-btn">Read more</button></span>
+      <span v-if="isExpanded">
+        <br />This is the additional content that is only shown when 'Read more' is clicked.
+        It includes more details about the apartment, amenities, and other important information.
+        <button @click="toggleDescription" class="read-more-btn">Read less</button>
+      </span>
     </p>
-    <button class="read-more-btn">Read full description</button>
   </div>
 </template>
+
 <script>
 export default {
   name: "ApartmentDetailsComponent",
+  data() {
+    return {
+      isExpanded: false,
+    };
+  },
+  methods: {
+    toggleDescription() {
+      this.isExpanded = !this.isExpanded;
+    },
+  },
 };
 </script>
+
 <style scoped>
 .apartment-details {
   padding: 20px;
@@ -68,6 +84,13 @@ h2 {
 
 .description {
   color: #666;
+  overflow: hidden;
+  max-height: 80px;
+  transition: max-height 0.3s ease;
+}
+
+.description.expanded {
+  max-height: none;
 }
 
 .read-more-btn {
@@ -78,6 +101,7 @@ h2 {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin-top: 10px;
 }
 
 .read-more-btn:hover {

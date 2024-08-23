@@ -8,9 +8,10 @@ import AdminLayout from "@/components/AdminLayout.vue";
 
 import HomePage from "@/views/HomePage.vue";
 import PropertyInfoPage from "@/views/PropertyInfoPage.vue";
+import LoginPage from "@/components/LoginPage.vue";
 
 const routes = [
-    // { path: '/', name: 'LoginPage', component: LoginPage },
+     { path: '/loginPage', name: 'LoginPage', component: LoginPage },
     { path: '/', name: 'HomePage', component: HomePage },
     { path: '/propertyInfo', name: 'PropertyInfoPage', component: PropertyInfoPage },
 
