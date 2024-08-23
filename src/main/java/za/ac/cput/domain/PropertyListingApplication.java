@@ -13,7 +13,7 @@ import java.util.Objects;
 @Entity
 public class PropertyListingApplication extends Application {
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     private Property property;
 
     @ManyToOne(cascade = CascadeType.ALL)

@@ -1,19 +1,8 @@
-package za.ac.cput.controller;
+package za.ac.cput.factory;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import za.ac.cput.domain.*;
-import za.ac.cput.factory.ContactFactory;
-import za.ac.cput.factory.DocumentFactory;
-import za.ac.cput.factory.PropertyListingApplicationFactory;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -22,19 +11,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class PropertyListingApplicationControllerTest {
 
-    @Autowired
-    private TestRestTemplate restTemplate;
+class PropertyListingApplicationFactoryTest {
 
-    String BASE_URL = "http://localhost:8080/StudentHomeBas/PropertyListingApplication";
-
-    PropertyListingApplication propertyApp1, propertyApp2;
+    PropertyListingApplication propertyApp1, propertyApp2, propertyApp3;
     Address address1, address2;
-    byte[] photo1, photo2;
-    Document document1, document2;
-    List<Document> photoList1, photoList2;
+    byte[] photo;
+    Document document1;
+    List<Document> photoList;
     Name landLordName1, landLordName2;
     Contact contact1, contact2;
     Landlord landlordA, landlordB;
@@ -44,28 +28,20 @@ class PropertyListingApplicationControllerTest {
     @BeforeEach
     void setUp() {
 
-        photo1 = new byte[0];
-        photo2 = new byte[0];
-
-        document1 = DocumentFactory.buildDocument(79L
-                ,"ID",photo1
-                , LocalDateTime.of(LocalDate.of(2024,3,24)
+        photo = new byte[0];
+        document1 =DocumentFactory.buildDocument(79L
+                ,"ID",photo
+                , LocalDateTime.of(LocalDate.of(2024,03,24)
                         , LocalTime.of(14,22)));
-        document2 = DocumentFactory.buildDocument(80L
-                ,"Proof of Address",photo2
-                , LocalDateTime.of(LocalDate.of(2023,6,9)
-                        , LocalTime.of(9,47)));
+        photoList = new ArrayList<>();
+        photoList.add(document1);
 
-        photoList1 = new ArrayList<>();
-        photoList1.add(document1);
+        address1 = AddressFactory.buildAddress("47 Lucy Drive","Parow"
+                ,"Cape Town","7490");
 
-        photoList2 = new ArrayList<>();
-        photoList2.add(document2);
+        address2 = AddressFactory.buildAddress("11 Olympia Crescent"
+                ,"Delville Park","George","6529");
 
-        address1 = new Address.AddressBuilder().setStreet("47 Lucy Drive")
-                .setSuburb("Parow").setCity("Cape Town").setPostalCode("7490").buildAddress();
-        address2 = new Address.AddressBuilder().setStreet("11 Olympia Crescent")
-                .setSuburb("Delville Park").setCity("George").setPostalCode("6529").buildAddress();
 
         landLordName1 = new Name.NameBuilder().setFirstName("Mihlai").setLastName("Tukuza").build();
         landLordName2 = new Name.NameBuilder().setFirstName("Emily").setLastName("Thorne").build();
@@ -73,88 +49,56 @@ class PropertyListingApplicationControllerTest {
         contact1 = ContactFactory.createContact("0786549009", "mizot24@gmail.com", address1);
         contact2 = ContactFactory.createContact("0715468926", "emily6410@gmail.com", address2);
 
-        landlordA = new Landlord.LandlordBuilder().setName(landLordName1).setUserId(45673L)
-                .setDateOfBirth(LocalDate.of(1986,8,13)).setNumOfPropertiesOwned(3)
-                .setGender("Male").setPassword("hsfs2637!").setDocuments(photoList1)
-                .setContact(contact1).buildLandlord();
+        landlordA = LandlordFactory.buildLandlord(45673L,"Mihlai"
+                ,"Tukuza", 3, "Male"
+                , LocalDate.of(1986,8,13), "hsfs2637!"
+                ,contact1, photoList);
 
-        landlordB = new Landlord.LandlordBuilder().setName(landLordName2).setUserId(45696L)
-                .setDateOfBirth(LocalDate.of(1994,3,16)).setNumOfPropertiesOwned(5)
-                .setGender("Female").setPassword("Emily145Tho!!").setDocuments(photoList2)
-                .setContact(contact2).buildLandlord();
+        landlordB = LandlordFactory.buildLandlord(45696L,"Emily",
+                "Thorne", 5, "Female"
+                , LocalDate.of(1994,3,16), "Emily145Tho!!"
+                ,contact2, photoList);
 
-        property1 =new Property.Builder()
-                .setPropertyName("1st Village").setAddress(address1).setLandlord(landlordA)
-                .setPictures(photoList1).setNumberOfRooms(3).setPrice(2989.99).build();
+        property1 = PropertyFactory.buildProperty("1st Village", 3, 3750.50
+                , "47 Lucy Drive", "Parow", "Cape Town", "7490", landlordA, photoList);
 
-        property2 = new Property.Builder()
-                .setPropertyName("More Takers").setAddress(address1).setLandlord(landlordB)
-                .setPictures(photoList2).setNumberOfRooms(2).setPrice(3455.90).build();
+        property2 = PropertyFactory.buildProperty("More Takers",2,4000.50
+                ,"11 Olympia Crescent","Delville Park","George","6529",landlordB,photoList);
+
 
         appliedDate = LocalDate.of(2019, 6, 4);
         appliedDate2 = LocalDate.of(2022, 1, 29);
 
         propertyApp1 = PropertyListingApplicationFactory.propertyApp(appliedDate
                 , Application.Status.Accepted.toString(), property1, landlordA, property1.getPrice()
-                , property1.getAddress().getSuburb(), address1);
+                , property1.getAddress().getSuburb());
 
         propertyApp2 = PropertyListingApplicationFactory.propertyApp(appliedDate2
                 , Application.Status.Pending.toString(), property2, landlordB, property2.getPrice()
-                , property2.getAddress().getSuburb(), address2);
+                , property2.getAddress().getSuburb());
+
+        propertyApp3 = propertyApp1;
     }
 
     @Test
-    @Order(1)
-    void save() {
-        String url = BASE_URL + "/save";
-        ResponseEntity <PropertyListingApplication> saveApp1 = restTemplate.postForEntity(url, propertyApp1, PropertyListingApplication.class);
-        ResponseEntity <PropertyListingApplication> saveApp2 = restTemplate.postForEntity(url, propertyApp2, PropertyListingApplication.class);
-        assertNotNull(saveApp1);
-        assertNotNull(saveApp2);
-        System.out.println("Application saved" + saveApp1.getBody());
-        System.out.println("----------------------------------------------------");
-        System.out.println("Application saved" + saveApp2.getBody());
+    void createPropertyListingApplication(){
+        assertNotNull(propertyApp1);
+        System.out.println("Applied Successfully:");
+        System.out.println(propertyApp1);
     }
 
     @Test
-    @Order(2)
-    void read() {
-        String url = BASE_URL + "/read/" + propertyApp1.getAppNo();
-        ResponseEntity <PropertyListingApplication> readApp = restTemplate.getForEntity(url, PropertyListingApplication.class);
-        assertNotNull(readApp);
-        System.out.println("received Application: " + readApp.getBody());
+    void propertyEqualityFailTest(){
+        assertNotEquals(propertyApp3, propertyApp2);
+        System.out.println(propertyApp3);
+        System.out.println("------------------------------");
+        System.out.println(propertyApp2);
     }
 
     @Test
-    @Order(3)
-    void update() {
-        String url = BASE_URL + "/update";
-        PropertyListingApplication statusUpdate = new PropertyListingApplication
-                .Builder().copy(propertyApp2).setStatus(Application.Status.Accepted)
-                .build();
-        ResponseEntity <PropertyListingApplication> update = restTemplate.postForEntity(url, statusUpdate, PropertyListingApplication.class);
-        assertNotNull(update);
-        System.out.println("Application updated: " + update.getBody());
+    void propertyEqualityPassTest(){
+        assertEquals(propertyApp1, propertyApp3);
+        System.out.println("Equality Test Passed");
     }
 
-    @Test
-    @Order(4)
-    void deleteById() {
-        String url = BASE_URL + "/read/" + propertyApp1.getAppNo();
-        restTemplate.delete(url);
-        System.out.println("Application deleted successfully:" + propertyApp1.getAppNo());
-    }
-
-    @Test
-    @Order(5)
-    void getAll() {
-        String url = BASE_URL + "/getAll";
-        HttpHeaders headers = new HttpHeaders();
-        HttpEntity<String> httpEntity = new HttpEntity<>(null, headers);
-
-        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, httpEntity, String.class);
-
-        System.out.println("Received Applications:");
-        System.out.println(response.getBody());
-    }
 }
