@@ -1,61 +1,69 @@
+import axios from 'axios';
+
 class PropertyService {
     constructor() {
-        this.apiUrl = '/api/StudentHomeBas/Property'; // Base URL for the API, assuming you're using a proxy
+        this.apiUrl = '/api/StudentHomeBas/Property';
     }
 
-    // Helper method to handle fetch requests
-    async request(url, options) {
+
+    async deleteProperty(propertyID) {
+        const url = `${this.apiUrl}/delete/${propertyID}`;
         try {
-            const response = await fetch(url, options);
-            if (!response.ok) {
-                throw new Error(`Network response was not ok: ${response.statusText}`);
-            }
-            return options.method === 'DELETE' ? response.text() : response.json();
+            await axios.delete(url);
+            return propertyID;
         } catch (error) {
-            console.error('Fetch error:', error);
+            console.error('Error deleting property:', error);
             throw error;
         }
     }
 
-    // Delete a Property by ID
-    async deleteProperty(propertyID) {
-        const url = `${this.apiUrl}/delete/${propertyID}`;
-        await this.request(url, { method: 'DELETE' });
-        return propertyID; // Return the book ID so the caller can update state
-    }
 
-    // Read a Property by ID
     async readProperty(propertyID) {
         const url = `${this.apiUrl}/read/${propertyID}`;
-        return await this.request(url, { method: 'GET' });
+        try {
+            const response = await axios.get(url);
+            return response.data;
+        } catch (error) {
+            console.error('Error reading property:', error);
+            throw error;
+        }
     }
 
-    // Saves a new Property
-    async saveProperty(comicBook) {
+
+    async saveProperty(property) {
         const url = `${this.apiUrl}/create`;
-        return await this.request(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(comicBook),
-        });
+        try {
+            const response = await axios.post(url, property);
+            return response.data;
+        } catch (error) {
+            console.error('Error saving property:', error);
+            throw error;
+        }
     }
 
-    // Update an existing Property
-    async updateProperty(comicBook) {
+
+    async updateProperty(property) {
         const url = `${this.apiUrl}/update`;
-        return await this.request(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(comicBook),
-        });
+        try {
+            const response = await axios.post(url, property);
+            return response.data;
+        } catch (error) {
+            console.error('Error updating property:', error);
+            throw error;
+        }
     }
 
-    // Fetch all comic books
+
     async fetchAllProperties() {
         const url = `${this.apiUrl}/getAll`;
-        return await this.request(url, { method: 'GET' });
+        try {
+            const response = await axios.get(url);
+            return response.data;
+        } catch (error) {
+            console.error('Error fetching properties:', error);
+            throw error;
+        }
     }
 }
 
-// Export an instance of the service class for reuse
 export default new PropertyService();

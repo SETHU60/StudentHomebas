@@ -3,6 +3,7 @@ package za.ac.cput.service.PropertyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.domain.*;
+import za.ac.cput.factory.StatusFactory;
 import za.ac.cput.repository.AddressRepository;
 import za.ac.cput.repository.DocumentRepository;
 import za.ac.cput.repository.LandlordRepository;
@@ -33,53 +34,11 @@ public class PropertyService implements IPropertyService {
     @Override
     public Property save(Property property) {
 
-        System.out.println("Property save called");
-
-        List <Document> pictures = property.getPictures();
-        Address address = property.getAddress();
-        addressService.save(address);
-        Landlord landlord = property.getLandlord();
-        landlordService.save(landlord);
-
-        if (pictures != null) {
-            pictures = pictures.stream()
-                    .map(document -> {
-                        System.out.println("Document: " + document );
-                        if (document.getDocumentId()  == null) {
-                            // If picture id is null, save the picture directly
-                            return documentRepository.save(document);
-
-                        } else {
-
-                            // If document is not null, try to find the author in the repository
-                            Optional<Document> existingDocuments = documentRepository.findById(document.getDocumentId());
-                            // Return the existing author if found, or save and return the new one if not found
-                            return existingDocuments.orElseGet(() -> documentRepository.save(document));
-                        }
-                    })
-                    .collect(Collectors.toList());
-        }
-
-        if (property != null) {
-            System.out.println("Property to be Saved: " + property);
-            if(Long.valueOf(property.getPropertyID()) ==  null ||
-                    property.getPropertyID() == 0){
-                System.out.println("saving new property]");
-
-                property = repo.save(property);
-                System.out.println("Saved");
-                System.out.println("Saved property" + property);
-            }else{
-                System.out.println("checking if existing property exists");
-
-                Optional<Property> existingProperty = repo.findById(property.getPropertyID());
-
-                if (existingProperty.isPresent()) {
-                    System.out.println("found property");
-                    property = existingProperty.get();
-                }}
-        }
-        return  property;
+        Property approvedProperty = new Property.Builder()
+                .copy(property)
+                .setStatus(StatusFactory.createPendingStatus())
+                .build();
+        return repo.save(approvedProperty);
     }
 
     @Override
@@ -101,5 +60,29 @@ public class PropertyService implements IPropertyService {
     public List<Property> getAll() {
         return repo.findAll();
 
+    }
+    public Property approveProperty(Long propertyId) {
+        Property property = repo.findById(propertyId).orElse(null);
+
+        Property approvedProperty = new Property.Builder()
+                .copy(property)
+                .setStatus(StatusFactory.createApprovedStatus())
+                .build();
+
+
+        return repo.save(approvedProperty);
+    }
+
+
+    public Property rejectProperty(Long propertyId, String rejectionReason) {
+        Property property = repo.findById(propertyId).orElse(null);
+
+        Property rejectedProperty = new Property.Builder()
+                                    .copy(property)
+                                    .setStatus(StatusFactory.createRejectedStatus(rejectionReason))
+                                    .build();
+
+
+        return repo.save(rejectedProperty);
     }
 }

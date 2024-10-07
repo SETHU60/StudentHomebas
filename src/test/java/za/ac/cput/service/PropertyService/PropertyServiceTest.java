@@ -66,12 +66,12 @@ class PropertyServiceTest {
                 "September", "Male", LocalDate.of(1986,8,13), 3,
                 "Mike130886",contact,documentList);
 
-        property1 = PropertyFactory.buildProperty( "South Point", 10,5000,
-                 "10 Dorset St", "Woodstock", "Cape Town","8001", landlord1, documentList);
+        property1 = PropertyFactory.buildProperty("South Point", 10,5000,
+                "10 Dorset St", "Woodstock", "Cape Town", "8001",landlord1, documentList, StatusFactory.createPendingStatus());
 
-        property2 = PropertyFactory.buildProperty( "South Point", 10,3500,
-                 "143 Sir Lowry Rd", "GoodWood", "Cape Town","7001", landlord1, documentList);
-    }
+        property2 = PropertyFactory.buildProperty( "New Market Junction", 80,3500,
+                "143 Sir Lowry Rd", "GoodWood", "Cape Town","8001",  landlord1, documentList, StatusFactory.createApprovedStatus());
+ }
 
 
     @Test

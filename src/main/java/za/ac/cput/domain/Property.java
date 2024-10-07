@@ -14,13 +14,16 @@ public class Property {
     private  int numberOfRooms;
     private double price;
 
-   @OneToOne
+    @Embedded
+    private Status status;
+
+    @OneToOne
     private Address address;
 
-   @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+    @ManyToOne
     private Landlord landlord;
 
-   @OneToMany(mappedBy = "property", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "property", fetch = FetchType.EAGER)
     private List<Document> pictures;
 
     protected Property() {
@@ -35,9 +38,10 @@ public class Property {
         this.landlord = builder.landlord;
         this.pictures = builder.pictures;
         this.price= builder.price;
+        this.status= builder.status;
     }
 
-    public long getPropertyID() {
+    public Long getPropertyID() {
         return propertyID;
     }
 
@@ -59,6 +63,10 @@ public class Property {
         return pictures;
     }
     public double getPrice() {return price;}
+    public Status getStatus() {
+        return status;
+    }
+
 
     @Override
     public String toString() {
@@ -70,21 +78,21 @@ public class Property {
                 ", landlord=" + landlord +
                 ", pictures=" + pictures +
                 ", price=" + price +
+                ", status='" + status + '\'' +
                 '}';
     }
 
     @Override
     public boolean equals(Object o) {
-
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Property property = (Property) o;
-        return numberOfRooms == property.numberOfRooms && Double.compare(price, property.price) == 0 && Objects.equals(propertyID, property.propertyID) && Objects.equals(propertyName, property.propertyName) && Objects.equals(address, property.address) && Objects.equals(landlord, property.landlord) && Objects.equals(pictures, property.pictures);
+        return numberOfRooms == property.numberOfRooms && Double.compare(price, property.price) == 0 && Objects.equals(propertyID, property.propertyID) && Objects.equals(propertyName, property.propertyName) && Objects.equals(status, property.status) && Objects.equals(address, property.address) && Objects.equals(landlord, property.landlord) && Objects.equals(pictures, property.pictures);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(propertyID, propertyName, numberOfRooms, price, address, landlord, pictures);
+        return Objects.hash(propertyID, propertyName, numberOfRooms, price, status, address, landlord, pictures);
     }
 
     public static class Builder{
@@ -96,6 +104,7 @@ public class Property {
         private Landlord landlord;
         private List<Document> pictures;
         private double price;
+        private Status status;
 
         public Builder(){
         }
@@ -131,20 +140,27 @@ public class Property {
         public Builder setPrice(double price){
             this.price = price;
             return this;}
+        public Builder setStatus(Status status){
+            this.status = status;
+            return this;
+        }
         public Builder copy(Property property){
-            this.propertyID = property.propertyID;
+            if (property.propertyID != null) {
+                this.propertyID = property.propertyID;
+            }
             this.propertyName = property.propertyName;
             this.numberOfRooms = property.numberOfRooms;
             this.address = property.address;
             this.price = property.price;
             this.pictures = property.pictures;
             this.landlord = property.landlord;
+            this.status = property.status;
 
             return this;
         }
 
         public Property build(){
-         return new Property(this);
+            return new Property(this);
 
         }
 

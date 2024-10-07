@@ -21,7 +21,7 @@ public class Document {
     private Long documentId;
     private String documentName;
     @Lob
-    @Column(length=10000)
+    @Column(length=100000)
     private byte[] fileContents;
     private LocalDateTime dateTimeUploaded;
 
