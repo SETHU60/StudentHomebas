@@ -82,10 +82,10 @@ class PropertyControllerTest {
                 "Mike130886",contact2,documentList);
 
         property1 = PropertyFactory.buildProperty("South Point", 10,5000,
-                 "10 Dorset St", "Woodstock", "Cape Town", "8001",landlord1, documentList);
+                 "10 Dorset St", "Woodstock", "Cape Town", "8001",landlord1, documentList, StatusFactory.createPendingStatus());
 
         property2 = PropertyFactory.buildProperty( "New Market Junction", 80,3500,
-                "143 Sir Lowry Rd", "GoodWood", "Cape Town","8001",  landlord2, documentList);
+                "143 Sir Lowry Rd", "GoodWood", "Cape Town","8001",  landlord2, documentList, StatusFactory.createApprovedStatus());
 
     }
 

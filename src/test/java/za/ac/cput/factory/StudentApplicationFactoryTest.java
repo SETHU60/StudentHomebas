@@ -4,6 +4,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import za.ac.cput.domain.*;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -27,6 +32,8 @@ class StudentApplicationFactoryTest {
     AcademicDetails records1, records2;
     StudentApplication studentApplication1, studentApplication2, studentApplication3;
 
+    static BufferedImage image;
+    static ByteArrayOutputStream out;
 
     @BeforeEach
     void setUp() {
@@ -67,11 +74,32 @@ class StudentApplicationFactoryTest {
                 , LocalDate.of(1994,3,16), "Emily145Tho!!"
                 ,contact2, photoList);
 
-        property1 = PropertyFactory.buildProperty("1st Village", 3, 3750.50
-                , "47 Lucy Drive", "Parow", "Cape Town", "7490", landlordA, photoList);
 
-        property2 = PropertyFactory.buildProperty("More Takers",2,4000.50
-                ,"11 Olympia Crescent","Delville Park","George","6529",landlordB,photoList);
+        String url = "download.jpeg";
+
+        try {
+
+            image = ImageIO.read(new File(url));
+            out = new ByteArrayOutputStream();
+            ImageIO.write(image, "jpeg", out);
+
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+
+        byte[] photoData = out.toByteArray();
+
+        List<Document> documentList = new ArrayList<>();
+
+        document1 = DocumentFactory.buildDocument("MikeSeptemeberCopyOfID", photoData, LocalDateTime.of(LocalDate.of(2024,04,11), LocalTime.of(11,14)));
+        System.out.println(document1);
+        documentList.add(document1);
+
+        property1 = PropertyFactory.buildProperty("South Point", 10,5000,
+                "10 Dorset St", "Woodstock", "Cape Town", "8001",landlordA, documentList, StatusFactory.createPendingStatus());
+
+        property2 = PropertyFactory.buildProperty( "New Market Junction", 80,3500,
+                "143 Sir Lowry Rd", "GoodWood", "Cape Town","8001",  landlordB, documentList, StatusFactory.createApprovedStatus());
 
         student1 = StudentFactory.buildStudent(377L, "Mila","Juices"
                 ,"Male", LocalDate.of(2000,11,4), "kjrgj6523./"
