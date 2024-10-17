@@ -41,7 +41,7 @@
           <a href="#" class="forgot-password">Forgot Password?</a>
         </div>
         <button type="submit" class="btn-login">Login</button>
-        <p class="signup-link">Don't have an account? <a href="#">Sign up</a></p>
+        <p class="signup-link">Don't have an account? <a href="/signupPage">Sign up</a></p>
       </form>
     </div>
   </div>
@@ -54,35 +54,65 @@ export default {
     return {
       email: "",
       password: "",
-      rememberMe: false
+      rememberMe: false,
     };
   },
   methods: {
     async login() {
-      const url = 'api/StudentHomeBas/student/login/' + this.email + "/" + this.password;
+      const studentUrl = `api/StudentHomeBas/student/login/${this.email}/${this.password}`;
 
       try {
-        const response = await fetch(url, {
+        const studentResponse = await fetch(studentUrl, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'
           },
         });
 
-        if (response.ok) {
-          const data = await response.text(); // Assuming the response is a text message
-          alert("Login successful: " + data);
-          console.log('Login successful:', data);
+        if (studentResponse.ok) {
+          const data = await studentResponse.text();
+          alert("Student login successful: " + data);
+          console.log('Student login successful:', data);
           this.$emit('authenticated');
-         //await this.$router.push('/admin-layout');
+          await this.$router.push('/home');
         } else {
-          const errorMessage = await response.text();
-          alert("Login failed: " + errorMessage);
-          console.error('Login failed:', errorMessage);
+          const landlordUrl = `api/StudentHomeBas/landlord/login/${this.email}/${this.password}`;
+          const landlordResponse = await fetch(landlordUrl, {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+          });
+
+          if (landlordResponse.ok) {
+            const data = await landlordResponse.text();
+            alert("Landlord login successful: " + data);
+            console.log('Landlord login successful:', data);
+            this.$emit('authenticated');
+            await this.$router.push('/register-property');
+          } else {
+            const adminUrl = `api/StudentHomeBas/admin/login/${this.email}/${this.password}`;
+            const adminResponse = await fetch(adminUrl, {
+              method: 'GET',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+            });
+
+            if (adminResponse.ok) {
+              const data = await adminResponse.text();
+              alert("Admin login successful: " + data);
+              console.log('Admin login successful:', data);
+              this.$emit('authenticated');
+              await this.$router.push('/admin-layout');
+            } else {
+              const errorMessage = await adminResponse.text();
+              alert("Login failed: " + errorMessage);
+            }
+          }
         }
       } catch (error) {
         alert("Error during login: " + error.message);
-        console.error('Error during login:', error);
       }
     }
   }

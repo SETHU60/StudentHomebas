@@ -1,12 +1,15 @@
 package za.ac.cput.controller;
 
+import jakarta.persistence.DiscriminatorValue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.domain.AuthenticationRequest;
+import za.ac.cput.domain.Landlord;
 import za.ac.cput.domain.Student;
 import za.ac.cput.service.StudentService;
+import za.ac.cput.service.landlordService.LandlordService;
 
 import java.util.List;
 
@@ -15,10 +18,12 @@ import java.util.List;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class StudentController {
     private final StudentService studentService;
+    private final LandlordService landlordService;
 
     @Autowired
-    public StudentController(StudentService studentService) {
+    public StudentController(StudentService studentService, LandlordService landlordService) {
         this.studentService = studentService;
+        this.landlordService = landlordService;
     }
 
     @PostMapping("/save")
@@ -54,7 +59,6 @@ public class StudentController {
         }
 
         Student authenticatedStudent = studentService.authenticationByEmail(email, password);
-
         if (authenticatedStudent != null) {
             return new ResponseEntity<>("Login successful", HttpStatus.OK);
         } else {
