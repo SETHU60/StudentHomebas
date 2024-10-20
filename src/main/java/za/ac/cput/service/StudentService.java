@@ -24,22 +24,9 @@ public class StudentService implements IStudentService {
 
     @Override
     public Student save(Student student) {
-        Contact contact = student.getContact();
-        if (contact != null) {
-            Optional<Contact> existingContact = contactRepository.findById(contact.getEmail());
-            if (existingContact.isPresent()) {
-                contact = existingContact.get();
-            } else {
-                contact = contactRepository.save(contact);
-            }
-        }
-        Student updatedStudent = new Student.StudentBuilder()
-                .copy(student)
-                .setContact(contact)
-                .build();
-
-        return studentRepository.save(updatedStudent);  // Use 'repo' to save the ComicBook
+        return studentRepository.save(student);
     }
+
 
 
     @Override

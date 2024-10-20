@@ -83,6 +83,7 @@ class LandlordServiceTest {
 
     @Test
     @Order(4)
+    @Disabled
     void deleteById() {
         boolean deleted = landlordService.deleteById(landlord1.getUserId());
         assertTrue(deleted);

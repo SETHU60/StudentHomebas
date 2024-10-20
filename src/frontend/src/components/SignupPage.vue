@@ -8,29 +8,27 @@
         <a href="#">Home</a>
         <a href="#">Contact Us</a>
       </div>
-      <div class="profile-container">
-        <!-- Profile-related UI elements can go here -->
-      </div>
     </nav>
 
     <div class="form-container">
       <form @submit.prevent="signup">
         <div class="input-group">
           <input type="text" v-model="firstName" placeholder="First name" required />
+          <input type="text" v-model="middleName" placeholder="Middle name" />
+        </div>
+        <div class="input-group">
           <input type="text" v-model="lastName" placeholder="Last name" required />
-        </div>
-        <div class="input-group">
           <input type="text" v-model="phoneNumber" placeholder="Cell number" required />
-          <input type="email" v-model="email" placeholder="Email" required />
         </div>
         <div class="input-group">
-          <input type="date" v-model="dateOfBirth" placeholder="Date of birth" required />
+          <input type="email" v-model="email" placeholder="Email" required />
+          <input type="date" v-model="dateOfBirth" required />
         </div>
         <div class="address-section">
           <label>Address:</label>
           <div class="input-group">
             <input type="text" v-model="street" placeholder="Street" required />
-            <input type="text" v-model="suburb" placeholder="Suburb" required />
+            <input type="text" v-model="suburb" placeholder="Suburb" v-if="userRole === 'landlord'" />
           </div>
           <div class="input-group">
             <input type="text" v-model="city" placeholder="City" required />
@@ -38,8 +36,13 @@
           </div>
         </div>
         <div class="input-group">
+          <select v-model="userRole" required @change="updateTerms">
+            <option value="" disabled selected>Select role</option>
+            <option value="student">Student</option>
+            <option value="landlord">Landlord</option>
+          </select>
           <select v-model="gender" required>
-            <option value="" disabled selected>Gender</option>
+            <option value="" disabled selected>Select gender</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
             <option value="other">Other</option>
@@ -50,14 +53,31 @@
           <input type="password" v-model="confirmPassword" placeholder="Confirm password" required />
         </div>
         <div class="terms">
-          <input type="checkbox" id="terms" v-model="agreeToTerms" required />
-          <label for="terms">I read and agree to the <a href="#">Terms and conditions</a></label>
+          <input type="checkbox" id="terms" v-model="agreeToTerms" :checked="cameFromTerms" />
+          <label for="terms">
+            I read and agree to the
+            <a href="#" @click.prevent="showTerms">{{ termsLink }}</a>
+          </label>
         </div>
         <button type="submit" class="signup-btn">Sign up</button>
         <div class="login-link">
           Already have an account? <a href="/loginPage">Login</a>
         </div>
       </form>
+    </div>
+
+    <!-- Terms and Conditions Modal -->
+    <div v-if="showModal" class="modal">
+      <div class="modal-content">
+        <span class="close" @click="showModal = false">&times;</span>
+        <h2>Terms and Conditions for {{ userRole.charAt(0).toUpperCase() + userRole.slice(1) }}</h2>
+        <p v-if="userRole === 'student'">
+          These are the terms and conditions for students...
+        </p>
+        <p v-if="userRole === 'landlord'">
+          These are the terms and conditions for landlords...
+        </p>
+      </div>
     </div>
   </div>
 </template>
@@ -68,6 +88,7 @@ export default {
   data() {
     return {
       firstName: '',
+      middleName: '',
       lastName: '',
       phoneNumber: '',
       email: '',
@@ -80,10 +101,20 @@ export default {
       password: '',
       confirmPassword: '',
       agreeToTerms: false,
+      userRole: '',
+      showModal: false,
+      termsLink: 'Terms and conditions',
+      cameFromTerms: false, // New property to track if user came from terms page
     };
   },
   methods: {
     async signup() {
+      // Set agreeToTerms based on navigation
+      if (this.cameFromTerms) {
+        this.agreeToTerms = true;
+        this.cameFromTerms = false; // Reset after using
+      }
+
       if (this.password !== this.confirmPassword) {
         alert('Passwords do not match');
         return;
@@ -94,46 +125,67 @@ export default {
         return;
       }
 
-      const student = {
+      const user = {
         firstName: this.firstName,
+        middleName: this.middleName,
         lastName: this.lastName,
-        phoneNumber: this.phoneNumber,
-        email: this.email,
+        gender: this.gender.charAt(0).toUpperCase() + this.gender.slice(1),
         dateOfBirth: this.dateOfBirth,
-        address: {
-          street: this.street,
-          suburb: this.suburb,
-          city: this.city,
-          postalCode: this.postalCode,
-        },
-        gender: this.gender,
         password: this.password,
+        contact: {
+          phoneNumber: this.phoneNumber,
+          email: this.email,
+          address: {
+            street: this.street,
+            city: this.city,
+            suburb: this.suburb, // Ensure suburb is sent for landlords
+            postalCode: this.postalCode,
+          }
+        }
       };
 
+      let url = '';
+
+      if (this.userRole === 'student') {
+        url = 'http://localhost:8080/StudentHomeBas/student/save';
+      }if (this.userRole === 'landlord') {
+        url = 'http://localhost:8080/StudentHomeBas/landlord/save';
+      }
+
+
       try {
-        const response = await fetch('/student/save', { // Direct URL without /api
+        const response = await fetch(url, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(student),
+          body: JSON.stringify(user),
         });
 
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          const errorData = await response.json();
+          throw new Error(errorData.message || 'Network response was not ok');
         }
 
         const data = await response.json();
-        console.log('Saved Student:', data);
+        console.log('Saved user:', data);
         alert('Signup successful!');
-        // Optionally, redirect the user after successful signup
-        // this.$router.push('/loginPage');
+        this.$router.push('/loginPage');
       } catch (error) {
         console.error('There was an error during signup:', error);
-        alert('Signup failed. Please try again.');
+        alert(`Signup failed: ${error.message}`);
       }
-    }
-  },
+    },
+    showTerms() {
+      // Set flag to true when navigating to terms page
+      this.cameFromTerms = true;
+      if (this.userRole === 'landlord') {
+        this.$router.push('/landlordTerms');
+      } else if (this.userRole === 'student') {
+        this.$router.push('/studentTerms');
+      }
+    },
+  }
 };
 </script>
 
@@ -184,17 +236,6 @@ export default {
   font-weight: bold;
 }
 
-.profile-container {
-  flex-shrink: 0;
-  margin-right: 80px;
-}
-
-.profile-pic {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-}
-
 .form-container {
   background-color: rgba(255, 255, 255, 0.9);
   padding: 20px;
@@ -221,15 +262,8 @@ select {
   border-radius: 4px;
 }
 
-.address-section label {
-  font-weight: bold;
-  margin-bottom: 5px;
-  display: block;
-}
-
 .terms {
   margin: 15px 0;
-  font-size: 14px;
 }
 
 .signup-btn {
@@ -240,7 +274,6 @@ select {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 16px;
 }
 
 .signup-btn:hover {
@@ -250,6 +283,39 @@ select {
 .login-link {
   text-align: center;
   margin-top: 15px;
-  font-size: 14px;
+}
+
+.modal {
+  position: fixed;
+  z-index: 1001;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 </style>

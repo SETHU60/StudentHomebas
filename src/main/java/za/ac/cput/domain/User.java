@@ -19,7 +19,7 @@ public  class User {
     protected LocalDate dateOfBirth;
     protected String password;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "contact_id")
     protected Contact contact;
 
