@@ -15,7 +15,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/student")
-@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class StudentController {
     private final StudentService studentService;
     private final LandlordService landlordService;

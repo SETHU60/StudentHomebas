@@ -38,7 +38,6 @@
             />
             <label for="remember">Remember me</label>
           </div>
-          <a href="#" class="forgot-password">Forgot Password?</a>
         </div>
         <button type="submit" class="btn-login">Login</button>
         <p class="signup-link">Don't have an account? <a href="/signupPage">Sign up</a></p>
@@ -46,6 +45,7 @@
     </div>
   </div>
 </template>
+
 
 <script>
 export default {
@@ -203,9 +203,9 @@ export default {
 .signup-link a {
   color: lightgreen;
 }
-
-.forgot-password {
-  color: darkgreen;
-  text-align: left;
+.remember-me-container input {
+  margin-right: 10px;
 }
+
+
 </style>
