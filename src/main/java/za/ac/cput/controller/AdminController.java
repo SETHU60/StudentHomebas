@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import za.ac.cput.domain.Admin;
 import za.ac.cput.domain.Landlord;
 import za.ac.cput.service.AdminService;
+import za.ac.cput.session.UserSession;
 
 import java.util.List;
 
@@ -16,6 +17,17 @@ public class AdminController {
 
     @Autowired
     private AdminService adminService;
+
+    @GetMapping("/getName")
+    public String getName() {
+        Admin loggedInUser = UserSession.getInstance().getCurrentUser();
+        String name = "";
+        if (loggedInUser != null) {
+            name = loggedInUser.getName().getFirstName();
+            System.out.println(name);
+        }
+        return name;
+    }
 
     @PostMapping("/save")
     public Admin save(@RequestBody Admin admin) {
@@ -58,4 +70,6 @@ public class AdminController {
             return new ResponseEntity<>("Invalid email or password", HttpStatus.UNAUTHORIZED);
         }
     }
+
+
 }

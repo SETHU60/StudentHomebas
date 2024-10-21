@@ -74,7 +74,7 @@ export default {
           alert("Student login successful: " + data);
           console.log('Student login successful:', data);
           this.$emit('authenticated');
-          await this.$router.push('/home');
+          await this.$router.push('/admin-layout');
         } else {
           const landlordUrl = `api/StudentHomeBas/landlord/login/${this.email}/${this.password}`;
           const landlordResponse = await fetch(landlordUrl, {

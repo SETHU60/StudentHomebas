@@ -59,7 +59,7 @@ export default {
   },
   data() {
     return {
-      adminName: 'Mbasa',
+      adminName: this.adminName,
       studentData: {
         labels: ['Reviewed', 'Pending', 'Total'],
         datasets: [
@@ -118,12 +118,14 @@ export default {
   methods: {
     async fetchAdminName() {
       try {
+
         const response = await fetch('api/admin/getName');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
         this.adminName = data.name;
+        alert(this.adminName)
       } catch (error) {
         console.error('Error fetching admin name:', error);
       }

@@ -64,12 +64,12 @@ class StudentApplicationFactoryTest {
         records2 = AcademicDetailsFactory.buildAcademicDetails("1689"
                 ,"CPUT","Information Technology",2021);
 
-        landlordA = LandlordFactory.buildLandlord(45673L,"Mihlai"
+        landlordA = LandlordFactory.buildLandlord("Mihlai"
                 ,"Tukuza", 3, "Male"
                 , LocalDate.of(1986,8,13), "hsfs2637!"
                 ,contact1, photoList);
 
-        landlordB = LandlordFactory.buildLandlord(45696L,"Emily",
+        landlordB = LandlordFactory.buildLandlord("Emily",
                 "Thorne", 5, "Female"
                 , LocalDate.of(1994,3,16), "Emily145Tho!!"
                 ,contact2, photoList);

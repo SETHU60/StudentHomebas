@@ -13,9 +13,10 @@ import LoginPage from "@/components/LoginPage.vue";
 import StudentInbox from "@/components/StudentInbox.vue";
 import MainLayout from "@/components/MainLayout.vue";
 import LandLordInbox from "@/components/LandLordInbox.vue";
+import PropertyList from "@/components/PropertyList.vue";
 
 const routes = [
-     { path: '/loginPage', name: 'LoginPage', component: LoginPage },
+     { path: '/', name: 'LoginPage', component: LoginPage },
     { path: '/home', name: 'HomePage', component: HomePage },
     { path: '/propertyInfo', name: 'PropertyInfoPage', component: PropertyInfoPage },
 
@@ -40,6 +41,11 @@ const routes = [
                 component: StudentList,
             },
             {
+                path: '/properties',
+                name: 'PropertyList',
+                component: PropertyList,
+},
+            {
                 path: '/landlords',
                 name: 'LandlordList',
                 component: LandlordList,
@@ -54,7 +60,7 @@ const routes = [
         ]
     },
     {
-    path: '/',
+    path: '/ok',
    // path: '/landlord-layout',
     name: 'MainLayout',
     component: MainLayout,
