@@ -126,9 +126,11 @@ export default {
       }
 
       const user = {
-        firstName: this.firstName,
-        middleName: this.middleName,
-        lastName: this.lastName,
+        name: {
+          firstName: this.firstName,
+          middleName: this.middleName,
+          lastName: this.lastName,
+        },
         gender: this.gender.charAt(0).toUpperCase() + this.gender.slice(1),
         dateOfBirth: this.dateOfBirth,
         password: this.password,
