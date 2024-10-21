@@ -15,7 +15,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/landlord")
-@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class LandlordController {
     @Autowired
     private LandlordService landlordService;
