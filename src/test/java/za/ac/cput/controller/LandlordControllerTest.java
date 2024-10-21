@@ -4,10 +4,7 @@ import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Repository;
 import za.ac.cput.domain.Address;
 import za.ac.cput.domain.Contact;
@@ -56,11 +53,11 @@ class LandlordControllerTest {
 
         Address address1= AddressFactory.buildAddress("9 Lower Street", "Mowbray", "Cape Town", "5100");
         Contact contact = ContactFactory.createContact("0786549009", "mikeseptember@gmail.com", address1);
-        landlord1 = LandlordFactory.buildLandlordWithMiddleName(1L, "Mike", "Matic", "September", "Male", LocalDate.of(1986,8,13), 3, "Mike130886",contact,documentList);
+        landlord1 = LandlordFactory.buildLandlordWithMiddleName( "Mike", "Matic", "September", "Male", LocalDate.of(1986,8,13), 3, "Mike130886",contact,documentList);
 
         Address address2 = AddressFactory.buildAddress("19 Lower Street", "Mowbray", "Cape Town", "5100");
         Contact contact2 = ContactFactory.createContact("0786548790", "nickseptember@gmail.com", address2);
-        landlord2 = LandlordFactory.buildLandlordWithMiddleName(2L, "Nick", "Leon", "September", "Male", LocalDate.of(1986,8,14), 2, "Nick130886",contact2,documentList2);
+        landlord2 = LandlordFactory.buildLandlordWithMiddleName("Nick", "Leon", "September", "Male", LocalDate.of(1986,8,14), 2, "Nick130886",contact2,documentList2);
 
 
     }
@@ -126,4 +123,53 @@ class LandlordControllerTest {
         System.out.println("All Landlords:");
         System.out.println(response.getBody());
     }
+    @Test
+    @Order(6)
+    void loginSuccess() {
+        // Assuming landlord1 has been saved and has valid credentials
+        String url = BASE_URL + "/login/" + landlord1.getContact().getEmail() + "/" + "Mike130886";
+        ResponseEntity<String> response = testRestTemplate.getForEntity(url, String.class);
+
+        assertNotNull(response);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals("Login successful", response.getBody());
+        System.out.println("Login successful for landlord1");
+    }
+
+    @Test
+    @Order(7)
+    void loginInvalidEmail() {
+        String url = BASE_URL + "/login/invalidEmail@gmail.com/Mike130886";
+        ResponseEntity<String> response = testRestTemplate.getForEntity(url, String.class);
+
+        assertNotNull(response);
+        assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
+        assertEquals("Invalid email or password", response.getBody());
+        System.out.println("Login failed for invalid email");
+    }
+
+    @Test
+    @Order(8)
+    void loginInvalidPassword() {
+        String url = BASE_URL + "/login/" + landlord1.getContact().getEmail() + "/wrongPassword";
+        ResponseEntity<String> response = testRestTemplate.getForEntity(url, String.class);
+
+        assertNotNull(response);
+        assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
+        assertEquals("Invalid email or password", response.getBody());
+        System.out.println("Login failed for incorrect password");
+    }
+
+    @Test
+    @Order(9)
+    void loginNullEmail() {
+        String url = BASE_URL + "/login//Mike130886"; // Passing an empty email
+        ResponseEntity<String> response = testRestTemplate.getForEntity(url, String.class);
+
+        assertNotNull(response);
+        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+        assertTrue(response.getBody().contains("email is null"));
+        System.out.println("Login failed for null email");
+    }
+
 }

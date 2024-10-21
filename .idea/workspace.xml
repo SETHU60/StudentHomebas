@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BeansEndpointTabSettings">
+    <option name="diagramMode" value="true" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="545a1c22-5b67-4434-9918-4dab6345f0a1" name="Changes" comment="Front end services">
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/session/UserSession.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Rebasing_at_2024_04_27_13_32__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Rebasing_at_2024_04_27_13_32__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/src/components/AdminDashboard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/src/components/AdminDashboard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/src/components/LoginPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/src/components/LoginPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/src/components/PropertyList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/src/components/PropertyList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/src/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/src/router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/config/WebConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/factory/LandlordFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/factory/LandlordFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/controller/LandlordControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/controller/LandlordControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/controller/PropertyControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/controller/PropertyControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/controller/StudentApplicationControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/controller/StudentApplicationControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/LandlordFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/LandlordFactoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/PropertyFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/PropertyFactoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/StudentApplicationFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/StudentApplicationFactoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/service/StudentApplicationService/StudentApplicationServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/service/StudentApplicationService/StudentApplicationServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/service/landlordService/LandlordServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/service/landlordService/LandlordServiceTest.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="JUnit5 Test Class" />
+        <option value="Vue Composition API Component" />
+        <option value="JavaScript File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2gQSlHRvgLxDuO9MIlJDpKBuO3k" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;HTTP Request.All in Main.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.Main | #1.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AcademicDetailsControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AcademicDetailsFactoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AcademicDetailsServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AddressControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AdminServiceTest.save.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ContactControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DocumentControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LandlordControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LandlordServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MessageServiceTest.sendMessage.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PropertyControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PropertyControllerTest.read.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PropertyFactoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PropertyListingApplicationControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PropertyServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StudentControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.Main.executor&quot;: &quot;Run&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ASUS/OneDrive - Cape Peninsula University of Technology/Documents/3rd-Year/ADP3/StudentHomebas-2_0/src/test/java/za/ac/cput/service&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2024.1.4\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;vue.recent.templates&quot;: [
+      &quot;Vue Composition API Component&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ASUS\OneDrive - Cape Peninsula University of Technology\Documents\3rd-Year\ADP3\StudentHomebas-2_0\src\test\java\za\ac\cput\service" />
+      <recent name="C:\Users\ASUS\OneDrive - Cape Peninsula University of Technology\Documents\3rd-Year\ADP3\StudentHomebas-2_0\src\frontend\src\service" />
+      <recent name="C:\Users\ASUS\OneDrive - Cape Peninsula University of Technology\Documents\3rd-Year\ADP3\StudentHomebas-2_0\src\frontend\src\components" />
+      <recent name="C:\Users\ASUS\OneDrive - Cape Peninsula University of Technology\Documents\3rd-Year\ADP3\StudentHomebas-2_0\src\main\java\za\ac\cput\service" />
+      <recent name="C:\Users\ASUS\Documents\3rd-Year\ADP3\StudentHomebas\src\frontend\src\assets" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ASUS\Documents\3rd-Year\ADP3\StudentHomebas\src\main" />
+      <recent name="C:\Users\ASUS\Documents\3rd-Year\ADP3\StudentHomebas\src\main\java\za\ac\cput" />
+      <recent name="C:\Users\ASUS\Documents\3rd-Year\ADP3\StudentHomebas" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="za.ac.cput.controller" />
+      <recent name="za.ac.cput.service.PropertyService" />
+      <recent name="za.ac.cput.service.AcademicDetails" />
+      <recent name="za.ac.cput.factory" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="za.ac.cput.service.messageService" />
+      <recent name="za.ac.cput.controller" />
+      <recent name="za.ac.cput.repository" />
+      <recent name="za.ac.cput.factory" />
+      <recent name="za.ac.cput.domain" />
+    </key>
+  </component>
+  <component name="RequestMappingsEndpointTabSettings">
+    <option name="showLibraryMappings" value="false" />
+  </component>
+  <component name="RunManager" selected="JUnit.AdminServiceTest.save">
+    <configuration name="All in Main" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" path="$APPLICATION_CONFIG_DIR$/scratches/Main.http">
+      <method v="2" />
+    </configuration>
+    <configuration name="Main | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/Main.http" requestIdentifier="#1" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="AdminServiceTest.save" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="StudentHomebas" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="za.ac.cput.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="za.ac.cput.service" />
+      <option name="MAIN_CLASS_NAME" value="za.ac.cput.service.AdminServiceTest" />
+      <option name="METHOD_NAME" value="save" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MessageServiceTest.sendMessage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="StudentHomebas" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="za.ac.cput.service.messageService.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="za.ac.cput.service.messageService" />
+      <option name="MAIN_CLASS_NAME" value="za.ac.cput.service.messageService.MessageServiceTest" />
+      <option name="METHOD_NAME" value="sendMessage" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PropertyControllerTest.read" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="StudentHomebas" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="za.ac.cput.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="za.ac.cput.controller" />
+      <option name="MAIN_CLASS_NAME" value="za.ac.cput.controller.PropertyControllerTest" />
+      <option name="METHOD_NAME" value="read" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="StudentHomebas" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="za.ac.cput.Main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="HTTP Request.All in Main" />
+      <item itemvalue="HTTP Request.Main | #1" />
+      <item itemvalue="JUnit.AdminServiceTest.save" />
+      <item itemvalue="JUnit.MessageServiceTest.sendMessage" />
+      <item itemvalue="JUnit.PropertyControllerTest.read" />
+      <item itemvalue="Spring Boot.Main" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.AdminServiceTest.save" />
+        <item itemvalue="JUnit.MessageServiceTest.sendMessage" />
+        <item itemvalue="JUnit.PropertyControllerTest.read" />
+        <item itemvalue="HTTP Request.Main | #1" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18034.62" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18034.62" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task id="LOCAL-00001" summary="added pom file">
+      <option name="closed" value="true" />
+      <created>1714218215968</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1714218215968</updated>
+    </task>
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="545a1c22-5b67-4434-9918-4dab6345f0a1" name="Changes" comment="added pom file" />
+      <created>1715628457932</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1715628457932</updated>
+      <workItem from="1715628459567" duration="1544000" />
+      <workItem from="1715792942451" duration="54000" />
+      <workItem from="1715793307817" duration="696000" />
+      <workItem from="1719506057449" duration="6708000" />
+      <workItem from="1719859828975" duration="949000" />
+      <workItem from="1719943954704" duration="4397000" />
+      <workItem from="1720957435528" duration="6786000" />
+      <workItem from="1721154154027" duration="624000" />
+      <workItem from="1721506806262" duration="4097000" />
+      <workItem from="1721514429634" duration="3609000" />
+      <workItem from="1721652382379" duration="7973000" />
+      <workItem from="1721663506359" duration="1505000" />
+      <workItem from="1722460890906" duration="966000" />
+      <workItem from="1723141167024" duration="3408000" />
+      <workItem from="1723209127165" duration="740000" />
+      <workItem from="1723569272246" duration="169000" />
+      <workItem from="1723569515252" duration="5791000" />
+      <workItem from="1723578680824" duration="6920000" />
+      <workItem from="1723589155297" duration="2973000" />
+      <workItem from="1723653448439" duration="16711000" />
+      <workItem from="1723793930729" duration="8428000" />
+      <workItem from="1723913256715" duration="3729000" />
+      <workItem from="1724101630589" duration="45405000" />
+      <workItem from="1724314660929" duration="14099000" />
+      <workItem from="1727999356522" duration="7637000" />
+      <workItem from="1728007350557" duration="2236000" />
+      <workItem from="1728061432914" duration="9223000" />
+      <workItem from="1728214075917" duration="1611000" />
+      <workItem from="1728325339749" duration="632000" />
+      <workItem from="1728326014370" duration="216000" />
+      <workItem from="1728326246908" duration="308000" />
+      <workItem from="1728328626919" duration="1050000" />
+      <workItem from="1729465736097" duration="582000" />
+      <workItem from="1729485191256" duration="10263000" />
+    </task>
+    <task id="LOCAL-00002" summary="domain for Landlord.java and AcademicDetails.java">
+      <option name="closed" value="true" />
+      <created>1719511902763</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1719511902763</updated>
+    </task>
+    <task id="LOCAL-00003" summary="factories for Property.java and AcademicDetails.java">
+      <option name="closed" value="true" />
+      <created>1720969114303</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1720969114303</updated>
+    </task>
+    <task id="LOCAL-00004" summary="factories for Property.java">
+      <option name="closed" value="true" />
+      <created>1720987602856</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1720987602856</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Services and Controllers">
+      <option name="closed" value="true" />
+      <created>1721658068637</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1721658068637</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Add Property Page Vue. and router configurations">
+      <option name="closed" value="true" />
+      <created>1723749449838</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1723749449838</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Add Property Service Vue. and Main Layout">
+      <option name="closed" value="true" />
+      <created>1723832918104</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1723832918104</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Front end services">
+      <option name="closed" value="true" />
+      <created>1723833798724</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1723833798724</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="updated some errors" />
+    <MESSAGE value="added pom file" />
+    <MESSAGE value="domain for Landlord.java and AcademicDetails.java" />
+    <MESSAGE value="factories for Property.java and AcademicDetails.java" />
+    <MESSAGE value="factories for Property.java" />
+    <MESSAGE value="Services and Controllers" />
+    <MESSAGE value="Add Property Page Vue. and router configurations" />
+    <MESSAGE value="Add Property Service Vue. and Main Layout" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/branch2' into branch2" />
+    <MESSAGE value="Front end services" />
+    <option name="LAST_COMMIT_MESSAGE" value="Front end services" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/za/ac/cput/domain/Property.java</url>
+          <line>29</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/za/ac/cput/domain/Address.java</url>
+          <line>26</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/frontend/src/components/RegisterProperty.vue</url>
+          <line>235</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/frontend/src/components/RegisterProperty.vue</url>
+          <line>232</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

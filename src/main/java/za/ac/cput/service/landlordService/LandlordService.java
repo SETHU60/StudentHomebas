@@ -3,6 +3,7 @@ package za.ac.cput.service.landlordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.domain.Landlord;
+import za.ac.cput.domain.Student;
 import za.ac.cput.repository.LandlordRepository;
 
 import java.util.List;
@@ -38,4 +39,9 @@ public class LandlordService implements ILandlordService{
     public List<Landlord> getall() {
         return repository.findAll();
     }
+
+    public Landlord authenticationByEmail(String email, String password) {
+        return repository.findByContactEmailAndPassword(email, password);
+    }
+
 }

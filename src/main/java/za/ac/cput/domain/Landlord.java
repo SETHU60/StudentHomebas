@@ -25,7 +25,7 @@ public class Landlord extends User{
         this.password = builder.password;
         this.documents = builder.documents;
         this.contact = builder.contact;
-    this.numOfPropertiesOwned = builder.numOfPropertiesOwned;
+        this.numOfPropertiesOwned = builder.numOfPropertiesOwned;
     }
 
     public int getNumOfPropertiesOwned() {
@@ -63,14 +63,14 @@ public class Landlord extends User{
     }
 
     public static class LandlordBuilder{
-    private Long userId;
-    private Name name;
-    private String gender;
-    private LocalDate dateOfBirth;
-    private String password;
-    private Contact contact;
-    private List<Document> documents;
-    private int numOfPropertiesOwned;
+        private Long userId;
+        private Name name;
+        private String gender;
+        private LocalDate dateOfBirth;
+        private String password;
+        private Contact contact;
+        private List<Document> documents;
+        private int numOfPropertiesOwned;
 
         public LandlordBuilder setUserId(Long userId) {
             this.userId = userId;
@@ -83,16 +83,16 @@ public class Landlord extends User{
         }
 
         public LandlordBuilder setName(Name name){
-        this.name = name;
-        return this;
-    }
+            this.name = name;
+            return this;
+        }
 
-    public LandlordBuilder setGender(String gender){
-        this.gender = gender;
-        return this;
+        public LandlordBuilder setGender(String gender){
+            this.gender = gender;
+            return this;
         }
         public LandlordBuilder setDateOfBirth(LocalDate dateOfBirth){
-        this.dateOfBirth = dateOfBirth;
+            this.dateOfBirth = dateOfBirth;
             return this;
         }
 
@@ -102,7 +102,7 @@ public class Landlord extends User{
         }
 
         public LandlordBuilder setContact(Contact contact){
-        this.contact = contact;
+            this.contact = contact;
             return this;
         }
 

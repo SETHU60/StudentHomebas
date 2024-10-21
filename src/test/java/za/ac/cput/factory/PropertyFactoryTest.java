@@ -51,12 +51,12 @@ class PropertyFactoryTest {
 
         Address address1= AddressFactory.buildAddress("9 Lower Street", "Mowbray", "Cape Town", "5100");
         Contact contact = ContactFactory.createContact("0786549009", "mikes@gmail.com", address1);
-        landlord1 = LandlordFactory.buildLandlordWithMiddleName(88987L, "Mike", "Matic",
+        landlord1 = LandlordFactory.buildLandlordWithMiddleName( "Mike", "Matic",
                 "September", "Male", LocalDate.of(1986,8,13), 3,
                 "Mike130886",contact,documentList);
 
-         property1 = PropertyFactory.buildProperty("PR01", "South Point", 10,5000,
-                "143", "Dorset St", "Woodstock", "Cape Town", landlord1, documentList);
+        property1 = PropertyFactory.buildProperty("South Point", 10,5000,
+                "10 Dorset St", "Woodstock", "Cape Town", "8001",landlord1, documentList, StatusFactory.createPendingStatus());
 
 
 
@@ -73,8 +73,8 @@ class PropertyFactoryTest {
 
     @Test
     void buildAcademicDetailsWithNullValues() {
-        property2 = PropertyFactory.buildProperty("", "South Point", 10,3500,
-                "143", "Dorset St", "Woodstock", "Cape Town", landlord1, documentList);
+        property2 = PropertyFactory.buildProperty( "New Market Junction", 80,3500,
+                "143 Sir Lowry Rd", "GoodWood", "","8001",  landlord1, documentList, StatusFactory.createApprovedStatus());
 
         //Test should pass because object with any null value will return null
         assertNull(property2);

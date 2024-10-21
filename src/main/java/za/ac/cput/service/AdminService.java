@@ -41,4 +41,8 @@ public class AdminService implements IAdminService{
     public List<Admin> getAll() {
         return adminRepository.findAll();
     }
+
+    public Admin authenticationByEmail(String email, String password) {
+        return adminRepository.findByContactEmailAndPassword(email, password);
+    }
 }

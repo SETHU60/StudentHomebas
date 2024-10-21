@@ -6,7 +6,7 @@ import jakarta.persistence.Table;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "admins")  // Explicit table name for clarity
+@Table(name = "admins")
 public class Admin extends User {
 
     public Admin() {

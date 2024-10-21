@@ -1,9 +1,13 @@
 package za.ac.cput.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.domain.Admin;
+import za.ac.cput.domain.Landlord;
 import za.ac.cput.service.AdminService;
+import za.ac.cput.session.UserSession;
 
 import java.util.List;
 
@@ -13,6 +17,17 @@ public class AdminController {
 
     @Autowired
     private AdminService adminService;
+
+    @GetMapping("/getName")
+    public String getName() {
+        Admin loggedInUser = UserSession.getInstance().getCurrentUser();
+        String name = "";
+        if (loggedInUser != null) {
+            name = loggedInUser.getName().getFirstName();
+            System.out.println(name);
+        }
+        return name;
+    }
 
     @PostMapping("/save")
     public Admin save(@RequestBody Admin admin) {
@@ -38,4 +53,23 @@ public class AdminController {
     public List<Admin> getAll() {
         return adminService.getAll();
     }
+
+    @GetMapping("/login/{email}/{password}")
+    public ResponseEntity<String> login(@PathVariable("email") String email, @PathVariable("password") String password) {
+        if (email == null || email.isEmpty()) {
+            return new ResponseEntity<>("Email is null or empty", HttpStatus.BAD_REQUEST);
+        }
+        if (password == null || password.isEmpty()) {
+            return new ResponseEntity<>("Password is null or empty", HttpStatus.BAD_REQUEST);
+        }
+
+        Admin authenticatedAdmin = adminService.authenticationByEmail(email, password);
+        if (authenticatedAdmin != null) {
+            return new ResponseEntity<>("Login successful", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Invalid email or password", HttpStatus.UNAUTHORIZED);
+        }
+    }
+
+
 }

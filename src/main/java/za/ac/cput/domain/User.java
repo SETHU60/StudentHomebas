@@ -5,7 +5,6 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 
-
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "user_type")

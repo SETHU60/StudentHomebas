@@ -30,7 +30,7 @@ class LandlordFactoryTest {
 
         Address address1= AddressFactory.buildAddress("9 Lower Street", "Mowbray", "Cape Town", "5100");
         Contact contact = ContactFactory.createContact("0786549009", "mikes@gmail.com", address1);
-        landlord1 = LandlordFactory.buildLandlordWithMiddleName(88987L, "Mike", "Matic", "September", "Male", LocalDate.of(1986,8,13), 3, "Mike130886",contact,documentList);
+        landlord1 = LandlordFactory.buildLandlordWithMiddleName("Mike", "Matic", "September", "Male", LocalDate.of(1986,8,13), 3, "Mike130886",contact,documentList);
 
 
     }
